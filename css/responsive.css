@@ -1,0 +1,90 @@
+/* ==========================================================================
+   巴洛克音響 (ANSBACH ACOUSTIC) 響應式裝置最佳化樣式
+   支援手機 (Mobile)、平板 (Tablet)、高解析度螢幕
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  
+  .scenario-display-card {
+    grid-template-columns: 1fr;
+  }
+  
+  .scenario-img-box {
+    height: 320px;
+  }
+  
+  .scenario-info-box {
+    padding: 30px;
+  }
+  
+  .hero-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    height: 72px;
+  }
+  
+  .nav-links {
+    display: none; /* 由漢堡選單展開 */
+  }
+  
+  .nav-links.mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 12, 16, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 30px 24px;
+    border-bottom: 1px solid var(--gold-border);
+    gap: 20px;
+  }
+  
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.05rem;
+  }
+  
+  .section-padding {
+    padding: 60px 0;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .advisor-card {
+    padding: 24px 16px;
+  }
+  
+  .advisor-stepper {
+    margin-bottom: 24px;
+  }
+  
+  .advisor-step-name {
+    display: none;
+  }
+  
+  .modal-dialog {
+    padding: 24px 18px;
+  }
+  
+  .telemetry-drawer {
+    width: 100%;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+}

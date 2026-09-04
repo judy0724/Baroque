@@ -1,0 +1,160 @@
+/* ==========================================================================
+   巴洛克音響 (ANSBACH ACOUSTIC) 頂級奢華設計系統
+   曜石黑 (Obsidian Black) + 香檳金 (Champagne Gold) + 磨砂玻璃 (Glassmorphism)
+   ========================================================================== */
+
+:root {
+  /* 品牌核心主色系 */
+  --bg-primary: #0a0c10;
+  --bg-secondary: #11141b;
+  --bg-tertiary: #171b24;
+  --bg-card: rgba(22, 27, 37, 0.85);
+  --bg-glass: rgba(18, 22, 30, 0.75);
+  --bg-input: rgba(255, 255, 255, 0.05);
+
+  /* 奢華金光色彩層級 */
+  --gold-light: #f3dfc1;
+  --gold-primary: #c5a880;
+  --gold-hover: #dfc196;
+  --gold-dark: #967a54;
+  --gold-gradient: linear-gradient(135deg, #dfc196 0%, #c5a880 50%, #9a784d 100%);
+  --gold-glow: rgba(197, 168, 128, 0.25);
+  --gold-border: rgba(197, 168, 128, 0.3);
+
+  /* 文字階層 */
+  --text-primary: #f5f6f8;
+  --text-secondary: #b0b7c3;
+  --text-muted: #727c8d;
+  --text-gold: #dfc196;
+
+  /* 輔助與狀態色 */
+  --accent-cyan: #4ecdc4;
+  --accent-blue: #4a90e2;
+  --accent-emerald: #2ecc71;
+  --accent-amber: #f39c12;
+  --accent-rose: #e74c3c;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+
+  /* 圓角與陰影 */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-gold: 0 8px 32px rgba(197, 168, 128, 0.15);
+  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+
+  /* 字體堆疊 */
+  --font-serif: 'Playfair Display', 'Noto Serif TC', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans TC', sans-serif;
+  --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 全局重置與基底 */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(197, 168, 128, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 85% 65%, rgba(74, 144, 226, 0.03) 0%, transparent 50%),
+    linear-gradient(to bottom, #0a0c10, #0c0f14 100%);
+  background-attachment: fixed;
+}
+
+/* 典雅襯線標題 */
+h1, h2, h3, .font-serif, .hero-title, .section-title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 金色流光文字效果 */
+.gold-text-gradient {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* 容器寬度 */
+.container {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.container-narrow {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* 區塊標準間距 */
+.section-padding {
+  padding: 100px 0;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 60px;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  margin-bottom: 16px;
+  padding: 4px 16px;
+  background: rgba(197, 168, 128, 0.1);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-pill);
+}
+
+.section-title {
+  font-size: 2.6rem;
+  line-height: 1.25;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.section-desc {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}

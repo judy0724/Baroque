@@ -1,0 +1,52 @@
+[
+  {
+    "id": "TEST-2026-001",
+    "type": "試聽預約 (VIP Audition)",
+    "name": "測試貴賓",
+    "phone": "0900-111-222",
+    "email": "vip@test.tw",
+    "date": "2026-09-10",
+    "timeSlot": "14:00 - 15:30 (午後私享席)",
+    "preferredEquipment": "ProAc Response D20R + EC ECI 6DX MKII",
+    "createdAt": "2026-09-04 12:00:00"
+  },
+  {
+    "id": "VIP-2026-8821",
+    "type": "試聽預約 (VIP Audition)",
+    "name": "林宗憲 建築設計師",
+    "phone": "0928-123-888",
+    "email": "lin.arch@studio.tw",
+    "date": "2026-09-08",
+    "timeSlot": "14:00 - 15:30 (午後私享席)",
+    "preferredEquipment": "ProAc K6 Signature + EC AW 800 M 旗艦單聲道",
+    "mediaSource": "黑膠 (LP) + Tidal MQA",
+    "note": "台北大直豪宅新案規劃，欲帶客戶親自試聽整套發燒系統",
+    "createdAt": "2026-09-03 15:20:10"
+  },
+  {
+    "id": "SRV-2026-4412",
+    "type": "到府聲學勘測 (Acoustic Survey)",
+    "name": "張雅婷 總經理",
+    "phone": "0919-456-789",
+    "email": "yating.chang@techcorp.com",
+    "area": "18 坪",
+    "stage": "新成屋毛胚 (水電進場前)",
+    "address": "新竹市東區關新路 88 號 15F",
+    "budget": "150萬 - 200萬",
+    "note": "客廳挑高 3.6 米，希望前期預埋發燒專線與聲學擴散板結構",
+    "createdAt": "2026-09-02 11:45:00"
+  },
+  {
+    "id": "WAR-2026-3390",
+    "type": "產品保固登錄 (Warranty Registration)",
+    "name": "陳志遠 醫師",
+    "phone": "0933-888-999",
+    "email": "dr.chen@hospital.tw",
+    "serial": "ANS-PA-2024-8891",
+    "model": "ProAc Response D20R (黑檀木限量版)",
+    "dealer": "巴洛克官方旗艦店",
+    "purchaseDate": "2024-11-20",
+    "invoiceNumber": "TK-88912345",
+    "createdAt": "2026-08-30 18:10:22"
+  }
+]
