@@ -215,10 +215,34 @@ const WarrantyCenter = {
   },
 
   quickVerify(serial) {
+    const wrapper = document.getElementById('warranty-collapsible-wrapper');
+    if (wrapper) wrapper.style.display = 'block';
     const serialInput = document.getElementById('verify-serial-input');
     if (serialInput) serialInput.value = serial;
     this.verifySerial(serial);
     this.switchTab('query');
+  },
+
+  openTab(tab) {
+    const wrapper = document.getElementById('warranty-collapsible-wrapper');
+    if (wrapper) {
+      wrapper.style.display = 'block';
+      wrapper.classList.add('fade-in');
+    }
+    this.switchTab(tab);
+    if (wrapper) {
+      wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    if (window.AnalyticsCRM) {
+      AnalyticsCRM.trackEvent('open_warranty_tab', { tab });
+    }
+  },
+
+  closePanel() {
+    const wrapper = document.getElementById('warranty-collapsible-wrapper');
+    if (wrapper) {
+      wrapper.style.display = 'none';
+    }
   },
 
   switchTab(tab) {

@@ -1090,6 +1090,103 @@
   color: var(--accent-emerald);
 }
 
+/* 保固服務雙入口卡片 (Module 9) */
+.warranty-entries-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.warranty-entry-card {
+  background: var(--bg-card);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.warranty-entry-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-gold);
+  border-color: var(--gold-primary);
+  background: rgba(197, 168, 128, 0.05);
+}
+
+.warranty-entry-icon {
+  font-size: 2.2rem;
+  color: var(--gold-light);
+}
+
+.warranty-entry-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.warranty-entry-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.warranty-collapsible-wrapper {
+  transition: var(--transition-smooth);
+}
+
+/* VIP 電子報簡潔訂閱列 (Module 10) */
+.newsletter-strip {
+  padding: 36px 0;
+  background: rgba(18, 22, 30, 0.95);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.newsletter-strip-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.newsletter-strip-info {
+  flex: 1;
+  min-width: 280px;
+}
+
+.newsletter-strip-title {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.newsletter-strip-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.newsletter-strip-form {
+  display: flex;
+  gap: 12px;
+  min-width: 320px;
+  flex: 1;
+  max-width: 480px;
+}
+
+.newsletter-strip-form .form-control {
+  padding: 10px 16px;
+  font-size: 0.9rem;
+}
+
 /* 浮動 GA4 & CRM 觀測儀表板 (Module 11) */
 .telemetry-floating-btn {
   position: fixed;

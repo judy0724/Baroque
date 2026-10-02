@@ -489,8 +489,8 @@
           </p>
         </div>
 
-        <!-- 區域篩選與搜尋欄 -->
-        <div class="products-filter-bar">
+        <!-- 區域篩選與搜尋欄 (dealer-search) -->
+        <div class="products-filter-bar dealer-search" id="dealer-search">
           <div class="filter-pills">
             <button class="filter-pill dealer-region-pill active" data-region="all">全台灣 (All)</button>
             <button class="filter-pill dealer-region-pill" data-region="taipei">台北 ‧ 新北</button>
@@ -503,8 +503,14 @@
           </div>
         </div>
 
-        <!-- 經銷商卡片格點 -->
-        <div class="dealers-grid" id="dealers-grid-container">
+        <div style="text-align:center; margin-top:16px;">
+          <button class="btn btn-outline btn-sm" id="btn-toggle-dealers" onclick="DealerLocator.toggleResults()">
+            展開全台授權經銷據點 ▾
+          </button>
+        </div>
+
+        <!-- 經銷商卡片格點 (dealer-results，預設收合) -->
+        <div class="dealers-grid dealer-results" id="dealer-results" style="display:none; margin-top:28px;">
           <!-- 由 js/dealer-map.js 動態渲染 -->
         </div>
       </div>
@@ -521,125 +527,144 @@
           </p>
         </div>
 
-        <div class="advisor-card container-narrow">
-          <!-- 雙分頁按鈕 -->
-          <div style="display:flex; justify-content:center; gap:16px; margin-bottom:30px; border-bottom:1px solid var(--border-subtle); padding-bottom:16px;">
-            <button class="btn btn-outline active" id="tab-btn-warranty-query" onclick="WarrantyCenter.switchTab('query')">
-              🔍 正品序號防偽即時核驗
-            </button>
-            <button class="btn btn-glass" id="tab-btn-warranty-reg" onclick="WarrantyCenter.switchTab('register')">
-              📝 新購產品保固線上登錄
-            </button>
+        <!-- 初始雙入口卡片 -->
+        <div class="warranty-entries-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px; max-width:760px; margin:0 auto;">
+          <!-- 入口 1: 正品驗證 -->
+          <div class="warranty-entry-card" id="warranty-entry-query" onclick="WarrantyCenter.openTab('query')">
+            <div class="warranty-entry-icon">🔍</div>
+            <h3 class="warranty-entry-title">正品驗證</h3>
+            <p class="warranty-entry-desc">原廠正品公司貨序號即時線上防偽核驗</p>
+            <button class="btn btn-outline btn-sm">開啟序號核驗 ➔</button>
           </div>
 
-          <!-- Tab 1: 序號防偽查詢 -->
-          <div id="warranty-pane-query">
-            <h3 class="font-serif" style="font-size:1.6rem; color:#fff; margin-bottom:8px;">原廠正品公司貨 ‧ 序號即時核驗系統</h3>
-            <p style="color:var(--text-secondary); font-size:0.95rem; margin-bottom:20px;">
-              輸入您器材機背銘牌上的原廠序號（如 ProAc 或 EC 機身號碼），系統將即時核對台灣總代理巴洛克之官方防偽登錄庫：
-            </p>
+          <!-- 入口 2: 保固登錄 -->
+          <div class="warranty-entry-card" id="warranty-entry-reg" onclick="WarrantyCenter.openTab('register')">
+            <div class="warranty-entry-icon">📝</div>
+            <h3 class="warranty-entry-title">保固登錄</h3>
+            <p class="warranty-entry-desc">新購歐系器材線上登記享 1~2 年原廠保固</p>
+            <button class="btn btn-primary btn-sm">開啟保固登錄 ➔</button>
+          </div>
+        </div>
 
-            <div style="display:flex; gap:12px; margin-bottom:12px; flex-wrap:wrap;">
-              <input type="text" id="verify-serial-input" class="form-control" placeholder="請輸入產品機身序號（例：ANS-PA-2024-8891 或 ANS-EC-2024-3012）" style="flex:1; min-width:260px;">
-              <button class="btn btn-primary" id="btn-verify-serial">
-                即刻核驗序號 ➔
+        <!-- 折疊展開區塊：預設完全收合 -->
+        <div id="warranty-collapsible-wrapper" class="warranty-collapsible-wrapper" style="display:none; margin-top:36px;">
+          <div class="advisor-card container-narrow">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin-bottom:24px; border-bottom:1px solid var(--border-subtle); padding-bottom:16px;">
+              <!-- 雙分頁按鈕 -->
+              <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                <button class="btn btn-outline btn-sm active" id="tab-btn-warranty-query" onclick="WarrantyCenter.switchTab('query')">
+                  🔍 正品序號防偽即時核驗
+                </button>
+                <button class="btn btn-glass btn-sm" id="tab-btn-warranty-reg" onclick="WarrantyCenter.switchTab('register')">
+                  📝 新購產品保固線上登錄
+                </button>
+              </div>
+              <button class="btn btn-glass btn-sm" onclick="WarrantyCenter.closePanel()" style="color:var(--text-muted); font-size:0.82rem;">
+                ✕ 收合保固面板
               </button>
             </div>
-            <div style="font-size:0.8rem; color:var(--text-muted);">
-              💡 體驗測試可用範例序號：<code style="color:var(--gold-light); cursor:pointer;" onclick="WarrantyCenter.quickVerify('ANS-PA-2024-8891')">ANS-PA-2024-8891</code>（ProAc D20R） 或 <code style="color:var(--gold-light); cursor:pointer;" onclick="WarrantyCenter.quickVerify('ANS-EC-2024-3012')">ANS-EC-2024-3012</code>（EC 串流綜擴）
+
+            <!-- Tab 1: 序號防偽查詢 -->
+            <div id="warranty-pane-query">
+              <h3 class="font-serif" style="font-size:1.6rem; color:#fff; margin-bottom:8px;">原廠正品公司貨 ‧ 序號即時核驗系統</h3>
+              <p style="color:var(--text-secondary); font-size:0.95rem; margin-bottom:20px;">
+                輸入您器材機背銘牌上的原廠序號（如 ProAc 或 EC 機身號碼），系統將即時核對台灣總代理巴洛克之官方防偽登錄庫：
+              </p>
+
+              <div style="display:flex; gap:12px; margin-bottom:12px; flex-wrap:wrap;">
+                <input type="text" id="verify-serial-input" class="form-control" placeholder="請輸入產品機身序號（例：ANS-PA-2024-8891 或 ANS-EC-2024-3012）" style="flex:1; min-width:260px;">
+                <button class="btn btn-primary" id="btn-verify-serial">
+                  即刻核驗序號 ➔
+                </button>
+              </div>
+              <div style="font-size:0.8rem; color:var(--text-muted);">
+                💡 體驗測試可用範例序號：<code style="color:var(--gold-light); cursor:pointer;" onclick="WarrantyCenter.quickVerify('ANS-PA-2024-8891')">ANS-PA-2024-8891</code>（ProAc D20R） 或 <code style="color:var(--gold-light); cursor:pointer;" onclick="WarrantyCenter.quickVerify('ANS-EC-2024-3012')">ANS-EC-2024-3012</code>（EC 串流綜擴）
+              </div>
+
+              <!-- 查詢結果放置區 -->
+              <div id="warranty-verify-result" style="display:none;"></div>
             </div>
 
-            <!-- 查詢結果放置區 -->
-            <div id="warranty-verify-result" style="display:none;"></div>
-          </div>
+            <!-- Tab 2: 保固線上登錄 -->
+            <div id="warranty-pane-reg" style="display:none;">
+              <h3 class="font-serif" style="font-size:1.6rem; color:#fff; margin-bottom:8px;">新購器材保固卡線上登記</h3>
+              <p style="color:var(--text-secondary); font-size:0.95rem; margin-bottom:24px;">
+                凡自巴洛克官方展示中心或全台授權經銷店購買之歐系音響器材，請於購買後 30 天內完成登記，享有台灣原廠 1~2 年零件與調校保固服務。
+              </p>
 
-          <!-- Tab 2: 保固線上登錄 -->
-          <div id="warranty-pane-reg" style="display:none;">
-            <h3 class="font-serif" style="font-size:1.6rem; color:#fff; margin-bottom:8px;">新購器材保固卡線上登記</h3>
-            <p style="color:var(--text-secondary); font-size:0.95rem; margin-bottom:24px;">
-              凡自巴洛克官方展示中心或全台授權經銷店購買之歐系音響器材，請於購買後 30 天內完成登記，享有台灣原廠 1~2 年零件與調校保固服務。
-            </p>
+              <div id="warranty-form-container">
+                <form id="warranty-registration-form">
+                  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:20px;">
+                    <div class="form-group">
+                      <label class="form-label">產品機身序號 (Serial No.)<span class="required">*</span></label>
+                      <input type="text" name="serial" class="form-control" placeholder="例：ANS-PA-2026-9901" required>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">購買型號 (Model Name)<span class="required">*</span></label>
+                      <select name="model" class="form-control" required style="background:var(--bg-tertiary); color:#fff;">
+                        <option value="ProAc Response D20R">ProAc Response D20R 帶狀落地</option>
+                        <option value="ProAc Tablette 10 Signature">ProAc Tablette 10 Signature 書架</option>
+                        <option value="ProAc K6 Signature">ProAc K6 Signature 旗艦落地</option>
+                        <option value="Electrocompaniet ECI 6DX MKII">Electrocompaniet ECI 6DX MKII 串流綜擴</option>
+                        <option value="Electrocompaniet AW 800 M">Electrocompaniet AW 800 M 旗艦後級</option>
+                        <option value="Franco Serblin Accordo">Franco Serblin Accordo 魯特琴書架</option>
+                        <option value="Franco Serblin Ktema">Franco Serblin Ktêma 四音路旗艦</option>
+                        <option value="Rockna Wavedream DAC">Rockna Wavedream Signature DAC</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">授權經銷門市<span class="required">*</span></label>
+                      <input type="text" name="dealer" class="form-control" placeholder="例：巴洛克官方旗艦店 或 日月音響" required>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">購買日期<span class="required">*</span></label>
+                      <input type="date" name="purchaseDate" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">購買發票號碼</label>
+                      <input type="text" name="invoiceNumber" class="form-control" placeholder="例：TK-12345678">
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">登錄者姓名<span class="required">*</span></label>
+                      <input type="text" name="ownerName" class="form-control" placeholder="請填寫真實姓名" required>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">行動電話<span class="required">*</span></label>
+                      <input type="tel" name="phone" class="form-control" placeholder="例：0912-345-678" required>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">電子信箱</label>
+                      <input type="email" name="email" class="form-control" placeholder="例：service@client.tw">
+                    </div>
+                  </div>
 
-            <div id="warranty-form-container">
-              <form id="warranty-registration-form">
-                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:20px;">
-                  <div class="form-group">
-                    <label class="form-label">產品機身序號 (Serial No.)<span class="required">*</span></label>
-                    <input type="text" name="serial" class="form-control" placeholder="例：ANS-PA-2026-9901" required>
+                  <div style="margin-top:20px; text-align:right;">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                      🛡️ 提交原廠保固登錄 ➔
+                    </button>
                   </div>
-                  <div class="form-group">
-                    <label class="form-label">購買型號 (Model Name)<span class="required">*</span></label>
-                    <select name="model" class="form-control" required style="background:var(--bg-tertiary); color:#fff;">
-                      <option value="ProAc Response D20R">ProAc Response D20R 帶狀落地</option>
-                      <option value="ProAc Tablette 10 Signature">ProAc Tablette 10 Signature 書架</option>
-                      <option value="ProAc K6 Signature">ProAc K6 Signature 旗艦落地</option>
-                      <option value="Electrocompaniet ECI 6DX MKII">Electrocompaniet ECI 6DX MKII 串流綜擴</option>
-                      <option value="Electrocompaniet AW 800 M">Electrocompaniet AW 800 M 旗艦後級</option>
-                      <option value="Franco Serblin Accordo">Franco Serblin Accordo 魯特琴書架</option>
-                      <option value="Franco Serblin Ktema">Franco Serblin Ktêma 四音路旗艦</option>
-                      <option value="Rockna Wavedream DAC">Rockna Wavedream Signature DAC</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label">授權經銷門市<span class="required">*</span></label>
-                    <input type="text" name="dealer" class="form-control" placeholder="例：巴洛克官方旗艦店 或 日月音響" required>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label">購買日期<span class="required">*</span></label>
-                    <input type="date" name="purchaseDate" class="form-control" required>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label">購買發票號碼</label>
-                    <input type="text" name="invoiceNumber" class="form-control" placeholder="例：TK-12345678">
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label">登錄者姓名<span class="required">*</span></label>
-                    <input type="text" name="ownerName" class="form-control" placeholder="請填寫真實姓名" required>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label">行動電話<span class="required">*</span></label>
-                    <input type="tel" name="phone" class="form-control" placeholder="例：0912-345-678" required>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label">電子信箱</label>
-                    <input type="email" name="email" class="form-control" placeholder="例：service@client.tw">
-                  </div>
-                </div>
-
-                <div style="margin-top:20px; text-align:right;">
-                  <button type="submit" class="btn btn-primary btn-lg">
-                    🛡️ 提交原廠保固登錄 ➔
-                  </button>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== Module 10: VIP 會員與潛在客資蒐集 ==================== -->
-    <section class="section-padding">
-      <div class="container container-narrow">
-        <div class="advisor-result-box" style="text-align:center; padding:48px 30px; border-color:var(--gold-border); background:linear-gradient(180deg, rgba(22,27,37,0.9), rgba(10,12,16,0.95));">
-          <span class="section-tag">VIP SOUND PRIVILEGE</span>
-          <h2 class="font-serif" style="font-size:2.4rem; color:#fff; margin:16px 0;">訂閱《巴洛克聲學私享誌》</h2>
-          <p style="color:var(--text-secondary); max-width:620px; margin:0 auto 28px; line-height:1.8;">
-            加入巴洛克愛樂名家俱樂部。每月精選歐洲原廠聲學新知、母帶級錄音黑膠發行推薦，並獨家享有 TAA 台灣國際音響大展 VIP 貴賓門票與新機抵台優先鑑賞權。
-          </p>
-
-          <form id="newsletter-form" style="display:flex; gap:12px; max-width:520px; margin:0 auto 24px; flex-wrap:wrap;">
-            <input type="email" id="newsletter-email" class="form-control" placeholder="請輸入您的 VIP 電子信箱..." required style="flex:1; min-width:240px;">
-            <button type="submit" class="btn btn-primary">
-              💌 免費訂閱私享誌
+    <!-- ==================== Module 10: VIP 電子報簡潔訂閱列 ==================== -->
+    <section class="newsletter-strip newsletter" id="newsletter">
+      <div class="container">
+        <div class="newsletter-strip-inner">
+          <div class="newsletter-strip-info">
+            <h3 class="newsletter-strip-title">💌 訂閱《巴洛克聲學私享誌》</h3>
+            <p class="newsletter-strip-desc">每月獲取歐洲原廠聲學新知、黑膠發行推薦與音響大展 VIP 鑑賞特權。</p>
+          </div>
+          <form id="newsletter-form" class="newsletter-strip-form">
+            <input type="email" id="newsletter-email" class="form-control" placeholder="請輸入您的 VIP 電子信箱..." required>
+            <button type="submit" class="btn btn-primary btn-sm">
+              免費訂閱 ➔
             </button>
           </form>
-
-          <div style="display:flex; justify-content:center; gap:24px; flex-wrap:wrap; font-size:0.85rem; color:var(--text-muted);">
-            <span>🔒 嚴格遵守隱私權保障</span>
-            <span>✉️ 隨時可一鍵取消訂閱</span>
-            <span>🎁 即刻獲得《音響空間三一七擺位心法》電子指南</span>
-          </div>
         </div>
       </div>
     </section>
