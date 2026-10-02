@@ -6,19 +6,10 @@
 const DealerLocator = {
   currentRegion: 'all',
   searchQuery: '',
-  isExpanded: false,
 
   init() {
+    this.renderDealers();
     this.bindEvents();
-    this.renderDealers();
-  },
-
-  toggleShowAll() {
-    this.isExpanded = !this.isExpanded;
-    this.renderDealers();
-    if (window.AnalyticsCRM) {
-      AnalyticsCRM.trackEvent('toggle_dealers_view', { is_expanded: this.isExpanded });
-    }
   },
 
   bindEvents() {
@@ -29,9 +20,6 @@ const DealerLocator = {
         pill.parentElement.querySelectorAll('.dealer-region-pill').forEach(p => p.classList.remove('active'));
         pill.classList.add('active');
         this.currentRegion = pill.dataset.region;
-        if (this.currentRegion !== 'all') {
-          this.isExpanded = true;
-        }
         this.renderDealers();
 
         if (window.AnalyticsCRM) {
@@ -47,9 +35,6 @@ const DealerLocator = {
     if (searchInput) {
       searchInput.addEventListener('input', (e) => {
         this.searchQuery = e.target.value.trim().toLowerCase();
-        if (this.searchQuery) {
-          this.isExpanded = true;
-        }
         this.renderDealers();
       });
     }
@@ -58,23 +43,6 @@ const DealerLocator = {
   renderDealers() {
     const container = document.getElementById('dealers-grid-container');
     if (!container) return;
-
-    // 初始狀態且未搜尋、選全區時預設折疊，不直接列出全部卡片
-    if (!this.isExpanded && !this.searchQuery && this.currentRegion === 'all') {
-      container.innerHTML = `
-        <div style="grid-column: 1 / -1; text-align:center; padding:36px 20px; background:var(--bg-card); border-radius:var(--radius-md); border:1px dashed var(--gold-border);">
-          <div style="font-size:2rem; margin-bottom:10px;">🏛️</div>
-          <h4 style="color:#fff; font-size:1.2rem; margin-bottom:6px;">全台授權經銷網絡與試聽中心 (共 7 間門市)</h4>
-          <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px; max-width:560px; margin-left:auto; margin-right:auto; line-height:1.6;">
-            巴洛克在台北、桃竹苗、台中與南區均設有經銷體驗夥伴。請選擇上方區域快速篩選，或點擊下方查看全台完整門市列表。
-          </p>
-          <button class="btn btn-outline btn-sm" onclick="DealerLocator.toggleShowAll()">
-            查看全台經銷據點 ▾
-          </button>
-        </div>
-      `;
-      return;
-    }
 
     let filtered = ANSBACH_DATA.dealers;
 
@@ -105,7 +73,7 @@ const DealerLocator = {
       return;
     }
 
-    let htmlContent = filtered.map(dealer => `
+    container.innerHTML = filtered.map(dealer => `
       <div class="dealer-card ${dealer.isFlagship ? 'flagship' : ''}">
         ${dealer.isFlagship ? '<span class="dealer-flagship-badge">★ 官方總代理台北旗艦中心</span>' : ''}
         
@@ -140,17 +108,5 @@ const DealerLocator = {
         </div>
       </div>
     `).join('');
-
-    if (this.isExpanded && !this.searchQuery && this.currentRegion === 'all') {
-      htmlContent += `
-        <div style="grid-column: 1 / -1; text-align:center; margin-top:16px;">
-          <button class="btn btn-glass btn-sm" onclick="DealerLocator.toggleShowAll()">
-            收合經銷門市列表 ▴
-          </button>
-        </div>
-      `;
-    }
-
-    container.innerHTML = htmlContent;
   }
 };

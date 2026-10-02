@@ -226,47 +226,17 @@ const WarrantyCenter = {
     const regTabBtn = document.getElementById('tab-btn-warranty-reg');
     const queryPane = document.getElementById('warranty-pane-query');
     const regPane = document.getElementById('warranty-pane-reg');
-    const cardQuery = document.getElementById('warranty-entry-query');
-    const cardReg = document.getElementById('warranty-entry-reg');
 
     if (tab === 'query') {
       if (queryTabBtn) queryTabBtn.classList.add('active');
       if (regTabBtn) regTabBtn.classList.remove('active');
       if (queryPane) queryPane.style.display = 'block';
       if (regPane) regPane.style.display = 'none';
-      if (cardQuery) cardQuery.classList.add('active');
-      if (cardReg) cardReg.classList.remove('active');
     } else {
       if (queryTabBtn) queryTabBtn.classList.remove('active');
       if (regTabBtn) regTabBtn.classList.add('active');
       if (queryPane) queryPane.style.display = 'none';
       if (regPane) regPane.style.display = 'block';
-      if (cardQuery) cardQuery.classList.remove('active');
-      if (cardReg) cardReg.classList.add('active');
     }
-  },
-
-  openTab(tab) {
-    const wrapper = document.getElementById('warranty-collapsible-wrapper');
-    if (wrapper) {
-      wrapper.style.display = 'block';
-      wrapper.classList.add('fade-in');
-    }
-    this.switchTab(tab);
-    if (wrapper) {
-      wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-    if (window.AnalyticsCRM) {
-      AnalyticsCRM.trackEvent('open_warranty_portal', { tab_type: tab });
-    }
-  },
-
-  closePanel() {
-    const wrapper = document.getElementById('warranty-collapsible-wrapper');
-    if (wrapper) wrapper.style.display = 'none';
-    const cardQuery = document.getElementById('warranty-entry-query');
-    const cardReg = document.getElementById('warranty-entry-reg');
-    if (cardQuery) cardQuery.classList.remove('active');
-    if (cardReg) cardReg.classList.remove('active');
   }
 };
