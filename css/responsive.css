@@ -91,12 +91,7 @@
     padding: 24px 18px;
   }
   
-  .telemetry-drawer {
-    width: 100%;
-    right: 0;
-    bottom: 0;
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-  }
+
 
   /* 專業服務卡片手機/平板單欄排列 */
   .professional-services-grid {
