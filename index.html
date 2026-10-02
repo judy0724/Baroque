@@ -489,8 +489,8 @@
           </p>
         </div>
 
-        <!-- 區域篩選與搜尋欄 (dealer-search) -->
-        <div class="products-filter-bar dealer-search" id="dealer-search">
+        <!-- 區域篩選與搜尋欄 -->
+        <div class="products-filter-bar">
           <div class="filter-pills">
             <button class="filter-pill dealer-region-pill active" data-region="all">全台灣 (All)</button>
             <button class="filter-pill dealer-region-pill" data-region="taipei">台北 ‧ 新北</button>
@@ -503,14 +503,8 @@
           </div>
         </div>
 
-        <div style="text-align:center; margin-top:16px;">
-          <button class="btn btn-outline btn-sm" id="btn-toggle-dealers" onclick="DealerLocator.toggleResults()">
-            展開全台授權經銷據點 ▾
-          </button>
-        </div>
-
-        <!-- 經銷商卡片格點 (dealer-results，預設收合) -->
-        <div class="dealers-grid dealer-results" id="dealer-results" style="display:none; margin-top:28px;">
+        <!-- 經銷商卡片格點 -->
+        <div class="dealers-grid" id="dealers-grid-container">
           <!-- 由 js/dealer-map.js 動態渲染 -->
         </div>
       </div>
@@ -528,7 +522,7 @@
         </div>
 
         <!-- 初始雙入口卡片 -->
-        <div class="warranty-entries-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px; max-width:760px; margin:0 auto;">
+        <div class="warranty-entries-grid">
           <!-- 入口 1: 正品驗證 -->
           <div class="warranty-entry-card" id="warranty-entry-query" onclick="WarrantyCenter.openTab('query')">
             <div class="warranty-entry-icon">🔍</div>

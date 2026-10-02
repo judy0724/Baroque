@@ -1095,6 +1095,8 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 .warranty-entry-card {
@@ -1137,13 +1139,14 @@
 }
 
 .warranty-collapsible-wrapper {
+  display: none;
   transition: var(--transition-smooth);
 }
 
 /* VIP 電子報簡潔訂閱列 (Module 10) */
 .newsletter-strip {
-  padding: 36px 0;
-  background: rgba(18, 22, 30, 0.95);
+  padding: 24px 0;
+  background: rgba(14, 17, 24, 0.95);
   border-top: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle);
 }
@@ -1152,39 +1155,46 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 30px;
+  gap: 24px;
   flex-wrap: wrap;
 }
 
 .newsletter-strip-info {
   flex: 1;
-  min-width: 280px;
+  min-width: 260px;
 }
 
 .newsletter-strip-title {
   font-family: var(--font-serif);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: #fff;
   margin-bottom: 4px;
 }
 
 .newsletter-strip-desc {
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   color: var(--text-secondary);
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 .newsletter-strip-form {
   display: flex;
-  gap: 12px;
-  min-width: 320px;
+  gap: 10px;
+  min-width: 300px;
   flex: 1;
-  max-width: 480px;
+  max-width: 440px;
+  align-items: center;
 }
 
 .newsletter-strip-form .form-control {
   padding: 10px 16px;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
+  flex: 1;
+}
+
+.newsletter-strip-form .btn {
+  white-space: nowrap;
+  padding: 10px 20px;
 }
 
 /* 浮動 GA4 & CRM 觀測儀表板 (Module 11) */

@@ -6,44 +6,10 @@
 const DealerLocator = {
   currentRegion: 'all',
   searchQuery: '',
-  hasInteracted: false,
 
   init() {
-    // 首頁初始預設不展開完整經銷商卡片
-    const container = document.getElementById('dealer-results') || document.getElementById('dealers-grid-container');
-    if (container) {
-      container.style.display = 'none';
-    }
+    this.renderDealers();
     this.bindEvents();
-  },
-
-  showResults() {
-    this.hasInteracted = true;
-    const container = document.getElementById('dealer-results') || document.getElementById('dealers-grid-container');
-    const ctaBtn = document.getElementById('btn-toggle-dealers');
-    if (container) {
-      container.style.display = 'grid';
-    }
-    if (ctaBtn) {
-      ctaBtn.textContent = '收合經銷據點 ▴';
-    }
-  },
-
-  toggleResults() {
-    const container = document.getElementById('dealer-results') || document.getElementById('dealers-grid-container');
-    const ctaBtn = document.getElementById('btn-toggle-dealers');
-    if (!container) return;
-
-    const isHidden = container.style.display === 'none' || !container.style.display;
-    if (isHidden) {
-      this.hasInteracted = true;
-      this.renderDealers();
-      container.style.display = 'grid';
-      if (ctaBtn) ctaBtn.textContent = '收合經銷據點 ▴';
-    } else {
-      container.style.display = 'none';
-      if (ctaBtn) ctaBtn.textContent = '展開全台授權經銷據點 ▾';
-    }
   },
 
   bindEvents() {
@@ -54,7 +20,6 @@ const DealerLocator = {
         pill.parentElement.querySelectorAll('.dealer-region-pill').forEach(p => p.classList.remove('active'));
         pill.classList.add('active');
         this.currentRegion = pill.dataset.region;
-        this.showResults();
         this.renderDealers();
 
         if (window.AnalyticsCRM) {
@@ -70,7 +35,6 @@ const DealerLocator = {
     if (searchInput) {
       searchInput.addEventListener('input', (e) => {
         this.searchQuery = e.target.value.trim().toLowerCase();
-        this.showResults();
         this.renderDealers();
       });
     }

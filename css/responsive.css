@@ -104,35 +104,33 @@
     gap: 20px;
   }
 
-  /* 經銷商搜尋與篩選列手機版自適應，防止橫向溢出 */
-  .dealer-search {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 14px 16px;
-  }
-
-  .dealer-search input {
-    max-width: 100% !important;
-  }
-
   /* 保固入口卡片單欄排列 */
   .warranty-entries-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
 
-  /* VIP 電子報簡約訂閱列垂直排列 */
+  /* VIP 電子報簡約訂閱列垂直排列 (保持緊湊) */
+  .newsletter-strip {
+    padding: 20px 0;
+  }
+
   .newsletter-strip-inner {
     flex-direction: column;
     align-items: stretch;
-    gap: 18px;
-    text-align: center;
+    gap: 14px;
+    text-align: left;
   }
 
   .newsletter-strip-form {
     min-width: 100%;
     max-width: 100%;
     flex-direction: column;
+    gap: 10px;
+  }
+
+  .newsletter-strip-form .btn {
+    width: 100%;
   }
 }
 
