@@ -601,7 +601,7 @@
   color: var(--text-secondary);
 }
 
-/* 情境入口卡片式設計 (Module 3) */
+/* 情境入口卡片式設計 (Module 3) - 桌機 >1024px 為 4 欄同列 */
 .scenarios-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

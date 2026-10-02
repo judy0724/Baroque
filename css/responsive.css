@@ -8,6 +8,7 @@
     font-size: 2.8rem;
   }
   
+  /* 平板 <=1024px：情境卡片 2 欄 */
   .scenarios-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
@@ -99,6 +100,7 @@
 }
 
 @media (max-width: 640px) {
+  /* 手機 <=640px：情境卡片 1 欄 */
   .scenarios-grid {
     grid-template-columns: 1fr;
   }
