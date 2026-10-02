@@ -601,64 +601,111 @@
   color: var(--text-secondary);
 }
 
-/* 情境入口 (Module 3) */
-.scenarios-tabs {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
+/* 情境入口卡片式設計 (Module 3) */
+.scenarios-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
-.scenario-tab-btn {
-  padding: 12px 24px;
-  border-radius: var(--radius-pill);
-  background: var(--bg-tertiary);
+.scenario-card {
+  background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  font-weight: 500;
-  cursor: pointer;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   transition: var(--transition-smooth);
 }
 
-.scenario-tab-btn:hover {
+.scenario-card:hover {
+  transform: translateY(-4px);
   border-color: var(--gold-border);
-  color: var(--text-primary);
+  box-shadow: var(--shadow-card);
 }
 
-.scenario-tab-btn.active {
-  background: var(--gold-gradient);
-  border-color: transparent;
-  color: #0b0d12;
-  font-weight: 600;
-  box-shadow: 0 4px 18px var(--gold-glow);
-}
-
-.scenario-display-card {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 40px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  align-items: center;
-}
-
-.scenario-img-box {
+.scenario-card-thumb {
   position: relative;
-  height: 480px;
+  height: 160px;
+  overflow: hidden;
+  background: #000;
 }
 
-.scenario-img-box img {
+.scenario-card-thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.scenario-info-box {
-  padding: 40px 40px 40px 0;
+.scenario-card:hover .scenario-card-thumb img {
+  transform: scale(1.05);
+}
+
+.scenario-card-tag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 3px 10px;
+  font-size: 0.72rem;
+  background: rgba(10, 12, 16, 0.85);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-pill);
+  color: var(--gold-light);
+}
+
+.scenario-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.scenario-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.scenario-card-sub {
+  font-size: 0.82rem;
+  color: var(--gold-light);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.scenario-card-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.scenario-card-system {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.scenario-card-system strong {
+  color: var(--text-primary);
+}
+
+.scenario-card-actions {
+  margin-top: auto;
 }
 
 /* 產品清單與規格比對 (Module 4) */
@@ -785,8 +832,9 @@
   gap: 10px;
 }
 
-/* 浮動規格比對列 */
+/* 浮動規格比對列：預設完全隱藏，只有在使用者加入至少 1 個產品 (active) 後才顯示 */
 .comparison-drawer {
+  display: none;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -802,6 +850,7 @@
 }
 
 .comparison-drawer.active {
+  display: block;
   transform: translateY(0);
 }
 

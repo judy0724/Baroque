@@ -314,17 +314,9 @@
           </p>
         </div>
 
-        <!-- 情境標籤切換 -->
-        <div class="scenarios-tabs">
-          <button class="scenario-tab-btn active" data-scenario-id="two-channel">兩聲道純粹發燒</button>
-          <button class="scenario-tab-btn" data-scenario-id="streaming">現代無損數位串流</button>
-          <button class="scenario-tab-btn" data-scenario-id="theater">奢華居家劇院多聲道</button>
-          <button class="scenario-tab-btn" data-scenario-id="study">私密書房個人發燒</button>
-        </div>
-
-        <!-- 情境展示卡片 -->
-        <div id="scenario-display-container">
-          <!-- 由 js/main.js 動態渲染 -->
+        <!-- 情境展示卡片格點 (4 大情境卡片，桌機一屏閱覽，手機自適應單/雙欄) -->
+        <div class="scenarios-grid" id="scenario-display-container">
+          <!-- 由 js/main.js 動態渲染 4 大主要情境卡片 -->
         </div>
       </div>
     </section>
@@ -358,44 +350,62 @@
           <!-- 由 js/main.js 動態渲染 -->
         </div>
 
-        <!-- 原廠黃金調音搭配示範庫 (Synergy Matrix Callout) -->
-        <div style="margin-top:60px; background:var(--bg-card); border:1px solid var(--gold-border); border-radius:var(--radius-lg); padding:36px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; flex-wrap:wrap; gap:16px;">
+        <!-- 查看全部產品按鈕列 -->
+        <div class="section-toggle-bar" id="products-toggle-bar">
+          <button class="btn btn-outline" id="btn-toggle-products" onclick="MainApp.toggleAllProducts()">
+            查看全部產品 ▾
+          </button>
+        </div>
+
+        <!-- 巴洛克推薦搭配 (原 Synergy Matrix，預設折疊) -->
+        <div style="margin-top:60px; background:var(--bg-card); border:1px solid var(--gold-border); border-radius:var(--radius-lg); padding:32px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
             <div>
-              <span class="section-tag">SYNERGY MATRIX</span>
-              <h3 class="font-serif" style="font-size:1.8rem; color:#fff; margin-top:8px;">巴洛克認證 ‧ 三大黃金調音組合推薦</h3>
+              <span class="section-tag" style="margin-bottom:6px;">CURATED SYSTEMS</span>
+              <h3 class="font-serif" style="font-size:1.8rem; color:#fff;">巴洛克推薦搭配</h3>
+              <p style="color:var(--text-secondary); font-size:0.9rem; margin-top:4px;">
+                巴洛克調音團隊二十餘年經驗累積之三大原廠經典綜效組合
+              </p>
             </div>
-            <button class="btn btn-outline btn-sm" onclick="MainApp.openBookingModal({ note: '諮詢黃金綜效搭配' })">
-              預約試聽黃金組合 ➔
-            </button>
+            <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+              <button class="btn btn-outline btn-sm" id="btn-toggle-synergy" onclick="MainApp.toggleSynergy()">
+                展開推薦組合 ▾
+              </button>
+              <button class="btn btn-primary btn-sm" onclick="MainApp.openBookingModal({ note: '諮詢巴洛克推薦搭配' })">
+                預約試聽推薦組合 ➔
+              </button>
+            </div>
           </div>
 
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:20px;">
-            <div style="background:var(--bg-tertiary); padding:20px; border-radius:var(--radius-md); border:1px solid var(--border-subtle);">
-              <span class="tech-chip" style="color:var(--gold-light); border-color:var(--gold-border);">相容契合度 98%</span>
-              <h4 class="font-serif" style="font-size:1.25rem; color:#fff; margin:10px 0 6px;">英倫貴族與北歐溫陽</h4>
-              <p style="color:var(--text-gold); font-size:0.9rem; margin-bottom:10px;">ProAc D20R 落地 + EC ECI 6DX MKII 串流綜擴</p>
-              <p style="color:var(--text-secondary); font-size:0.85rem; line-height:1.6;">
-                ProAc 帶狀高音的飄逸泛音搭配 EC 大電流溫厚中低頻，徹底解決毛刺感，人聲如沐春風。
-              </p>
-            </div>
+          <!-- 折疊卡片清單：預設收合 -->
+          <div id="synergy-cards-wrapper" style="display:none; margin-top:28px;">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:20px;">
+              <div style="background:var(--bg-tertiary); padding:24px; border-radius:var(--radius-md); border:1px solid var(--border-subtle);">
+                <span class="tech-chip" style="color:var(--gold-light); border-color:var(--gold-border);">原廠推薦搭配</span>
+                <h4 class="font-serif" style="font-size:1.25rem; color:#fff; margin:12px 0 6px;">英倫貴族與北歐溫陽</h4>
+                <p style="color:var(--text-gold); font-size:0.9rem; margin-bottom:10px;">ProAc D20R 落地 + EC ECI 6DX MKII 串流綜擴</p>
+                <p style="color:var(--text-secondary); font-size:0.85rem; line-height:1.6;">
+                  ProAc 帶狀高音的飄逸泛音搭配 EC 大電流溫厚中低頻，徹底解決毛刺感，人聲如沐春風。
+                </p>
+              </div>
 
-            <div style="background:var(--bg-tertiary); padding:20px; border-radius:var(--radius-md); border:1px solid var(--border-subtle);">
-              <span class="tech-chip" style="color:var(--gold-light); border-color:var(--gold-border);">相容契合度 99%</span>
-              <h4 class="font-serif" style="font-size:1.25rem; color:#fff; margin:10px 0 6px;">天籟美聲極致示範</h4>
-              <p style="color:var(--text-gold); font-size:0.9rem; margin-bottom:10px;">Franco Serblin Ktêma + EC AW 800 M 旗艦單聲道</p>
-              <p style="color:var(--text-secondary); font-size:0.85rem; line-height:1.6;">
-                Ktêma 義式傳世名琴木藝在 800W 純淨驅動力掌控下，爆發深不見底的低頻下潛與深邃音場。
-              </p>
-            </div>
+              <div style="background:var(--bg-tertiary); padding:24px; border-radius:var(--radius-md); border:1px solid var(--border-subtle);">
+                <span class="tech-chip" style="color:var(--gold-light); border-color:var(--gold-border);">原廠推薦搭配</span>
+                <h4 class="font-serif" style="font-size:1.25rem; color:#fff; margin:12px 0 6px;">天籟美聲極致示範</h4>
+                <p style="color:var(--text-gold); font-size:0.9rem; margin-bottom:10px;">Franco Serblin Ktêma + EC AW 800 M 旗艦單聲道</p>
+                <p style="color:var(--text-secondary); font-size:0.85rem; line-height:1.6;">
+                  Ktêma 義式傳世名琴木藝在 800W 純淨驅動力掌控下，爆發深不見底的低頻下潛與深邃音場。
+                </p>
+              </div>
 
-            <div style="background:var(--bg-tertiary); padding:20px; border-radius:var(--radius-md); border:1px solid var(--border-subtle);">
-              <span class="tech-chip" style="color:var(--gold-light); border-color:var(--gold-border);">相容契合度 95%</span>
-              <h4 class="font-serif" style="font-size:1.25rem; color:#fff; margin:10px 0 6px;">文人書齋近場聖品</h4>
-              <p style="color:var(--text-gold); font-size:0.9rem; margin-bottom:10px;">ProAc Tablette 10 Sig + EC 綜擴系統</p>
-              <p style="color:var(--text-secondary); font-size:0.85rem; line-height:1.6;">
-                10 歐姆高阻抗密閉箱體，近場聆聽完全無低頻反射波困擾，人聲口型結像立體浮凸。
-              </p>
+              <div style="background:var(--bg-tertiary); padding:24px; border-radius:var(--radius-md); border:1px solid var(--border-subtle);">
+                <span class="tech-chip" style="color:var(--gold-light); border-color:var(--gold-border);">原廠推薦搭配</span>
+                <h4 class="font-serif" style="font-size:1.25rem; color:#fff; margin:12px 0 6px;">文人書齋近場聖品</h4>
+                <p style="color:var(--text-gold); font-size:0.9rem; margin-bottom:10px;">ProAc Tablette 10 Sig + EC 綜擴系統</p>
+                <p style="color:var(--text-secondary); font-size:0.85rem; line-height:1.6;">
+                  10 歐姆高阻抗密閉箱體，近場聆聽完全無低頻反射波困擾，人聲口型結像立體浮凸。
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -701,7 +711,7 @@
   </footer>
 
   <!-- ==================== 浮動器材比較抽屜 (Comparison Drawer) ==================== -->
-  <div class="comparison-drawer" id="comparison-drawer">
+  <div class="comparison-drawer" id="comparison-drawer" style="display:none;">
     <div class="container">
       <div class="comparison-items-row">
         <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">

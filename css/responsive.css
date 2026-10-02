@@ -8,16 +8,9 @@
     font-size: 2.8rem;
   }
   
-  .scenario-display-card {
-    grid-template-columns: 1fr;
-  }
-  
-  .scenario-img-box {
-    height: 320px;
-  }
-  
-  .scenario-info-box {
-    padding: 30px;
+  .scenarios-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
   
   .hero-stats-grid {
@@ -104,3 +97,10 @@
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   }
 }
+
+@media (max-width: 640px) {
+  .scenarios-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

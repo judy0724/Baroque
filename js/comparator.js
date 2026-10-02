@@ -90,6 +90,7 @@ const ProductComparator = {
     if (!drawer || !chipsContainer) return;
 
     if (this.selectedIds.length > 0) {
+      drawer.style.display = 'block';
       drawer.classList.add('active');
       if (countBadge) countBadge.textContent = this.selectedIds.length;
 
@@ -106,6 +107,7 @@ const ProductComparator = {
       }).join('');
     } else {
       drawer.classList.remove('active');
+      drawer.style.display = 'none';
     }
   },
 

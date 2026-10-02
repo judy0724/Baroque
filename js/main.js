@@ -6,6 +6,8 @@
 const MainApp = {
   currentProductFilter: 'all',
   showAllBrands: false,
+  showAllProducts: false,
+  isSynergyExpanded: false,
 
   init() {
     this.renderBrands();
@@ -163,17 +165,25 @@ const MainApp = {
 
   renderProducts() {
     const container = document.getElementById('products-grid-container');
+    const toggleBtn = document.getElementById('btn-toggle-products');
+    const toggleBar = document.getElementById('products-toggle-bar');
     if (!container) return;
 
     let items = ANSBACH_DATA.products;
     if (this.currentProductFilter !== 'all') {
       items = items.filter(p => p.category === this.currentProductFilter || p.brandId === this.currentProductFilter);
+      if (toggleBar) toggleBar.style.display = 'none';
+    } else {
+      if (toggleBar) toggleBar.style.display = 'flex';
+      if (!this.showAllProducts) {
+        items = items.slice(0, 6);
+      }
     }
 
     container.innerHTML = items.map(p => {
       const isCompared = ProductComparator.selectedIds.includes(p.id);
       return `
-        <div class="product-card">
+        <div class="product-card fade-in">
           <div class="product-thumb">
             <img src="${p.image}" alt="${p.name}" loading="lazy">
             <span class="brand-card-badge" style="top:12px; right:12px;">${p.badge}</span>
@@ -199,6 +209,35 @@ const MainApp = {
         </div>
       `;
     }).join('');
+
+    if (toggleBtn) {
+      const totalCount = ANSBACH_DATA.products.length;
+      toggleBtn.textContent = this.showAllProducts ? '收合產品列表 ▴' : `查看全部產品 (共 ${totalCount} 款) ▾`;
+    }
+  },
+
+  toggleAllProducts() {
+    this.showAllProducts = !this.showAllProducts;
+    this.renderProducts();
+    if (window.AnalyticsCRM) {
+      AnalyticsCRM.trackEvent('toggle_products_view', { show_all: this.showAllProducts });
+    }
+  },
+
+  toggleSynergy() {
+    this.isSynergyExpanded = !this.isSynergyExpanded;
+    const wrapper = document.getElementById('synergy-cards-wrapper');
+    const btn = document.getElementById('btn-toggle-synergy');
+    if (wrapper) {
+      wrapper.style.display = this.isSynergyExpanded ? 'block' : 'none';
+      if (this.isSynergyExpanded) wrapper.classList.add('fade-in');
+    }
+    if (btn) {
+      btn.textContent = this.isSynergyExpanded ? '收合推薦組合 ▴' : '展開推薦組合 ▾';
+    }
+    if (window.AnalyticsCRM) {
+      AnalyticsCRM.trackEvent('toggle_synergy_view', { expanded: this.isSynergyExpanded });
+    }
   },
 
   filterByBrand(brandId) {
@@ -210,45 +249,35 @@ const MainApp = {
   },
 
   renderScenarios() {
-    this.renderScenarioDetail('two-channel');
-  },
-
-  renderScenarioDetail(scenarioId) {
     const container = document.getElementById('scenario-display-container');
     if (!container) return;
 
-    const s = ANSBACH_DATA.scenarios.find(item => item.id === scenarioId) || ANSBACH_DATA.scenarios[0];
-
-    container.innerHTML = `
-      <div class="scenario-display-card">
-        <div class="scenario-img-box">
-          <img src="${s.image}" alt="${s.title}">
-        </div>
-        <div class="scenario-info-box">
-          <span class="section-tag">情境客製推薦</span>
-          <h3 class="font-serif" style="font-size:2.2rem; color:#fff; margin:12px 0;">${s.title}</h3>
-          <div style="font-size:1.05rem; color:var(--gold-light); margin-bottom:16px;">${s.subtitle}</div>
-          <p style="color:var(--text-secondary); line-height:1.8; margin-bottom:24px;">${s.description}</p>
-          
-          <div style="background:var(--bg-tertiary); border:1px solid var(--gold-border); border-radius:var(--radius-md); padding:20px; margin-bottom:24px;">
-            <div style="color:var(--gold-primary); font-weight:700; font-size:1.1rem; margin-bottom:8px;">★ 推薦配置方案：${s.recommendedSystem.name}</div>
-            <div style="font-size:0.9rem; color:#fff; margin-bottom:4px;"><strong>揚聲器：</strong>${s.recommendedSystem.speakers}</div>
-            <div style="font-size:0.9rem; color:#fff; margin-bottom:4px;"><strong>擴大機：</strong>${s.recommendedSystem.amplifier}</div>
-            <div style="font-size:0.9rem; color:#fff; margin-bottom:6px;"><strong>訊源：</strong>${s.recommendedSystem.source}</div>
-            <div style="font-size:0.85rem; color:var(--text-muted); line-height:1.5;">${s.recommendedSystem.keyAdvantage}</div>
+    container.innerHTML = ANSBACH_DATA.scenarios.map(s => {
+      const cleanTitle = s.title.split(' (')[0];
+      const cleanTagName = s.recommendedSystem.name.split(' (')[0];
+      return `
+        <div class="scenario-card fade-in">
+          <div class="scenario-card-thumb">
+            <img src="${s.image}" alt="${cleanTitle}" loading="lazy">
+            <span class="scenario-card-tag">${cleanTagName}</span>
           </div>
-
-          <div style="display:flex; gap:14px; flex-wrap:wrap;">
-            <button class="btn btn-primary" onclick="MainApp.openBookingModal({ preferredEquipment: '${s.recommendedSystem.name}' })">
-              預約親臨試聽此情境 ➔
-            </button>
-            <button class="btn btn-outline" onclick="MainApp.openModal('survey-modal')">
-              申請專案到府聲學丈量
-            </button>
+          <div class="scenario-card-body">
+            <h3 class="scenario-card-title">${cleanTitle}</h3>
+            <div class="scenario-card-sub">${s.subtitle}</div>
+            <p class="scenario-card-desc">${s.description}</p>
+            <div class="scenario-card-system">
+              <div><strong>揚聲器：</strong>${s.recommendedSystem.speakers}</div>
+              <div><strong>擴大機：</strong>${s.recommendedSystem.amplifier}</div>
+            </div>
+            <div class="scenario-card-actions">
+              <button class="btn btn-primary btn-sm" onclick="MainApp.openBookingModal({ preferredEquipment: '${s.recommendedSystem.name}' })" style="width:100%;">
+                預約試聽此情境 ➔
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    `;
+      `;
+    }).join('');
   },
 
   renderArticles() {
