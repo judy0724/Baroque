@@ -128,9 +128,9 @@ const ProductComparator = {
       synergySection = `
         <div style="margin-top:30px; background:rgba(197,168,128,0.08); border:1px solid var(--gold-border); border-radius:var(--radius-md); padding:24px;">
           <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
-            <div style="font-family:var(--font-serif); font-size:1.3rem; color:var(--gold-light);">✨ 原廠調音工程師 ‧ 綜效搭配點評 (Synergy Matrix)</div>
+            <div style="font-family:var(--font-serif); font-size:1.3rem; color:var(--gold-light);">✨ 巴洛克推薦搭配 ‧ 聲學綜效點評</div>
             <div style="background:var(--gold-gradient); color:#000; font-weight:700; padding:4px 16px; border-radius:var(--radius-pill); font-size:0.9rem;">
-              匹配評分：98% 極佳相容
+              原廠推薦搭配
             </div>
           </div>
           <p style="color:var(--text-secondary); line-height:1.7; font-size:0.95rem;">

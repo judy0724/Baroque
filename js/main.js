@@ -63,20 +63,6 @@ const MainApp = {
       }
     });
 
-    // 情境分頁切換
-    document.addEventListener('click', (e) => {
-      const tabBtn = e.target.closest('.scenario-tab-btn');
-      if (tabBtn) {
-        tabBtn.parentElement.querySelectorAll('.scenario-tab-btn').forEach(b => b.classList.remove('active'));
-        tabBtn.classList.add('active');
-        const scenarioId = tabBtn.dataset.scenarioId;
-        this.renderScenarioDetail(scenarioId);
-
-        if (window.AnalyticsCRM) {
-          AnalyticsCRM.trackEvent('view_scenario', { scenario_id: scenarioId });
-        }
-      }
-    });
 
     // 模態窗背景點擊關閉
     document.querySelectorAll('.modal-backdrop').forEach(modal => {
@@ -249,7 +235,7 @@ const MainApp = {
   },
 
   renderScenarios() {
-    const container = document.getElementById('scenario-display-container');
+    const container = document.getElementById('scenario-display-container') || document.querySelector('.scenarios-grid');
     if (!container) return;
 
     container.innerHTML = ANSBACH_DATA.scenarios.map(s => {
