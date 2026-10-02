@@ -272,5 +272,48 @@ const AudioAdvisor = {
         note: '由智能選音響顧問自動帶入配對'
       });
     }
+  },
+
+  isExpanded: false,
+
+  toggleAccordion(forceState) {
+    if (typeof forceState === 'boolean') {
+      this.isExpanded = forceState;
+    } else {
+      this.isExpanded = !this.isExpanded;
+    }
+
+    const panel = document.getElementById('advisor-expandable-panel');
+    const toggleBtn = document.getElementById('advisor-toggle-expand-btn');
+
+    if (panel) {
+      if (this.isExpanded) {
+        panel.style.display = 'block';
+        panel.classList.add('fade-in');
+        if (toggleBtn) {
+          toggleBtn.textContent = '收合 4 步驟選音響 ▴';
+          toggleBtn.classList.remove('btn-primary');
+          toggleBtn.classList.add('btn-outline');
+        }
+        if (window.AnalyticsCRM) {
+          AnalyticsCRM.trackEvent('open_audio_advisor');
+        }
+      } else {
+        panel.style.display = 'none';
+        if (toggleBtn) {
+          toggleBtn.textContent = '開始 4 步驟選音響 ➔';
+          toggleBtn.classList.remove('btn-outline');
+          toggleBtn.classList.add('btn-primary');
+        }
+      }
+    }
+  },
+
+  startFromHero() {
+    this.toggleAccordion(true);
+    const section = document.getElementById('advisor-section');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 };

@@ -243,6 +243,42 @@
   letter-spacing: 0.05em;
 }
 
+/* 低視覺權重精簡信任資訊列 */
+.hero-trust-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.hero-trust-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.hero-trust-item .trust-val {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--gold-light);
+}
+
+.hero-trust-item .trust-lbl {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.trust-sep {
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 0.85rem;
+}
+
 /* 品牌卡片矩陣 (Module 1) */
 .brands-grid {
   display: grid;
@@ -269,7 +305,7 @@
 
 .brand-card-img-wrapper {
   position: relative;
-  height: 230px;
+  height: 170px;
   overflow: hidden;
 }
 
@@ -612,7 +648,7 @@
 
 .scenario-img-box {
   position: relative;
-  height: 480px;
+  height: 360px;
 }
 
 .scenario-img-box img {
@@ -622,7 +658,7 @@
 }
 
 .scenario-info-box {
-  padding: 40px 40px 40px 0;
+  padding: 28px 32px 28px 0;
 }
 
 /* 產品清單與規格比對 (Module 4) */
@@ -762,11 +798,15 @@
   padding: 18px 0;
   box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.7);
   transform: translateY(110%);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
 }
 
 .comparison-drawer.active {
   transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .comparison-items-row {
@@ -1090,4 +1130,195 @@
 @keyframes slideInRight {
   from { transform: translateX(100%); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
+}
+
+/* ==================== 首頁資訊層級與折疊減法新增元件 ==================== */
+
+/* 區塊底部折疊/展開按鈕列 */
+.section-toggle-bar {
+  text-align: center;
+  margin-top: 36px;
+}
+
+/* 專業服務合併卡片 (Module 6 & 7) */
+.services-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 30px;
+}
+
+.service-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 42px 36px;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+.service-card:hover {
+  border-color: var(--gold-border);
+  box-shadow: var(--shadow-gold);
+  transform: translateY(-4px);
+}
+
+.service-card-icon {
+  font-size: 2.2rem;
+  margin-bottom: 14px;
+}
+
+.service-card-title {
+  font-size: 1.85rem;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.service-card-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.service-card-action {
+  margin-top: auto;
+}
+
+/* 授權經銷提示與搜尋提示列 (Module 8) */
+.dealer-prompt-box {
+  text-align: center;
+  padding: 36px 20px;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--gold-border);
+  margin-top: 20px;
+}
+
+/* 保固服務雙入口卡片 (Module 9) */
+.warranty-entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.warranty-entry-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 32px 28px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.warranty-entry-card:hover, .warranty-entry-card.active {
+  border-color: var(--gold-primary);
+  background: rgba(197, 168, 128, 0.08);
+  box-shadow: 0 4px 20px var(--gold-glow);
+  transform: translateY(-3px);
+}
+
+.warranty-entry-icon {
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+}
+
+.warranty-entry-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.warranty-entry-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* VIP 電子報簡潔訂閱條 (Module 10) */
+.newsletter-bar {
+  background: #090c11;
+  border-top: 1px solid var(--border-subtle);
+  padding: 40px 0;
+}
+
+.newsletter-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.newsletter-bar-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.newsletter-bar-form {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  max-width: 460px;
+  flex-wrap: wrap;
+}
+
+/* 手機底部固定導航列 */
+.mobile-bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(10, 12, 16, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--gold-border);
+  z-index: 1000;
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px));
+  justify-content: space-around;
+  align-items: center;
+}
+
+.mobile-bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-smooth);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.mobile-bottom-nav-item .nav-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.mobile-bottom-nav-item:hover, .mobile-bottom-nav-item.active {
+  color: var(--gold-light);
+}
+
+.fade-in {
+  animation: fadeIn 0.35s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
 }

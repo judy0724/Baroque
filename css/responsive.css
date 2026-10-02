@@ -27,8 +27,24 @@
 }
 
 @media (max-width: 768px) {
+  body {
+    padding-bottom: 72px; /* 預留手機底部固定導覽列空間 */
+  }
+
   .navbar-container {
     height: 72px;
+  }
+
+  #nav-toggle-btn {
+    display: inline-flex !important;
+  }
+
+  .mobile-bottom-nav {
+    display: flex !important;
+  }
+
+  .comparison-drawer {
+    bottom: 60px !important;
   }
   
   .nav-links {
@@ -47,6 +63,7 @@
     padding: 30px 24px;
     border-bottom: 1px solid var(--gold-border);
     gap: 20px;
+    z-index: 999;
   }
   
   .hero-title {
@@ -56,6 +73,22 @@
   .hero-subtitle {
     font-size: 1.05rem;
   }
+
+  .hero-trust-bar {
+    gap: 10px;
+    justify-content: flex-start;
+  }
+
+  .trust-sep {
+    display: none;
+  }
+
+  .hero-trust-item {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-subtle);
+  }
   
   .section-padding {
     padding: 60px 0;
@@ -63,6 +96,26 @@
   
   .section-title {
     font-size: 2rem;
+  }
+
+  .scenario-img-box {
+    height: 220px !important;
+  }
+
+  .scenario-info-box {
+    padding: 24px 20px !important;
+  }
+
+  .services-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    padding: 28px 22px;
+  }
+
+  .warranty-entry-grid {
+    grid-template-columns: 1fr;
   }
   
   .advisor-card {
@@ -79,12 +132,5 @@
   
   .modal-dialog {
     padding: 24px 18px;
-  }
-  
-  .telemetry-drawer {
-    width: 100%;
-    right: 0;
-    bottom: 0;
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   }
 }
