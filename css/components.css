@@ -987,6 +987,59 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
+/* 專業服務區塊 (Module 6: Professional Services) */
+.professional-services {
+  position: relative;
+}
+
+.professional-services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.service-card {
+  background: var(--bg-card);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-lg);
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-card);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-gold);
+  border-color: var(--gold-primary);
+}
+
+.service-card-icon {
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+  color: var(--gold-light);
+}
+
+.service-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+.service-card-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 28px;
+  flex: 1;
+}
+
+.service-card-action {
+  margin-top: auto;
+}
+
 /* 經銷商卡片 (Module 8) */
 .dealers-grid {
   display: grid;

@@ -424,47 +424,55 @@
         </div>
 
         <div class="brands-grid" id="articles-grid-container">
-          <!-- 由 js/main.js 動態渲染文章卡片 -->
+          <!-- 由 js/main.js 動態渲染文章卡片 (預設最多 3 篇) -->
+        </div>
+
+        <div class="section-toggle-bar">
+          <button class="btn btn-outline" id="knowledge-toggle" onclick="MainApp.toggleAllKnowledge()">
+            查看更多 ▾
+          </button>
         </div>
       </div>
     </section>
 
-    <!-- ==================== Module 6 & 7: 預約試聽與到府規劃雙通道 ==================== -->
-    <section class="section-padding" style="background:var(--bg-secondary);">
+    <!-- ==================== Module 6: 專業服務 ==================== -->
+    <section class="section-padding professional-services" id="services-section" style="background:var(--bg-secondary);">
       <div class="container">
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(360px, 1fr)); gap:30px;">
-          <!-- 台北旗艦試聽室預約區塊 -->
-          <div class="advisor-result-box" style="border-color:var(--gold-border);">
-            <span class="section-tag">SHOWROOM VIP AUDITION</span>
-            <h3 class="font-serif" style="font-size:2rem; color:#fff; margin:12px 0;">台北旗艦門市 ‧ 尊榮試聽預約</h3>
-            <p style="color:var(--text-secondary); line-height:1.8; margin-bottom:20px;">
-              台北市龍江路76巷53號1樓。備有兩間經過德國聲學精密校正的獨立試聽室，配備獨立專線純淨電源與現役旗艦機種，由資深調音師提供專屬一對一開聲接待。
+        <div class="section-header">
+          <span class="section-tag">PROFESSIONAL SERVICES</span>
+          <h2 class="section-title">專業服務</h2>
+          <p class="section-desc">
+            巴洛克深耕台灣音響界近三十年，提供獨立試聽室預約接待與頂級到府空間聲學勘測規劃。
+          </p>
+        </div>
+
+        <div class="professional-services-grid">
+          <!-- 服務卡 1: 預約試聽 -->
+          <div class="service-card">
+            <div class="service-card-icon">🎙️</div>
+            <h3 class="service-card-title">預約試聽</h3>
+            <p class="service-card-desc">
+              台北市龍江路旗艦展示中心。備有兩間經過德國聲學精密校正的獨立試聽室，提供每場次 90 分鐘專屬一對一開聲接待與歐系旗艦器材鑑賞。
             </p>
-            <ul style="color:var(--text-gold); font-size:0.9rem; list-style:none; margin-bottom:24px; display:flex; flex-direction:column; gap:8px;">
-              <li>✓ 每場次 90 分鐘專屬試聽時段，保證完全不被打擾</li>
-              <li>✓ 支援攜帶個人珍藏黑膠唱片、CD 或提供線上無損串流曲目</li>
-              <li>✓ 系統自動產生 Google 行事曆邀請與專屬預約確認代碼</li>
-            </ul>
-            <button class="btn btn-primary" onclick="MainApp.openBookingModal()">
-              線上預約試聽日曆時段 ➔
-            </button>
+            <div class="service-card-action">
+              <button class="btn btn-primary" onclick="MainApp.openBookingModal()">
+                預約試聽 ➔
+              </button>
+            </div>
           </div>
 
-          <!-- 到府空間聲學勘測規劃區塊 -->
-          <div class="advisor-result-box" style="border-color:var(--gold-border);">
-            <span class="section-tag">IN-HOME ACOUSTIC CONSULTATION</span>
-            <h3 class="font-serif" style="font-size:2rem; color:#fff; margin:12px 0;">尊榮到府空間聲學勘測與規劃</h3>
-            <p style="color:var(--text-secondary); line-height:1.8; margin-bottom:20px;">
-              針對新成屋、裝潢中豪宅客廳與專屬地下室視聽空間。巴洛克聲學工程師親臨現場實施 RT60 混響時間量測、低頻駐波模擬與管線預埋建議，對接您的室內設計師。
+          <!-- 服務卡 2: 到府規劃 -->
+          <div class="service-card">
+            <div class="service-card-icon">📐</div>
+            <h3 class="service-card-title">到府規劃</h3>
+            <p class="service-card-desc">
+              針對豪宅新成屋、客廳影音與專屬視聽室。巴洛克聲學工程師親臨現場實施 RT60 殘響量測、低頻駐波模擬與管線預埋建議，無縫對接您的室內設計師。
             </p>
-            <ul style="color:var(--text-gold); font-size:0.9rem; list-style:none; margin-bottom:24px; display:flex; flex-direction:column; gap:8px;">
-              <li>✓ 建築施工前水電專線、接地極性與線徑預埋專業建議書</li>
-              <li>✓ 第一反射點吸音擴散計算，消除硬調裝潢帶來的聽覺疲勞</li>
-              <li>✓ 支援上傳室內設計平面圖或施工圖實施 3D 聲學模擬</li>
-            </ul>
-            <button class="btn btn-outline" onclick="MainApp.openModal('survey-modal')">
-              申請工程師到府空間勘測 ➔
-            </button>
+            <div class="service-card-action">
+              <button class="btn btn-outline" onclick="MainApp.openModal('survey-modal')">
+                到府規劃 ➔
+              </button>
+            </div>
           </div>
         </div>
       </div>

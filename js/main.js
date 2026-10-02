@@ -7,6 +7,7 @@ const MainApp = {
   currentProductFilter: 'all',
   showAllBrands: false,
   showAllProducts: false,
+  showAllKnowledge: false,
   isSynergyExpanded: false,
 
   init() {
@@ -268,9 +269,15 @@ const MainApp = {
 
   renderArticles() {
     const container = document.getElementById('articles-grid-container');
+    const toggleBtn = document.getElementById('knowledge-toggle');
     if (!container) return;
 
-    container.innerHTML = ANSBACH_DATA.articles.map(art => `
+    let items = ANSBACH_DATA.articles;
+    if (!this.showAllKnowledge) {
+      items = items.slice(0, 3);
+    }
+
+    container.innerHTML = items.map(art => `
       <div class="brand-card" style="cursor:pointer;" onclick="MainApp.openArticleModal('${art.id}')">
         <div class="brand-card-body">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
@@ -287,6 +294,18 @@ const MainApp = {
         </div>
       </div>
     `).join('');
+
+    if (toggleBtn) {
+      toggleBtn.textContent = this.showAllKnowledge ? '收合更多 ▴' : '查看更多 ▾';
+    }
+  },
+
+  toggleAllKnowledge() {
+    this.showAllKnowledge = !this.showAllKnowledge;
+    this.renderArticles();
+    if (window.AnalyticsCRM) {
+      AnalyticsCRM.trackEvent('toggle_knowledge_view', { show_all: this.showAllKnowledge });
+    }
   },
 
   openArticleModal(artId) {
