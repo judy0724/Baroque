@@ -21,8 +21,16 @@
 }
 
 @media (max-width: 768px) {
+  section[id], footer[id] {
+    scroll-margin-top: 78px;
+  }
+
   .navbar-container {
     height: 72px;
+  }
+
+  #nav-toggle-btn {
+    display: inline-flex !important;
   }
   
   .nav-links {
@@ -92,6 +100,24 @@
   }
   
 
+
+  .container {
+    padding: 0 16px;
+  }
+
+  /* 手機版格點自適應（防止 360px~430px 溢出） */
+  .brands-grid,
+  .products-grid,
+  .dealers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* 浮動比較抽屜手機版直列排版 */
+  .comparison-items-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
 
   /* 專業服務卡片手機/平板單欄排列 */
   .professional-services-grid {
