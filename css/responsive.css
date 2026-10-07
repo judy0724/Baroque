@@ -21,6 +21,14 @@
 }
 
 @media (max-width: 768px) {
+  body {
+    padding-bottom: 72px;
+  }
+
+  .mobile-bottom-nav {
+    display: flex;
+  }
+
   section[id], footer[id] {
     scroll-margin-top: 78px;
   }

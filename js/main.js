@@ -11,6 +11,7 @@ const MainApp = {
   isSynergyExpanded: false,
 
   init() {
+    if (window.BrandCarousel) BrandCarousel.init();
     this.renderBrands();
     this.renderProducts();
     this.renderScenarios();
@@ -38,14 +39,53 @@ const MainApp = {
       });
     }
 
-    // 平滑滾動與關閉手機選單
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
+    // 支援點擊導覽列或手機底部導覽列時，平滑滾動並在目標為隱藏狀態時自動顯示
+    const navigateToSection = (targetId) => {
+      if (!targetId) return;
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        if (targetEl.style.display === 'none' || window.getComputedStyle(targetEl).display === 'none') {
+          targetEl.style.display = 'block';
+          targetEl.classList.add('fade-in');
+        }
+        if (targetId === 'advisor-section' && window.AudioAdvisor && !AudioAdvisor.isExpanded) {
+          AudioAdvisor.toggleAccordion(true);
+        }
+        targetEl.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+
+    // 平滑滾動與關閉手機選單 (支援 .nav-link 與 .mobile-nav-item)
+    document.querySelectorAll('.nav-link, .mobile-nav-item').forEach(link => {
+      link.addEventListener('click', (e) => {
         if (navLinks) navLinks.classList.remove('mobile-open');
-        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          const targetId = href.substring(1);
+          if (targetId) {
+            e.preventDefault();
+            document.querySelectorAll('.nav-link, .mobile-nav-item').forEach(l => {
+              if (l.getAttribute('href') === href) {
+                l.classList.add('active');
+              } else {
+                l.classList.remove('active');
+              }
+            });
+            navigateToSection(targetId);
+          }
+        }
       });
     });
+
+    // 智能選音響從 Hero 啟動時確保區塊可見
+    if (window.AudioAdvisor && AudioAdvisor.startFromHero) {
+      const origStartFromHero = AudioAdvisor.startFromHero.bind(AudioAdvisor);
+      AudioAdvisor.startFromHero = function() {
+        const section = document.getElementById('advisor-section');
+        if (section) section.style.display = 'block';
+        origStartFromHero();
+      };
+    }
 
     // 產品類別篩選
     document.addEventListener('click', (e) => {
@@ -229,7 +269,13 @@ const MainApp = {
 
   filterByBrand(brandId) {
     const section = document.getElementById('products-section');
-    if (section) section.scrollIntoView({ behavior: 'smooth' });
+    if (section) {
+      if (section.style.display === 'none' || window.getComputedStyle(section).display === 'none') {
+        section.style.display = 'block';
+        section.classList.add('fade-in');
+      }
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
     this.currentProductFilter = brandId;
     this.renderProducts();
     this.showToast(`已過濾顯示 ${brandId.toUpperCase()} 經典型號`);
