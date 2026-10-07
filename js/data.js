@@ -22,8 +22,8 @@ const ANSBACH_DATA = {
     showroomFeatures: [
       '頂級獨立聲學處理雙試聽室 (Room A: 16坪旗艦殿堂 / Room B: 8坪現代生活空間)',
       '德國原廠 RT60 混響時間精準校正 (0.35s 最佳人聲與管弦動態平衡)',
-      '獨立專線配電與挪威 Electrocompaniet 旗艦隔離電源淨化系統',
-      '全系列英國 ProAc、挪威 EC、義大利 Franco Serblin 現役機種常駐開聲'
+      '獨立專線配電與旗艦隔離電源淨化系統',
+      '全系列英國 ProAc、義大利 Franco Serblin 等歐系現役機種常駐開聲'
     ]
   },
 
@@ -40,19 +40,6 @@ const ANSBACH_DATA = {
       featuredSeries: ['K Series 旗艦帶狀高音', 'Response Series 經典長青', 'Tablette 10 密閉鑑聽傳奇'],
       signatureTech: ['克維拉（Kevlar）編織低音振膜', '特製純鋁帶狀高音 (Ribbon Tweeter)', '純手工搭棚點對點分音網絡', '阻尼下低音反射孔設計'],
       image: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80'
-    },
-    {
-      id: 'electrocompaniet',
-      name: 'Electrocompaniet (EC)',
-      country: '挪威 (Norway)',
-      tagline: '北歐極地天籟 ‧ Michael Jackson 傳奇錄音工程御用之石',
-      description: '創立於 1973 年，挪威 Electrocompaniet 是全平衡對稱電路與浮動變壓器技術（FTT）的先驅。其溫暖、醇厚且飽含驚人動態的聲音美學，曾被傳奇錄音師 Bruce Swedien 指定為 Michael Jackson 《Dangerous》與《HIStory》專輯的混音鑑聽擴大機。',
-      founded: 1973,
-      badge: '挪威國寶級 High-End',
-      accentColor: '#4a90e2',
-      featuredSeries: ['Classic Line 純 A 類與旗艦後級', 'ECI 旗艦串流綜擴', 'EC Living 北歐無線串流美學'],
-      signatureTech: ['FTT (Floating Transformer Technology) 浮動變壓器', '全平衡無負迴授高電流放大架構', '獨家壓克力金屬複合避震前面板', '原廠自研 High-End 串流作業系統'],
-      image: 'https://images.unsplash.com/photo-1558403194-611308249627?auto=format&fit=crop&w=800&q=80'
     },
     {
       id: 'franco-serblin',
@@ -524,7 +511,7 @@ const ANSBACH_DATA = {
       address: '台北市中山區龍江路76巷53號1F',
       phone: '02-2516-7050',
       hours: '週一至週五 10:00 - 19:00 (預約制)',
-      brands: ['ProAc', 'Electrocompaniet', 'Franco Serblin', 'Rockna Audio', 'Capriccio Continuo', 'Triangle'],
+      brands: ['ProAc', 'Franco Serblin', 'Rockna Audio', 'Capriccio Continuo', 'Triangle'],
       isFlagship: true,
       hasAuditionRoom: true,
       mapUrl: 'https://maps.google.com/?q=台北市中山區龍江路76巷53號'
@@ -538,7 +525,7 @@ const ANSBACH_DATA = {
       address: '台北市松山區八德路二段366巷55弄1號',
       phone: '02-2771-0918',
       hours: '週一至週六 11:00 - 20:00',
-      brands: ['ProAc', 'Electrocompaniet'],
+      brands: ['ProAc'],
       isFlagship: false,
       hasAuditionRoom: true,
       mapUrl: 'https://maps.google.com/?q=台北市松山區八德路二段366巷55弄1號'
@@ -566,7 +553,7 @@ const ANSBACH_DATA = {
       address: '新竹市東區中華路二段148號',
       phone: '03-532-8255',
       hours: '週一至週六 11:00 - 20:30',
-      brands: ['ProAc', 'Electrocompaniet', 'Rockna'],
+      brands: ['ProAc', 'Rockna'],
       isFlagship: false,
       hasAuditionRoom: true,
       mapUrl: 'https://maps.google.com/?q=新竹市東區中華路二段148號'
@@ -580,7 +567,7 @@ const ANSBACH_DATA = {
       address: '台中市西區台灣大道二段536號',
       phone: '04-2326-8955',
       hours: '週一至週六 12:00 - 21:00',
-      brands: ['ProAc', 'Electrocompaniet', 'Franco Serblin'],
+      brands: ['ProAc', 'Franco Serblin'],
       isFlagship: false,
       hasAuditionRoom: true,
       mapUrl: 'https://maps.google.com/?q=台中市西區台灣大道二段536號'
@@ -594,7 +581,7 @@ const ANSBACH_DATA = {
       address: '嘉義市東區彌陀路373號',
       phone: '05-223-6522',
       hours: '週二至週日 13:00 - 21:30',
-      brands: ['ProAc', 'Electrocompaniet'],
+      brands: ['ProAc'],
       isFlagship: false,
       hasAuditionRoom: true,
       mapUrl: 'https://maps.google.com/?q=嘉義市東區彌陀路373號'
@@ -608,7 +595,7 @@ const ANSBACH_DATA = {
       address: '高雄市苓雅區長明街152號',
       phone: '07-237-1234',
       hours: '週一至週六 11:00 - 20:00',
-      brands: ['ProAc', 'Electrocompaniet', 'Franco Serblin', 'Rockna'],
+      brands: ['ProAc', 'Franco Serblin', 'Rockna'],
       isFlagship: false,
       hasAuditionRoom: true,
       mapUrl: 'https://maps.google.com/?q=高雄市苓雅區長明街152號'
