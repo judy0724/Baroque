@@ -550,7 +550,7 @@ const ANSBACH_DATA = {
       address: '台北市中山區龍江路76巷53號1F',
       phone: '02-2516-7050',
       hours: '週一至週五 10:00 - 19:00 (預約制)',
-      brands: ['ProAc', 'Franco Serblin', 'Rockna Audio', 'Capriccio Continuo', 'Triangle'],
+      brands: ['ProAc', 'Franco Serblin', 'Rockna'],
       isFlagship: true,
       hasAuditionRoom: true,
       mapUrl: 'https://maps.google.com/?q=台北市中山區龍江路76巷53號'
