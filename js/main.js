@@ -41,17 +41,23 @@ const MainApp = {
 
     // 支援點擊導覽列或手機底部導覽列時，平滑滾動並在目標為隱藏狀態時自動顯示
     const navigateToSection = (targetId) => {
-      if (!targetId) return;
+      if (!targetId || targetId === 'top') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
       const targetEl = document.getElementById(targetId);
       if (targetEl) {
-        if (targetEl.style.display === 'none' || window.getComputedStyle(targetEl).display === 'none') {
+        const wasHidden = targetEl.style.display === 'none' || window.getComputedStyle(targetEl).display === 'none';
+        if (wasHidden) {
           targetEl.style.display = 'block';
           targetEl.classList.add('fade-in');
         }
         if (targetId === 'advisor-section' && window.AudioAdvisor && !AudioAdvisor.isExpanded) {
           AudioAdvisor.toggleAccordion(true);
         }
-        targetEl.scrollIntoView({ behavior: 'smooth' });
+        requestAnimationFrame(() => {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
       }
     };
 
@@ -76,6 +82,54 @@ const MainApp = {
         }
       });
     });
+
+    // 滾動時自動同步手機底部導覽列 active 狀態 (Scroll Spy)
+    const setupScrollSpy = () => {
+      const navItems = document.querySelectorAll('.mobile-nav-item');
+      if (!navItems.length) return;
+
+      const sectionMap = [
+        { id: 'top', sectionId: 'hero-section' },
+        { id: 'brands-section', sectionId: 'brands-section' },
+        { id: 'advisor-section', sectionId: 'advisor-section' },
+        { id: 'dealers-section', sectionId: 'dealers-section' },
+        { id: 'warranty-section', sectionId: 'warranty-section' }
+      ];
+
+      const onScroll = () => {
+        const scrollPos = window.scrollY + 140;
+        let currentActive = 'top';
+
+        for (const item of sectionMap) {
+          const el = document.getElementById(item.sectionId);
+          if (el && el.style.display !== 'none' && window.getComputedStyle(el).display !== 'none') {
+            const top = el.offsetTop;
+            const height = el.offsetHeight;
+            if (scrollPos >= top && scrollPos < top + height) {
+              currentActive = item.id;
+            }
+          }
+        }
+
+        if (window.scrollY < 200) {
+          currentActive = 'top';
+        }
+
+        navItems.forEach(item => {
+          const href = item.getAttribute('href');
+          const target = href ? href.substring(1) : '';
+          if (target === currentActive || (currentActive === 'top' && (target === 'top' || target === 'hero-section'))) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+    };
+
+    setupScrollSpy();
 
     // 智能選音響從 Hero 啟動時確保區塊可見
     if (window.AudioAdvisor && AudioAdvisor.startFromHero) {

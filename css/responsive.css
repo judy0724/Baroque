@@ -22,19 +22,23 @@
 
 @media (max-width: 768px) {
   body {
-    padding-bottom: 72px;
+    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
   }
 
   .mobile-bottom-nav {
     display: flex;
   }
 
-  section[id], footer[id] {
-    scroll-margin-top: 78px;
+  section[id], footer[id], [id] {
+    scroll-margin-top: 80px;
   }
 
   .navbar-container {
     height: 72px;
+  }
+
+  .navbar .nav-actions .btn-outline {
+    display: none; /* 手機版隱藏頂部次要按鈕，確保 360px 不擠壓破版 */
   }
 
   #nav-toggle-btn {
@@ -160,6 +164,17 @@
 
   .newsletter-strip-form .btn {
     width: 100%;
+  }
+
+  /* 保固序號查詢欄位自適應 */
+  #verify-serial-input {
+    min-width: 0 !important;
+    width: 100%;
+  }
+
+  /* 頁尾手機版緊湊間距 */
+  footer {
+    padding: 50px 0 30px !important;
   }
 }
 
