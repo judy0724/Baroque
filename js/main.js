@@ -240,11 +240,10 @@ const MainApp = {
       this.updateHeroAudioUI(!video.muted);
     });
 
-    // 雙重防護：當影片 10 秒循環時維持當前靜音／原聲播放狀態
+    // 雙重防護：當影片播放結束時自動重播，保持當前靜音／原聲狀態，防停留在結尾白畫面
     video.addEventListener('ended', () => {
-      if (!video.muted) {
-        video.play().catch(() => {});
-      }
+      video.currentTime = 0;
+      video.play().catch(() => {});
     });
 
     // 視訊就緒時由 Canvas 動態擷取清晰影格優化 Poster（防黑屏與白屏）
@@ -648,21 +647,27 @@ const MainApp = {
     AnalyticsCRM.trackEvent('view_brand_detail', { brand_name: b.name });
   },
 
+  // ==================== M5-02 VIP 電話預約模態視窗開啟 (02-25167050) ====================
   openBookingModal(prefillData = {}) {
     const modal = document.getElementById('audition-modal');
     if (!modal) return;
 
-    if (prefillData.preferredEquipment) {
-      const input = document.getElementById('audition-preferred-equip');
-      if (input) input.value = prefillData.preferredEquipment;
-    }
-
-    if (prefillData.note) {
-      const noteInput = document.getElementById('audition-note');
-      if (noteInput && !noteInput.value) noteInput.value = prefillData.note;
+    // 若有來自選音響、特定器材或經銷商的指定洽詢需求，顯示於卡片提示中
+    const hintEl = document.getElementById('audition-target-hint');
+    if (hintEl) {
+      const itemText = prefillData.preferredEquipment || prefillData.note;
+      if (itemText) {
+        hintEl.textContent = `欲洽詢預約項目：${itemText}`;
+        hintEl.style.display = 'block';
+      } else {
+        hintEl.style.display = 'none';
+      }
     }
 
     this.openModal('audition-modal');
+    if (window.AnalyticsCRM) {
+      AnalyticsCRM.trackEvent('open_phone_booking_modal', prefillData);
+    }
   },
 
   openModal(modalId) {

@@ -1105,6 +1105,22 @@ section[id], footer[id], [id] {
   transform: rotate(90deg);
 }
 
+/* M5-02 VIP 電話預約資訊卡樣式 */
+.phone-booking-card {
+  width: 100%;
+}
+
+.phone-number-display:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 20px var(--gold-glow);
+}
+
+@media (max-width: 480px) {
+  .phone-number-display {
+    font-size: 1.85rem !important;
+  }
+}
+
 /* 表單控制元件 */
 .form-group {
   margin-bottom: 22px;

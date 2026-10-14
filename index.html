@@ -861,84 +861,50 @@
 
   <!-- ==================== 模態視窗集中區 (Modals) ==================== -->
 
-  <!-- 1. VIP 試聽預約模態視窗 -->
+  <!-- 1. VIP 試聽電話預約模態視窗 (M5-02 簡潔黑金電話預約資訊卡) -->
   <div class="modal-backdrop" id="audition-modal">
-    <div class="modal-dialog">
-      <button class="modal-close-btn" onclick="MainApp.closeModal('audition-modal')">&times;</button>
+    <div class="modal-dialog" style="max-width:500px; text-align:center;">
+      <button class="modal-close-btn" onclick="MainApp.closeModal('audition-modal')" aria-label="關閉視窗">&times;</button>
       
-      <div id="audition-form-container">
-        <span class="section-tag">VIP SHOWROOM BOOKING</span>
-        <h3 class="font-serif" style="font-size:2rem; color:#fff; margin:12px 0 8px;">預約台北旗艦門市專屬試聽</h3>
-        <p style="color:var(--text-secondary); font-size:0.95rem; margin-bottom:24px;">
-          台北市中山區龍江路76巷53號1樓 ‧ 專屬 RT60 德國聲學獨立試聽室
+      <div class="phone-booking-card" id="audition-phone-card" style="padding:10px 0;">
+        <span class="section-tag" style="margin-bottom:12px; display:inline-flex;">VIP AUDITION APPOINTMENT</span>
+        
+        <h3 class="font-serif" style="font-size:2.1rem; color:#fff; margin:12px 0 10px; line-height:1.3;">
+          預約專屬聆聽時光
+        </h3>
+        
+        <p style="color:var(--text-secondary); font-size:0.98rem; line-height:1.7; margin:0 auto 20px; max-width:420px;">
+          歡迎來電洽詢試聽時間與器材安排，由專人為您服務。
         </p>
 
-        <form id="audition-booking-form">
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:20px;">
-            <div class="form-group">
-              <label class="form-label">貴賓姓名<span class="required">*</span></label>
-              <input type="text" name="name" class="form-control" placeholder="請填寫尊姓大名" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">聯絡電話<span class="required">*</span></label>
-              <input type="tel" name="phone" class="form-control" placeholder="例：0912-345-678" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">電子信箱</label>
-              <input type="email" name="email" class="form-control" placeholder="例：your.name@gmail.com">
-            </div>
-            <div class="form-group">
-              <label class="form-label">預約試聽日期<span class="required">*</span></label>
-              <input type="date" name="date" id="audition-date" class="form-control" required>
-            </div>
-          </div>
+        <!-- 指定器材洽詢提示 (若由特定器材或顧問推薦點擊進入時動態顯示) -->
+        <div id="audition-target-hint" style="display:none; background:rgba(197,168,128,0.12); color:var(--gold-light); border:1px dashed var(--gold-border); border-radius:var(--radius-sm); padding:8px 14px; font-size:0.88rem; margin:0 auto 20px; max-width:420px; text-align:center;"></div>
 
-          <!-- 時段選取 -->
-          <div class="form-group">
-            <label class="form-label">預約專屬場次 (每場次90分鐘一對一服務)<span class="required">*</span></label>
-            <input type="hidden" name="timeSlot" id="audition-time-slot" value="14:00 - 15:30 (午後私享席)">
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:10px;">
-              <button type="button" class="btn btn-glass btn-sm time-slot-btn" data-slot="10:30 - 12:00 (上午晨光席)">
-                10:30 - 12:00 (上午晨光)
-              </button>
-              <button type="button" class="btn btn-glass btn-sm time-slot-btn selected" data-slot="14:00 - 15:30 (午後私享席)">
-                14:00 - 15:30 (午後私享)
-              </button>
-              <button type="button" class="btn btn-glass btn-sm time-slot-btn" data-slot="16:30 - 18:00 (黃金鑑賞席)">
-                16:30 - 18:00 (黃金鑑賞)
-              </button>
-              <button type="button" class="btn btn-glass btn-sm time-slot-btn" data-slot="19:00 - 20:30 (夜間夜曲席)">
-                19:00 - 20:30 (夜間夜曲)
-              </button>
-            </div>
+        <!-- 電話資訊與門市細節金緻區塊 -->
+        <div style="background:var(--bg-tertiary); border:1px solid var(--gold-border); border-radius:var(--radius-md); padding:24px 20px; margin-bottom:24px; text-align:center;">
+          <div style="font-size:0.82rem; color:var(--gold-primary); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:10px;">
+            巴洛克音響 台北官方旗艦展示中心
           </div>
+          
+          <a href="tel:0225167050" class="phone-number-display" style="display:inline-block; font-family:var(--font-serif); font-size:2.3rem; font-weight:700; color:var(--gold-light); text-decoration:none; letter-spacing:0.05em; margin-bottom:12px; transition:color 0.2s ease;">
+            02-25167050
+          </a>
+          
+          <div style="color:var(--text-muted); font-size:0.85rem; line-height:1.6;">
+            <div>📍 台北市中山區龍江路76巷53號1樓 (捷運南京復興站)</div>
+            <div>🕒 週一至週五 10:00 - 19:00 (VIP 獨立試聽室採預約制)</div>
+          </div>
+        </div>
 
-          <div class="form-group">
-            <label class="form-label">想試聽的品牌或指定型號</label>
-            <input type="text" name="preferredEquipment" id="audition-preferred-equip" class="form-control" placeholder="請輸入希望試聽的品牌或型號（例：ProAc Response D20R 落地喇叭）">
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">試聽訊源偏好</label>
-            <select name="mediaSource" class="form-control" style="background:var(--bg-tertiary); color:#fff;">
-              <option value="Tidal / Qobuz 高解析串流">Tidal / Qobuz 24-bit/192kHz 高解析無損串流</option>
-              <option value="自備黑膠唱片 (LP Vinyl)">自備發燒黑膠唱片 (門市備有黑膠唱盤)</option>
-              <option value="自備實體發燒 CD">自備個人參考 CD / SACD</option>
-              <option value="由巴洛克工程師精選發燒試音名盤">由巴洛克工程師精選示範名盤導聆</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">其他需求備註說明</label>
-            <textarea name="note" id="audition-note" rows="2" class="form-control" placeholder="例如：家中客廳約8坪、平日愛聽大提琴與爵士人聲..."></textarea>
-          </div>
-
-          <div style="margin-top:24px; text-align:right;">
-            <button type="submit" class="btn btn-primary btn-lg">
-              確認送出尊榮試聽預約 ➔
-            </button>
-          </div>
-        </form>
+        <!-- 主要操作按鈕 -->
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <a href="tel:0225167050" class="btn btn-primary btn-lg" style="width:100%; justify-content:center; font-size:1.05rem;" onclick="AnalyticsCRM.trackEvent('click_vip_call_booking')">
+            📞 撥打電話預約
+          </a>
+          <button type="button" class="btn btn-glass btn-sm" onclick="MainApp.closeModal('audition-modal')" style="color:var(--text-muted); align-self:center; margin-top:4px;">
+            關閉視窗
+          </button>
+        </div>
       </div>
     </div>
   </div>
