@@ -310,10 +310,43 @@ const AudioAdvisor = {
   },
 
   startFromHero() {
-    this.toggleAccordion(true);
     const section = document.getElementById('advisor-section');
     if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+      // 1. 確保外層 section 區塊從 display:none 展開為可見狀態
+      section.style.display = 'block';
+      section.classList.add('fade-in');
+    }
+
+    // 2. 展開內部 4 步驟面板，並確保跳至第 1 步驟
+    this.toggleAccordion(true);
+    if (typeof this.goToStep === 'function') {
+      this.goToStep(1);
+    }
+
+    // 3. 確保滾動位置精準無誤：使用 requestAnimationFrame 等待 DOM 重新計算幾何尺寸
+    const performScroll = () => {
+      const panel = document.getElementById('advisor-expandable-panel');
+      const target = panel || section;
+      if (target) {
+        const navHeight = 80;
+        const rect = target.getBoundingClientRect();
+        const targetTop = rect.top + window.pageYOffset - navHeight - 16;
+        window.scrollTo({
+          top: Math.max(0, targetTop),
+          behavior: 'smooth'
+        });
+      }
+    };
+
+    // 雙重 requestAnimationFrame 確保瀏覽器已完成 reflow 與繪製
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        performScroll();
+      });
+    });
+
+    if (window.AnalyticsCRM) {
+      AnalyticsCRM.trackEvent('start_advisor_from_hero');
     }
   }
 };

@@ -56,30 +56,64 @@
   </header>
 
   <main>
-    <!-- ==================== Hero 品牌首頁願景區 ==================== -->
+    <!-- ==================== Hero 品牌首頁旗艦影音橫幅 (M4-02 桌機 16:9 Banner) ==================== -->
     <section class="hero-section" id="hero-section">
-      <div class="hero-bg-overlay"></div>
-      <div class="container">
-        <div class="hero-content">
-          <div class="hero-badge">
-            <span>✨ 台灣歐系 Hi-End 音響總代理 ‧ 深耕 29 年</span>
-          </div>
-          <h1 class="hero-title">
-            一路走來始終如一<br>
-            <span class="gold-text-gradient">莫忘聽音樂的初衷</span>
-          </h1>
-          <p class="hero-subtitle">
-            巴洛克精選英國 ProAc、義大利 Franco Serblin 等歐洲名作，為您重現音樂最深處的靈魂感動。
-          </p>
-          <div class="hero-cta-group">
-            <button class="btn btn-primary btn-lg" onclick="AudioAdvisor.startFromHero()">
-              選音響
+      <div class="hero-banner-container">
+        <div class="hero-banner-wrapper">
+          <!-- 單一 HTML5 video 元件，設定 autoplay muted loop playsinline，由 JS 裝置判斷選擇來源 -->
+          <video 
+            id="hero-banner-video" 
+            class="hero-banner-video" 
+            autoplay 
+            muted 
+            loop 
+            playsinline 
+            preload="auto" 
+            poster="assets/images/hero-poster-desktop.svg"
+            aria-label="巴洛克音響 Franco Serblin 旗艦器材情境展示">
+            <source id="hero-banner-source" src="assets/videos/巴洛克banner_桌機版.mp4" type="video/mp4">
+            您的瀏覽器不支援 HTML5 影片播放。
+          </video>
+          <script>
+            (function() {
+              var v = document.getElementById('hero-banner-video');
+              var s = document.getElementById('hero-banner-source');
+              if (!v) return;
+              var isMob = window.innerWidth <= 768;
+              var targetSrc = isMob ? 'assets/videos/巴洛克banner_手機版.mp4' : 'assets/videos/巴洛克banner_桌機版.mp4';
+              var targetPoster = isMob ? 'assets/images/hero-poster-mobile.svg' : 'assets/images/hero-poster-desktop.svg';
+              v.poster = targetPoster;
+              if (s) s.src = targetSrc;
+              v.src = targetSrc;
+              v.dataset.loadedSrc = targetSrc;
+            })();
+          </script>
+
+          <!-- 桌機精簡操作區：保留原「選音響」「預約試聽」功能，懸浮置底不遮擋器材、Logo 與文字 -->
+          <div class="hero-action-dock" id="hero-action-dock">
+            <button class="btn btn-primary btn-dock" onclick="AudioAdvisor.startFromHero()" title="啟動智能選音響顧問">
+              選音響 ➔
             </button>
-            <button class="btn btn-outline btn-lg" onclick="MainApp.openBookingModal()">
+            <button class="btn btn-outline btn-dock" onclick="MainApp.openBookingModal()" title="預約巴洛克 VIP 旗艦試聽">
               預約試聽
             </button>
           </div>
+        </div>
 
+        <!-- 手機版專屬操作列：置於 9:16 影片下方，避免遮擋器材、壁爐、Logo 與影片結尾聯絡資訊 -->
+        <div class="hero-mobile-cta-strip" id="hero-mobile-cta-strip">
+          <button class="btn btn-primary btn-mobile-cta" onclick="AudioAdvisor.startFromHero()" title="啟動智能選音響顧問">
+            🧭 智能選音響 ➔
+          </button>
+          <button class="btn btn-outline btn-mobile-cta" onclick="MainApp.openBookingModal()" title="預約巴洛克 VIP 旗艦試聽">
+            📅 VIP 預約試聽
+          </button>
+        </div>
+      </div>
+
+      <!-- 品牌信任數據列 (深色尊榮質感過渡列) -->
+      <div class="hero-trust-strip">
+        <div class="container">
           <div class="hero-trust-bar">
             <div class="hero-trust-item">
               <span class="trust-val">1997</span>

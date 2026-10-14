@@ -120,7 +120,7 @@ const ANSBACH_DATA = {
       featuredSeries: ['LiveLine 旗艦調音共振系列'],
       signatureTech: ['微振動動態阻尼共振控制', '貴金屬精密聲學校正調諧'],
       image: 'assets/images/brands/asi.jpg',
-      officialUrl: 'http://www.asi-audio.com',
+      officialUrl: 'https://asi-avantages.com/about/',
       buttonText: '探索品牌 →',
       highlights: [
         { text: '法國聲學調音配件品牌', icon: 'temple' },

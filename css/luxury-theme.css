@@ -79,6 +79,11 @@ body {
   background-attachment: fixed;
 }
 
+/* 全域區塊錨點邊距（避讓 80px 固定導覽列） */
+section[id], [id] {
+  scroll-margin-top: 80px;
+}
+
 /* 典雅襯線標題 */
 h1, h2, h3, .font-serif, .hero-title, .section-title {
   font-family: var(--font-serif);

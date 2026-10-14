@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <!-- 背景奢華壁面與採光漸層 -->
+    <linearGradient id="wallGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f5f2ed"/>
+      <stop offset="60%" stop-color="#ebe6de"/>
+      <stop offset="100%" stop-color="#dfd9cf"/>
+    </linearGradient>
+
+    <!-- 木質地板漸層 -->
+    <linearGradient id="floorGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c8c2b7"/>
+      <stop offset="40%" stop-color="#b6b0a4"/>
+      <stop offset="100%" stop-color="#9a9488"/>
+    </linearGradient>
+
+    <!-- 壁爐石材中島漸層 -->
+    <linearGradient id="mantelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e8e5df"/>
+      <stop offset="100%" stop-color="#d5d1c8"/>
+    </linearGradient>
+
+    <!-- 壁爐炭火柔和暖光 -->
+    <radialGradient id="fireGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffb347" stop-opacity="0.85"/>
+      <stop offset="40%" stop-color="#ff7b25" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Franco Serblin 胡桃木音箱漸層 -->
+    <linearGradient id="speakerWood" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4a2e1b"/>
+      <stop offset="50%" stop-color="#7a4b2c"/>
+      <stop offset="100%" stop-color="#3d2414"/>
+    </linearGradient>
+
+    <!-- 香檳金與鍍鉻金屬頂板光澤 -->
+    <linearGradient id="goldCap" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c5a880"/>
+      <stop offset="50%" stop-color="#f0e2cf"/>
+      <stop offset="100%" stop-color="#8e734c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 1. 背景牆面 -->
+  <rect width="1920" height="740" fill="url(#wallGrad)"/>
+
+  <!-- 2. 木質地板 -->
+  <rect y="740" width="1920" height="340" fill="url(#floorGrad)"/>
+
+  <!-- 3. 中央現代極簡壁爐建築結構 -->
+  <!-- 上方煙道牆面中島 -->
+  <rect x="540" y="0" width="510" height="740" fill="#f8f6f2" stroke="#e0dbd0" stroke-width="1"/>
+  <!-- 下方石材壁爐基座 -->
+  <rect x="540" y="380" width="510" height="360" fill="url(#mantelGrad)" rx="2"/>
+  <!-- 壁爐爐口外框 (黑金屬) -->
+  <rect x="670" y="475" width="250" height="150" fill="#181a1f" rx="3"/>
+  <!-- 壁爐火焰暖光 -->
+  <ellipse cx="795" cy="565" rx="110" ry="55" fill="url(#fireGlow)"/>
+  <path d="M 740,580 Q 770,520 790,545 Q 815,510 835,560 Q 860,540 855,580 Z" fill="#ffd180" opacity="0.9"/>
+  <!-- 壁爐下方分割線條 -->
+  <line x1="795" y1="655" x2="795" y2="738" stroke="#beb9ae" stroke-width="2"/>
+
+  <!-- 4. 左側揚聲器：Franco Serblin Accordo Goldberg -->
+  <g id="speaker-left">
+    <!-- 喇叭金屬腳架 -->
+    <path d="M 370,720 L 415,720 L 405,825 L 380,825 Z" fill="#222"/>
+    <rect x="360" y="825" width="65" height="8" rx="2" fill="url(#goldCap)"/>
+    <circle cx="368" cy="836" r="3" fill="#111"/>
+    <circle cx="417" cy="836" r="3" fill="#111"/>
+    <!-- 魯特琴木質箱體主體 -->
+    <path d="M 365,510 Q 355,615 362,720 L 422,720 Q 430,615 422,510 Z" fill="url(#speakerWood)"/>
+    <!-- 香檳金頂蓋弧線 -->
+    <path d="M 365,510 Q 393,500 422,510 L 420,516 Q 393,507 367,516 Z" fill="url(#goldCap)"/>
+    <!-- 前面板黑色真皮障板與單體 -->
+    <rect x="375" y="525" width="34" height="180" rx="3" fill="#1a1a1a"/>
+    <!-- 高音單體 -->
+    <circle cx="392" cy="555" r="9" fill="#111" stroke="#c5a880" stroke-width="1"/>
+    <!-- 中低音單體 -->
+    <circle cx="392" cy="625" r="18" fill="#111" stroke="#c5a880" stroke-width="1.5"/>
+    <circle cx="392" cy="625" r="6" fill="#444"/>
+    <!-- 琴弦網罩垂直細線示意 -->
+    <line x1="380" y1="525" x2="380" y2="705" stroke="#444" stroke-width="0.8" opacity="0.5"/>
+    <line x1="386" y1="525" x2="386" y2="705" stroke="#444" stroke-width="0.8" opacity="0.5"/>
+    <line x1="392" y1="525" x2="392" y2="705" stroke="#444" stroke-width="0.8" opacity="0.5"/>
+    <line x1="398" y1="525" x2="398" y2="705" stroke="#444" stroke-width="0.8" opacity="0.5"/>
+    <line x1="404" y1="525" x2="404" y2="705" stroke="#444" stroke-width="0.8" opacity="0.5"/>
+  </g>
+
+  <!-- 5. 右側揚聲器：Franco Serblin Accordo Goldberg -->
+  <g id="speaker-right">
+    <!-- 喇叭金屬腳架 -->
+    <path d="M 1165,520 L 1210,520 L 1200,625 L 1175,625 Z" transform="translate(0, 200)" fill="#222"/>
+    <rect x="1155" y="825" width="65" height="8" rx="2" fill="url(#goldCap)"/>
+    <circle cx="1163" cy="836" r="3" fill="#111"/>
+    <circle cx="1212" cy="836" r="3" fill="#111"/>
+    <!-- 魯特琴木質箱體主體 -->
+    <path d="M 1160,510 Q 1152,615 1158,720 L 1218,720 Q 1225,615 1218,510 Z" fill="url(#speakerWood)"/>
+    <!-- 香檳金頂蓋弧線 -->
+    <path d="M 1160,510 Q 1188,500 1218,510 L 1216,516 Q 1188,507 1162,516 Z" fill="url(#goldCap)"/>
+    <!-- 前面板黑色障板 -->
+    <rect x="1170" y="525" width="34" height="180" rx="3" fill="#1a1a1a"/>
+    <circle cx="1187" cy="555" r="9" fill="#111" stroke="#c5a880" stroke-width="1"/>
+    <circle cx="1187" cy="625" r="18" fill="#111" stroke="#c5a880" stroke-width="1.5"/>
+    <circle cx="1187" cy="625" r="6" fill="#444"/>
+    <line x1="1175" y1="525" x2="1175" y2="705" stroke="#444" stroke-width="0.8" opacity="0.5"/>
+    <line x1="1181" y1="525" x2="1181" y2="705" stroke="#444" stroke-width="0.8" opacity="0.5"/>
+    <line x1="1187" y1="525" x2="1187" y2="705" stroke="#444" stroke-width="0.8" opacity="0.5"/>
+    <line x1="1193" y1="525" x2="1193" y2="705" stroke="#444" stroke-width="0.8" opacity="0.5"/>
+    <line x1="1199" y1="525" x2="1199" y2="705" stroke="#444" stroke-width="0.8" opacity="0.5"/>
+  </g>
+
+  <!-- 6. 右上角：Franco Serblin 品牌簽名標誌 -->
+  <g id="brand-signature" transform="translate(1640, 60)">
+    <!-- 簽名字體線條示意 -->
+    <path d="M 25,25 Q 35,5 45,28 T 65,15 Q 75,35 90,20 Q 95,45 110,30" fill="none" stroke="#222" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="45" y1="12" x2="35" y2="55" stroke="#222" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="30" y="78" font-family="'Playfair Display', Georgia, serif" font-size="16" letter-spacing="3" fill="#333" font-weight="500">Franco Serblin</text>
+  </g>
+
+  <!-- 7. 前景現代單人椅剪影 (右下側) -->
+  <g id="lounge-chair" transform="translate(1220, 710)">
+    <path d="M 40,250 Q 80,140 160,110 L 260,105 Q 280,180 250,260 Z" fill="#2b2d31" opacity="0.95"/>
+    <path d="M 60,250 L 120,290 L 190,290 L 240,250" fill="none" stroke="#c0beba" stroke-width="6" stroke-linecap="round"/>
+  </g>
+</svg>

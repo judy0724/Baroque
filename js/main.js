@@ -11,6 +11,7 @@ const MainApp = {
   isSynergyExpanded: false,
 
   init() {
+    this.initHeroBanner();
     if (window.BrandCarousel) BrandCarousel.init();
     this.renderBrands();
     this.renderProducts();
@@ -131,16 +132,6 @@ const MainApp = {
 
     setupScrollSpy();
 
-    // 智能選音響從 Hero 啟動時確保區塊可見
-    if (window.AudioAdvisor && AudioAdvisor.startFromHero) {
-      const origStartFromHero = AudioAdvisor.startFromHero.bind(AudioAdvisor);
-      AudioAdvisor.startFromHero = function() {
-        const section = document.getElementById('advisor-section');
-        if (section) section.style.display = 'block';
-        origStartFromHero();
-      };
-    }
-
     // 產品類別篩選
     document.addEventListener('click', (e) => {
       const pill = e.target.closest('.product-filter-pill');
@@ -190,6 +181,96 @@ const MainApp = {
         }
       });
     }
+  },
+
+  // ==================== Hero 品牌首頁影音橫幅控制器 (M4-02 桌機 16:9 / M4-03 手機 9:16) ====================
+  initHeroBanner() {
+    const video = document.getElementById('hero-banner-video');
+    if (!video) return;
+
+    const desktopVideoSrc = 'assets/videos/巴洛克banner_桌機版.mp4';
+    const mobileVideoSrc = 'assets/videos/巴洛克banner_手機版.mp4';
+    const desktopPosterSrc = 'assets/images/hero-poster-desktop.svg';
+    const mobilePosterSrc = 'assets/images/hero-poster-mobile.svg';
+
+    // 以 JavaScript 裝置判斷選擇來源（單一 video 元素，絕不建立兩個同時下載）
+    const isMobile = window.innerWidth <= 768;
+    const targetSrc = isMobile ? mobileVideoSrc : desktopVideoSrc;
+    const targetPoster = isMobile ? mobilePosterSrc : desktopPosterSrc;
+
+    // 設定適配海報
+    if (!video.poster || video.poster.includes('hero-poster-')) {
+      video.poster = targetPoster;
+    }
+
+    // 初始載入（若目前來源與目標不符則更新，避免雙重重複下載）
+    const currentSrcAttr = video.getAttribute('src') || (video.querySelector('source') ? video.querySelector('source').getAttribute('src') : '');
+    if (currentSrcAttr !== targetSrc && video.dataset.loadedSrc !== targetSrc) {
+      video.dataset.loadedSrc = targetSrc;
+      video.src = targetSrc;
+      video.load();
+    } else {
+      video.dataset.loadedSrc = targetSrc;
+    }
+
+    // 瀏覽器靜音自動循環播放保證
+    const playVideo = () => {
+      video.muted = true;
+      const promise = video.play();
+      if (promise !== undefined) {
+        promise.catch(() => {
+          // 若遇瀏覽器嚴格自動播放政策攔截，監聽使用者首次互動時喚醒播放
+          const resumeOnInteraction = () => {
+            video.muted = true;
+            video.play().catch(() => {});
+            document.removeEventListener('click', resumeOnInteraction);
+            document.removeEventListener('touchstart', resumeOnInteraction);
+          };
+          document.addEventListener('click', resumeOnInteraction, { once: true });
+          document.addEventListener('touchstart', resumeOnInteraction, { once: true });
+        });
+      }
+    };
+
+    playVideo();
+
+    // 視訊就緒時由 Canvas 動態擷取清晰影格優化 Poster（防黑屏與白屏）
+    video.addEventListener('loadeddata', () => {
+      try {
+        if (!video.poster || video.poster.endsWith('.svg')) {
+          const canvas = document.createElement('canvas');
+          canvas.width = video.videoWidth || (window.innerWidth <= 768 ? 1080 : 1920);
+          canvas.height = video.videoHeight || (window.innerWidth <= 768 ? 1920 : 1080);
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+          const frameDataUrl = canvas.toDataURL('image/jpeg', 0.9);
+          if (frameDataUrl && frameDataUrl.length > 100) {
+            video.poster = frameDataUrl;
+          }
+        }
+      } catch (err) {
+        // 若受環境限制則保留靜態 svg poster
+      }
+    }, { once: true });
+
+    // 視窗調整大小監聽 (防抖 250ms，自動切換 16:9 桌機與 9:16 手機素材)
+    let bannerResizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(bannerResizeTimer);
+      bannerResizeTimer = setTimeout(() => {
+        const checkMobile = window.innerWidth <= 768;
+        const newSrc = checkMobile ? mobileVideoSrc : desktopVideoSrc;
+        const newPoster = checkMobile ? mobilePosterSrc : desktopPosterSrc;
+
+        if (video.dataset.loadedSrc !== newSrc) {
+          video.dataset.loadedSrc = newSrc;
+          video.poster = newPoster;
+          video.src = newSrc;
+          video.load();
+          playVideo();
+        }
+      }, 250);
+    });
   },
 
   renderBrands() {

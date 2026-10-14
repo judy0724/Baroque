@@ -63,17 +63,90 @@
     gap: 20px;
   }
   
-  .hero-title {
-    font-size: 2.2rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.05rem;
+  /* ==================== Hero 品牌首頁影音橫幅 (M4-03 手機 9:16 Banner) ==================== */
+  .hero-section {
+    padding-top: 72px;
+    background: #0a0c10;
   }
 
-  .hero-trust-bar {
-    gap: 10px;
-    justify-content: flex-start;
+  .hero-banner-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .hero-banner-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 480px; /* 手機原生直式 9:16 最適閱讀寬度 */
+    margin: 0 auto;
+    aspect-ratio: 9 / 16; /* 嚴格維持原生 9:16 直式比例 */
+    max-height: calc(100svh - 140px);
+    max-height: calc(100vh - 140px);
+    overflow: hidden;
+    background: #0a0c10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-banner-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 9:16 零裁切、不變形、完整呈現器材、壁爐與 Franco Serblin Logo */
+    display: block;
+  }
+
+  /* 手機版隱藏桌面浮動 dock，防止遮擋畫面與字幕 */
+  .hero-action-dock {
+    display: none !important;
+  }
+
+  /* 手機版專屬雙按鈕操作列：置於 9:16 影片正下方，不遮擋器材且不與底部固定導覽列碰撞 */
+  .hero-mobile-cta-strip {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: #0d0f14;
+    border-top: 1px solid rgba(197, 168, 128, 0.2);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .btn-mobile-cta {
+    flex: 1;
+    min-height: 46px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    border-radius: var(--radius-pill);
+    padding: 10px 14px;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  .hero-trust-strip {
+    padding: 14px 0;
+  }
+
+  .hero-trust-strip .hero-trust-bar {
+    gap: 8px 12px;
+    justify-content: center;
+  }
+
+  .hero-trust-strip .trust-val {
+    font-size: 1.25rem;
+  }
+
+  .hero-trust-strip .trust-lbl {
+    font-size: 0.76rem;
   }
 
   .trust-sep {
@@ -179,20 +252,26 @@
 
   /* 品牌精選 BRANDS 手機版適配 (M3-02 9:16 單張直式輪播) */
   .brand-showcase-section {
-    padding: 50px 0 36px;
+    /* 底部安全留白：為固定式底部導覽列 (min-height 58px + safe area ~70-104px) 保留充足安全距離 */
+    padding: 36px 0 calc(96px + env(safe-area-inset-bottom, 0px));
+    scroll-margin-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .brand-section-header {
+    margin-bottom: 22px; /* 緊湊標題間距，提升卡片垂直視野 */
   }
 
   .header-divider-line {
-    width: 44px;
+    width: 36px;
   }
 
   .heading-zh {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     letter-spacing: 0.12em;
   }
 
   .heading-en {
-    font-size: 1.05rem;
+    font-size: 1rem;
     letter-spacing: 0.2em;
   }
 
@@ -218,24 +297,64 @@
 
   .brand-mobile-single-wrapper .brand-vertical-card {
     width: 100%;
-    max-width: 295px; /* 精準維持 9:16 高度約 524px，適配各主流手機螢幕 */
+    max-width: 280px; /* 精準維持 9:16 比例 (高度約 498px)，在 390px~400px 手機上完整容納無溢出 */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  }
+
+  .brand-card-img-wrap {
+    height: 48%;
+    padding: 12px;
+  }
+
+  .brand-card-info-wrap {
+    height: 52%;
+    padding: 14px 12px 12px;
   }
 
   .brand-card-title {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+  }
+
+  .brand-card-features-list {
+    gap: 3px;
+    margin-bottom: 8px;
   }
 
   .brand-feature-item {
-    padding: 5px 4px;
+    padding: 4px 2px;
+    gap: 6px;
+  }
+
+  .feature-icon-box {
+    width: 16px;
+    height: 16px;
+  }
+
+  .feature-svg-icon {
+    width: 14px;
+    height: 14px;
   }
 
   .feature-text {
     font-size: 0.78rem;
   }
 
+  .brand-card-action-wrap {
+    position: relative;
+    z-index: 2;
+  }
+
   .brand-explore-btn {
     height: 38px;
     font-size: 0.85rem;
+    position: relative;
+    z-index: 5;
+    touch-action: manipulation;
+  }
+
+  .brand-explore-placeholder {
+    height: 38px;
   }
 
   /* 手機版底部頁碼切換：顯示 ‹ 01 / 08 › */
@@ -244,30 +363,42 @@
   }
 
   .brand-pagination-container {
-    margin-top: 24px;
+    margin-top: 18px;
+    position: relative;
+    z-index: 10;
   }
 
   .brand-pagination-mobile {
     display: flex !important;
     align-items: center;
     justify-content: center;
-    gap: 24px;
+    gap: 20px;
   }
 
   .mobile-chevron-btn {
     background: transparent;
     border: none;
-    padding: 8px 14px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px 14px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     outline: none;
     -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
 
   .mobile-chevron-btn:active {
     transform: scale(0.88);
+  }
+
+  .pagination-number {
+    font-size: 0.88rem;
+    min-width: 68px;
+    text-align: center;
+    user-select: none;
   }
 }
 
@@ -288,8 +419,11 @@
   .heading-en {
     font-size: 0.95rem;
   }
+  .brand-showcase-section {
+    padding: 28px 0 calc(96px + env(safe-area-inset-bottom, 0px));
+  }
   .brand-mobile-single-wrapper .brand-vertical-card {
-    max-width: 275px;
+    max-width: 260px;
   }
   .brand-card-title {
     font-size: 1.15rem;
