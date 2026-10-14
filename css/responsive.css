@@ -102,6 +102,31 @@
     display: none !important;
   }
 
+  /* M4-04 手機版原聲音量開關：左上角緊湊佈局，不遮擋右上角 Franco Serblin Logo 與結尾字幕 */
+  .hero-sound-toggle {
+    top: 14px;
+    left: 14px;
+    padding: 6px 12px;
+    gap: 6px;
+    font-size: 0.76rem;
+    min-height: 34px;
+    background: rgba(10, 12, 16, 0.82);
+  }
+
+  .hero-sound-toggle .sound-icon-box {
+    width: 16px;
+    height: 16px;
+  }
+
+  .hero-sound-toggle .sound-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .hero-sound-toggle .sound-label {
+    font-size: 0.76rem;
+  }
+
   /* 手機版專屬雙按鈕操作列：置於 9:16 影片正下方，不遮擋器材且不與底部固定導覽列碰撞 */
   .hero-mobile-cta-strip {
     display: flex !important;

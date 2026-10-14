@@ -214,14 +214,14 @@ const MainApp = {
     }
 
     // 瀏覽器靜音自動循環播放保證
-    const playVideo = () => {
-      video.muted = true;
+    const playVideo = (forceMuted = false) => {
+      if (forceMuted) video.muted = true;
       const promise = video.play();
       if (promise !== undefined) {
         promise.catch(() => {
           // 若遇瀏覽器嚴格自動播放政策攔截，監聽使用者首次互動時喚醒播放
           const resumeOnInteraction = () => {
-            video.muted = true;
+            if (forceMuted) video.muted = true;
             video.play().catch(() => {});
             document.removeEventListener('click', resumeOnInteraction);
             document.removeEventListener('touchstart', resumeOnInteraction);
@@ -232,7 +232,20 @@ const MainApp = {
       }
     };
 
-    playVideo();
+    playVideo(true);
+    this.updateHeroAudioUI(false);
+
+    // 監聽音量與靜音狀態變更（無論手動點擊或瀏覽器政策變動，保證按鈕 UI 100% 同步）
+    video.addEventListener('volumechange', () => {
+      this.updateHeroAudioUI(!video.muted);
+    });
+
+    // 雙重防護：當影片 10 秒循環時維持當前靜音／原聲播放狀態
+    video.addEventListener('ended', () => {
+      if (!video.muted) {
+        video.play().catch(() => {});
+      }
+    });
 
     // 視訊就緒時由 Canvas 動態擷取清晰影格優化 Poster（防黑屏與白屏）
     video.addEventListener('loadeddata', () => {
@@ -253,7 +266,7 @@ const MainApp = {
       }
     }, { once: true });
 
-    // 視窗調整大小監聽 (防抖 250ms，自動切換 16:9 桌機與 9:16 手機素材)
+    // 視窗調整大小監聽 (防抖 250ms，自動切換 16:9 桌機與 9:16 手機素材，並保持目前聲音狀態)
     let bannerResizeTimer;
     window.addEventListener('resize', () => {
       clearTimeout(bannerResizeTimer);
@@ -263,14 +276,74 @@ const MainApp = {
         const newPoster = checkMobile ? mobilePosterSrc : desktopPosterSrc;
 
         if (video.dataset.loadedSrc !== newSrc) {
+          const currentMuted = video.muted;
           video.dataset.loadedSrc = newSrc;
           video.poster = newPoster;
           video.src = newSrc;
+          video.muted = currentMuted;
           video.load();
-          playVideo();
+          playVideo(currentMuted);
+          MainApp.updateHeroAudioUI(!currentMuted);
         }
       }, 250);
     });
+  },
+
+  // ==================== M4-04 Hero Banner 原聲開關切換 ====================
+  toggleHeroAudio() {
+    const video = document.getElementById('hero-banner-video');
+    if (!video) return;
+
+    // 若目前為靜音狀態 -> 點擊切換為播放原聲
+    if (video.muted) {
+      video.muted = false;
+      video.volume = 1.0;
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          this.updateHeroAudioUI(true);
+        }).catch((err) => {
+          console.warn('瀏覽器自動播放音訊政策攔截，重設為靜音以備下次點擊：', err);
+          video.muted = true;
+          this.updateHeroAudioUI(false);
+          const label = document.getElementById('hero-sound-label');
+          if (label) label.textContent = '點擊重試';
+        });
+      } else {
+        this.updateHeroAudioUI(true);
+      }
+    } else {
+      // 若目前已開啟原聲 -> 點擊恢復靜音 (影片不中斷)
+      video.muted = true;
+      this.updateHeroAudioUI(false);
+    }
+  },
+
+  updateHeroAudioUI(isPlayingAudio) {
+    const toggleBtn = document.getElementById('hero-sound-toggle');
+    if (!toggleBtn) return;
+
+    const mutedIcon = toggleBtn.querySelector('.sound-icon-muted');
+    const activeIcon = toggleBtn.querySelector('.sound-icon-active');
+    const label = document.getElementById('hero-sound-label');
+
+    if (isPlayingAudio) {
+      toggleBtn.classList.add('is-playing');
+      toggleBtn.setAttribute('aria-pressed', 'true');
+      toggleBtn.setAttribute('aria-label', '靜音影片 (目前原聲播放中)');
+      toggleBtn.setAttribute('title', '點擊靜音影片');
+      if (mutedIcon) mutedIcon.style.display = 'none';
+      if (activeIcon) activeIcon.style.display = 'block';
+      if (label) label.textContent = '原聲播放中';
+    } else {
+      toggleBtn.classList.remove('is-playing');
+      toggleBtn.setAttribute('aria-pressed', 'false');
+      toggleBtn.setAttribute('aria-label', '開啟影片原聲 (目前為靜音)');
+      toggleBtn.setAttribute('title', '點擊開啟影片原聲');
+      if (mutedIcon) mutedIcon.style.display = 'block';
+      if (activeIcon) activeIcon.style.display = 'none';
+      if (label) label.textContent = '開啟原聲';
+    }
   },
 
   renderBrands() {

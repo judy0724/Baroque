@@ -230,6 +230,100 @@ section[id], footer[id], [id] {
   z-index: 32;
 }
 
+/* M4-04 香檳金原聲音訊開關 (低調奢華懸浮，可自適應靜音與原聲切換) */
+.hero-sound-toggle {
+  position: absolute;
+  top: 24px;
+  left: 32px;
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 15px;
+  background: rgba(10, 12, 16, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(197, 168, 128, 0.42);
+  border-radius: var(--radius-pill);
+  color: var(--champagne-gold, #c5a880);
+  cursor: pointer;
+  pointer-events: auto;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.28s ease, background-color 0.28s ease, box-shadow 0.28s ease, transform 0.2s ease, color 0.28s ease;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.hero-sound-toggle:hover {
+  background: rgba(18, 22, 28, 0.92);
+  border-color: rgba(197, 168, 128, 0.85);
+  box-shadow: 0 6px 20px rgba(197, 168, 128, 0.28);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+.hero-sound-toggle:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.hero-sound-toggle:focus-visible {
+  outline: 2px solid var(--champagne-gold, #c5a880);
+  outline-offset: 2px;
+}
+
+.hero-sound-toggle.is-playing {
+  border-color: rgba(197, 168, 128, 0.85);
+  background: rgba(28, 24, 18, 0.85);
+  color: #f7eedf;
+  box-shadow: 0 0 16px rgba(197, 168, 128, 0.35);
+}
+
+.hero-sound-toggle .sound-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.hero-sound-toggle .sound-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hero-sound-toggle.is-playing .sound-wave-anim {
+  animation: soundWavePulse 1.2s infinite ease-in-out;
+}
+
+@keyframes soundWavePulse {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+.hero-sound-toggle .sound-label {
+  white-space: nowrap;
+  font-size: 0.82rem;
+  line-height: 1;
+}
+
 /* 手機版專屬雙按鈕操作列 (桌機預設隱藏，由 responsive.css 在 <=768px 啟用) */
 .hero-mobile-cta-strip {
   display: none;

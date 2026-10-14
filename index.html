@@ -89,6 +89,30 @@
             })();
           </script>
 
+          <!-- M4-04 香檳金原聲音訊開關 (左上角優雅懸浮，不遮擋原廠 Logo、字幕與 CTA) -->
+          <button 
+            type="button" 
+            class="hero-sound-toggle" 
+            id="hero-sound-toggle"
+            aria-label="開啟原聲音訊 (目前為靜音)"
+            aria-pressed="false"
+            title="點擊開啟影片原聲"
+            onclick="MainApp.toggleHeroAudio()">
+            <span class="sound-icon-box" id="hero-sound-icon-box">
+              <svg class="sound-icon sound-icon-muted" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+                <line x1="22" y1="9" x2="16" y2="15"/>
+                <line x1="16" y1="9" x2="22" y2="15"/>
+              </svg>
+              <svg class="sound-icon sound-icon-active" viewBox="0 0 24 24" aria-hidden="true" style="display:none;">
+                <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+                <path class="sound-wave-anim" d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                <path class="sound-wave-anim" d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+              </svg>
+            </span>
+            <span class="sound-label" id="hero-sound-label">開啟原聲</span>
+          </button>
+
           <!-- 桌機精簡操作區：保留原「選音響」「預約試聽」功能，懸浮置底不遮擋器材、Logo 與文字 -->
           <div class="hero-action-dock" id="hero-action-dock">
             <button class="btn btn-primary btn-dock" onclick="AudioAdvisor.startFromHero()" title="啟動智能選音響顧問">
