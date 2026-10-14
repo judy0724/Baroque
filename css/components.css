@@ -1247,89 +1247,315 @@ section[id], footer[id], [id] {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ==================== 8 品牌輪播容器 (Brand Carousel) ==================== */
-.brand-carousel-container {
-  position: relative;
-  overflow: hidden;
-  padding: 10px 0;
-}
-
-.brand-carousel-track {
-  display: flex;
-  gap: 24px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  -webkit-overflow-scrolling: touch;
-  padding: 10px 4px 20px;
-}
-
-.brand-carousel-track::-webkit-scrollbar {
-  display: none;
-}
-
-.brand-carousel-card {
-  flex: 0 0 280px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  transition: var(--transition-smooth);
-  display: flex;
-  flex-direction: column;
-}
-
-.brand-carousel-card:hover {
-  border-color: var(--gold-border);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card);
-}
-
-.brand-carousel-img-box {
-  height: 180px;
-  background: #000;
-  overflow: hidden;
+/* ==================== 品牌精選 BRANDS (9:16 直式四品牌輪播母版) ==================== */
+.brand-showcase-section {
+  background-color: #f7f4ee; /* 暖象牙白背景 */
+  color: #1a1a1a;
+  padding: 80px 0 60px;
   position: relative;
 }
 
-.brand-carousel-img-box img {
+.brand-showcase-container {
+  max-width: 1380px;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.brand-carousel-card:hover .brand-carousel-img-box img {
-  transform: scale(1.05);
+/* 標題區：—— 品牌精選 BRANDS —— */
+.brand-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
 }
 
-.brand-carousel-info {
-  padding: 20px;
-  text-align: center;
+.header-divider-line {
+  height: 1px;
+  width: 90px;
+  background-color: #c5a880; /* 香檳金細線 */
+  opacity: 0.7;
 }
 
-.brand-carousel-country {
-  font-size: 0.8rem;
-  color: var(--gold-primary);
-  letter-spacing: 0.05em;
-  display: block;
-  margin-bottom: 6px;
-}
-
-.brand-carousel-name {
-  font-family: var(--font-serif);
-  font-size: 1.3rem;
-  color: #fff;
+.brand-section-heading {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
   margin: 0;
 }
 
-.brand-carousel-nav {
+.heading-zh {
+  font-family: 'Noto Serif TC', var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: #1a1a1a;
+}
+
+.heading-en {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  color: #1a1a1a;
+}
+
+/* 輪播控制與卡片舞台外框 */
+.brand-carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* 桌機切換箭頭 */
+.brand-arrow-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  z-index: 5;
+  flex-shrink: 0;
+  outline: none;
+}
+
+.brand-arrow-btn:hover {
+  transform: scale(1.15);
+  opacity: 0.85;
+}
+
+.brand-arrow-btn:active {
+  transform: scale(0.9);
+}
+
+.brand-showcase-stage {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 12px;
+}
+
+/* 桌機版四張卡片並排網格 */
+.brand-desktop-four-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+/* 9:16 直式精品卡片 */
+.brand-vertical-card {
+  aspect-ratio: 9 / 16;
+  background: #ffffff;
+  border: 1px solid rgba(197, 168, 128, 0.32);
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.brand-vertical-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(197, 168, 128, 0.18);
+  border-color: rgba(197, 168, 128, 0.65);
+}
+
+/* 卡片上方：原廠器材圖片框 (maintain original ratio, contain) */
+.brand-card-img-wrap {
+  width: 100%;
+  height: 48%;
+  background: #faf8f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-bottom: 1px solid rgba(197, 168, 128, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-card-product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* 堅持 contain，器材比例等比置中不裁切 */
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.brand-vertical-card:hover .brand-card-product-img {
+  transform: scale(1.04);
+}
+
+/* 卡片下方：品牌資訊區 (圖上字下) */
+.brand-card-info-wrap {
+  height: 52%;
+  padding: 16px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  background: #ffffff;
+}
+
+.brand-card-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #1a1a1a;
+  margin: 0 0 8px 0;
+  line-height: 1.25;
+}
+
+/* 三項特色列表 */
+.brand-card-features-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.brand-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 4px;
+  border-bottom: 1px solid rgba(197, 168, 128, 0.2);
+}
+
+.brand-feature-item:first-child {
+  border-top: 1px solid rgba(197, 168, 128, 0.2);
+}
+
+.feature-icon-box {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.feature-svg-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.feature-text {
+  font-family: 'Noto Serif TC', var(--font-serif);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #33312e;
+  letter-spacing: 0.03em;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 探索按鈕區 */
+.brand-card-action-wrap {
+  margin-top: auto;
+  width: 100%;
+}
+
+.brand-explore-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 36px;
+  background-color: #8e734c; /* 香檳金 / 暖銅色 */
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  border-radius: 4px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(142, 115, 76, 0.2);
+  transition: all 0.25s ease;
+}
+
+.brand-explore-btn:hover {
+  background-color: #7a613d;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(142, 115, 76, 0.32);
+  color: #ffffff;
+}
+
+/* ATD 不顯示連結時的對齊留白 */
+.brand-explore-placeholder {
+  height: 36px;
+  width: 100%;
+}
+
+/* 底部頁碼與分組指示器 */
+.brand-pagination-container {
+  margin-top: 36px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.brand-pagination-desktop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 16px;
-  margin-top: 24px;
+}
+
+.brand-group-dots {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.group-dot {
+  width: 24px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(197, 168, 128, 0.35);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.group-dot.active {
+  background: #8e734c;
+  width: 40px;
+}
+
+.brand-pagination-mobile {
+  display: none;
+}
+
+.pagination-line {
+  display: inline-block;
+  width: 60px;
+  height: 1px;
+  background-color: #c5a880;
+  opacity: 0.6;
+}
+
+.pagination-number {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: #635f56;
 }
 
 /* ==================== 手機底部固定導覽列 (Mobile Bottom Nav) ==================== */

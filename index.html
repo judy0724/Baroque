@@ -105,24 +105,67 @@
       </div>
     </section>
 
-    <!-- ==================== Module 1: 8 品牌旗艦輪播專區 ==================== -->
-    <section class="section-padding" id="brands-section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">HERITAGE & MASTERPIECES</span>
-          <h2 class="section-title">世界頂級聲學品牌殿堂</h2>
-          <p class="section-desc">
-            巴洛克以「極致音樂人文鑑賞家」自居。我們引進的每一個品牌，均擁有一段造聲傳奇與不可替代的手工堅持，讓品味愛樂者珍藏一生。
-          </p>
+    <!-- ==================== Module 1: 品牌精選 BRANDS (9:16 直式四品牌輪播) ==================== -->
+    <section class="brand-showcase-section" id="brands-section">
+      <div class="container brand-showcase-container">
+        <!-- 標題區：品牌精選 BRANDS -->
+        <div class="brand-section-header">
+          <span class="header-divider-line"></span>
+          <h2 class="brand-section-heading">
+            <span class="heading-zh">品牌精選</span>
+            <span class="heading-en">BRANDS</span>
+          </h2>
+          <span class="header-divider-line"></span>
         </div>
 
-        <div class="brand-carousel-container">
-          <div class="brand-carousel-track" id="brand-carousel-track">
-            <!-- 由 js/brand-carousel.js 動態渲染 8 大品牌卡片 -->
+        <!-- 輪播控制與卡片舞台外框 -->
+        <div class="brand-carousel-wrapper" id="brand-carousel-wrapper">
+          <!-- 桌機左側切換箭頭 -->
+          <button class="brand-arrow-btn brand-arrow-prev" id="desktop-brand-prev" aria-label="上一組品牌">
+            <svg width="22" height="38" viewBox="0 0 22 38" fill="none" stroke="#a68352" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 4 6 19 16 34"></polyline>
+            </svg>
+          </button>
+
+          <!-- 品牌卡片舞台容器 (由 js/brand-carousel.js 動態渲染) -->
+          <div class="brand-showcase-stage" id="brand-showcase-stage">
+            <!-- 動態渲染四張 9:16 直式卡片 (桌機) 或單張 9:16 卡片 (手機) -->
           </div>
-          <div class="brand-carousel-nav">
-            <button class="btn btn-glass btn-sm" id="brand-carousel-prev" aria-label="上一品牌">⇦ 上一品牌</button>
-            <button class="btn btn-glass btn-sm" id="brand-carousel-next" aria-label="下一品牌">下一品牌 ⇨</button>
+
+          <!-- 桌機右側切換箭頭 -->
+          <button class="brand-arrow-btn brand-arrow-next" id="desktop-brand-next" aria-label="下一組品牌">
+            <svg width="22" height="38" viewBox="0 0 22 38" fill="none" stroke="#a68352" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 4 16 19 6 34"></polyline>
+            </svg>
+          </button>
+        </div>
+
+        <!-- 底部頁碼與分組指示器 -->
+        <div class="brand-pagination-container">
+          <!-- 桌機版：短金線 01 - 04 / 08 短金線 + 分組圓點 -->
+          <div class="brand-pagination-desktop">
+            <span class="pagination-line"></span>
+            <span class="pagination-number" id="brand-page-desktop">01 - 04 / 08</span>
+            <div class="brand-group-dots" id="brand-group-dots">
+              <button class="group-dot active" data-group="0" aria-label="第 1 組 (01-04)"></button>
+              <button class="group-dot" data-group="1" aria-label="第 2 組 (05-08)"></button>
+            </div>
+            <span class="pagination-line"></span>
+          </div>
+
+          <!-- 手機版：‹ 01 / 08 › -->
+          <div class="brand-pagination-mobile">
+            <button class="mobile-chevron-btn" id="mobile-brand-prev" aria-label="上一品牌">
+              <svg width="12" height="18" viewBox="0 0 12 18" fill="none" stroke="#a68352" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 2 2 9 9 16"></polyline>
+              </svg>
+            </button>
+            <span class="pagination-number" id="brand-page-mobile">01 / 08</span>
+            <button class="mobile-chevron-btn" id="mobile-brand-next" aria-label="下一品牌">
+              <svg width="12" height="18" viewBox="0 0 12 18" fill="none" stroke="#a68352" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 2 10 9 3 16"></polyline>
+              </svg>
+            </button>
           </div>
         </div>
       </div>

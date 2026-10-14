@@ -39,7 +39,14 @@ const ANSBACH_DATA = {
       accentColor: '#d4af37',
       featuredSeries: ['Ktêma 四音路旗艦', 'Accordo 傳世書架', 'Accordo Goldberg 旗艦書架', 'Lignea'],
       signatureTech: ['弓形魯特琴聲學箱體幾何', '實心胡桃木與鋁鎂合金障板耦合結構', '純銀鍍金手工分音器接線', '無共振阻尼拉力琴弦面網'],
-      image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80'
+      image: 'assets/images/brands/franco-serblin.jpg',
+      officialUrl: 'https://www.francoserblin.it/en',
+      buttonText: '探索品牌 →',
+      highlights: [
+        { text: '義大利聲學工藝', icon: 'temple' },
+        { text: '魯特琴靈感箱體', icon: 'lyre' },
+        { text: '音色細膩，富有情感', icon: 'soundwave' }
+      ]
     },
     {
       id: 'proac',
@@ -52,20 +59,14 @@ const ANSBACH_DATA = {
       accentColor: '#c5a880',
       featuredSeries: ['K Series 旗艦帶狀高音', 'Response Series 經典長青', 'Tablette 10 密閉鑑聽傳奇'],
       signatureTech: ['克維拉（Kevlar）編織低音振膜', '特製純鋁帶狀高音 (Ribbon Tweeter)', '純手工搭棚點對點分音網絡', '阻尼下低音反射孔設計'],
-      image: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80'
-    },
-    {
-      id: 'atd',
-      name: 'ATD',
-      country: '義大利 (Italy)',
-      tagline: '義大利極致聲學工程',
-      description: '義大利頂級聲學工程品牌，專注於極致音質與精密揚聲器工藝。',
-      founded: null,
-      badge: '義大利頂級聲學',
-      accentColor: '#e67e22',
-      featuredSeries: [],
-      signatureTech: [],
-      image: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80'
+      image: 'assets/images/brands/proac.jpg',
+      officialUrl: 'https://www.proac-loudspeakers.com',
+      buttonText: '探索品牌 →',
+      highlights: [
+        { text: '英國經典揚聲器品牌', icon: 'temple' },
+        { text: '自然中頻，音場定位出色', icon: 'lyre' },
+        { text: '木質箱體工藝，音樂性細膩', icon: 'soundwave' }
+      ]
     },
     {
       id: 'eam-lab',
@@ -76,22 +77,56 @@ const ANSBACH_DATA = {
       founded: null,
       badge: '義大利手工擴大機',
       accentColor: '#4a90e2',
-      featuredSeries: [],
-      signatureTech: [],
-      image: 'https://images.unsplash.com/photo-1558403194-611308249627?auto=format&fit=crop&w=800&q=80'
+      featuredSeries: ['Classic 302i 綜合擴大機'],
+      signatureTech: ['高階重裝大電流供電架構', '純淨對稱放大電路設計'],
+      image: 'assets/images/brands/eam-lab.jpg',
+      officialUrl: 'https://www.eamlab.com',
+      buttonText: '探索品牌 →',
+      highlights: [
+        { text: '義大利高階擴大機工藝', icon: 'temple' },
+        { text: '純淨驅動，控制力充足', icon: 'lyre' },
+        { text: '金屬機身精緻，音樂性鮮明', icon: 'soundwave' }
+      ]
     },
     {
-      id: 'audiobyte',
-      name: 'AudioByte',
-      country: '羅馬尼亞 (Romania)',
-      tagline: '前瞻數位音訊與 FPGA 架構先鋒',
-      description: '專注於高解析數位訊源、網路串流轉盤與先進數位介面的歐洲創新音響品牌。',
+      id: 'esprit',
+      name: 'Esprit',
+      country: '法國 (France)',
+      tagline: '法式極致純淨手工發燒線材',
+      description: '法國頂級手工發燒音響線材品牌，致力於極致導體純度與專利屏蔽技術。',
       founded: null,
-      badge: '數位串流先鋒',
-      accentColor: '#4ecdc4',
-      featuredSeries: ['SuperHub 串流數位中心'],
-      signatureTech: ['FPGA 數位訊號處理架構'],
-      image: 'https://images.unsplash.com/photo-1520523839898-507127054976?auto=format&fit=crop&w=800&q=80'
+      badge: '法國頂級手工線材',
+      accentColor: '#dfc196',
+      featuredSeries: ['Generation X 旗艦發燒線材'],
+      signatureTech: ['極致導體結晶純度技術', '專利幾何抗干擾編織屏蔽'],
+      image: 'assets/images/brands/esprit.jpg',
+      officialUrl: 'https://www.esprit-audio.fr',
+      buttonText: '探索品牌 →',
+      highlights: [
+        { text: '法國高階線材工藝', icon: 'temple' },
+        { text: '屏蔽結構講究，訊號傳導穩定', icon: 'lyre' },
+        { text: '透明感與音樂性兼備', icon: 'soundwave' }
+      ]
+    },
+    {
+      id: 'asi',
+      name: 'ASI',
+      country: '法國 (France)',
+      tagline: '極致共振調音與聲學處理藝術',
+      description: '法國聲學共振控制與音響調音專家，以獨創的聲學共振器與擴散技術聞名。',
+      founded: null,
+      badge: '法國聲學調音大師',
+      accentColor: '#c5a880',
+      featuredSeries: ['LiveLine 旗艦調音共振系列'],
+      signatureTech: ['微振動動態阻尼共振控制', '貴金屬精密聲學校正調諧'],
+      image: 'assets/images/brands/asi.jpg',
+      officialUrl: 'http://www.asi-audio.com',
+      buttonText: '探索品牌 →',
+      highlights: [
+        { text: '法國聲學調音配件品牌', icon: 'temple' },
+        { text: '微振動控制與共振優化', icon: 'lyre' },
+        { text: '提升細節、層次與空間感', icon: 'soundwave' }
+      ]
     },
     {
       id: 'rockna',
@@ -104,33 +139,54 @@ const ANSBACH_DATA = {
       accentColor: '#50e3c2',
       featuredSeries: ['Wavedream Signature DAC', 'Wavedream NET 伺服轉盤'],
       signatureTech: ['獨家 RD-0 / RD-1 27-bit 梯形電阻階梯模組', '自研 16 倍線性相位高階數位濾波', '超低相位噪聲飛秒主時鐘 (Femtovox Clock)', '全隔離電源與全平衡純 A 類類比輸出級'],
-      image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80'
+      image: 'assets/images/brands/rockna.jpg',
+      officialUrl: 'https://www.rockna-audio.com',
+      buttonText: '探索品牌 →',
+      highlights: [
+        { text: '羅馬尼亞高階數位音訊品牌', icon: 'temple' },
+        { text: '自研數位處理架構，細節豐富', icon: 'lyre' },
+        { text: '動態寬廣，聲音層次分明', icon: 'soundwave' }
+      ]
     },
     {
-      id: 'esprit',
-      name: 'Esprit',
-      country: '法國 (France)',
-      tagline: '法式極致純淨手工發燒線材',
-      description: '法國頂級手工發燒音響線材品牌，致力於極致導體純度與專利屏蔽技術。',
+      id: 'audiobyte',
+      name: 'AudioByte',
+      country: '羅馬尼亞 (Romania)',
+      tagline: '前瞻數位音訊與 FPGA 架構先鋒',
+      description: '專注於高解析數位訊源、網路串流轉盤與先進數位介面的歐洲創新音響品牌。',
       founded: null,
-      badge: '法國頂級手工線材',
-      accentColor: '#dfc196',
-      featuredSeries: [],
-      signatureTech: [],
-      image: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=800&q=80'
+      badge: '數位串流先鋒',
+      accentColor: '#4ecdc4',
+      featuredSeries: ['SuperHub 串流數位中心', 'SuperHead 耳機擴大機', 'SuperVOX DAC'],
+      signatureTech: ['FPGA 數位訊號處理架構', '模組化解碼串流平台'],
+      image: 'assets/images/brands/audiobyte.jpg',
+      officialUrl: 'https://audiobyte.net',
+      buttonText: '探索品牌 →',
+      highlights: [
+        { text: '現代數位音訊設計品牌', icon: 'temple' },
+        { text: '模組化處理與清晰操作介面', icon: 'lyre' },
+        { text: '高性能與高性價比兼具', icon: 'soundwave' }
+      ]
     },
     {
-      id: 'asi',
-      name: 'ASI',
-      country: '法國 (France)',
-      tagline: '極致共振調音與聲學處理藝術',
-      description: '法國聲學共振控制與音響調音專家，以獨創的聲學共振器與擴散技術聞名。',
+      id: 'atd',
+      name: 'ATD',
+      country: '義大利 (Italy)',
+      tagline: '義大利極致聲學工程',
+      description: '義大利頂級聲學工程品牌，專注於極致音質與精密揚聲器工藝。',
       founded: null,
-      badge: '法國聲學調音大師',
-      accentColor: '#c5a880',
-      featuredSeries: [],
-      signatureTech: [],
-      image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80'
+      badge: '義大利頂級聲學',
+      accentColor: '#e67e22',
+      featuredSeries: ['Capriccio Continuo 系列'],
+      signatureTech: ['超高解析絲質高音', '高剛性碳纖維低音振膜'],
+      image: 'assets/images/brands/atd.jpg',
+      officialUrl: null,
+      buttonText: null,
+      highlights: [
+        { text: '義大利揚聲器工藝品牌', icon: 'temple' },
+        { text: '高頻通透，空氣感出色', icon: 'lyre' },
+        { text: '精準活潑，音樂性鮮明', icon: 'soundwave' }
+      ]
     }
   ],
 
@@ -671,6 +727,11 @@ const ANSBACH_DATA = {
     }
   ]
 };
+
+// 確保在瀏覽器環境下直接掛載至 window 全域物件
+if (typeof window !== 'undefined') {
+  window.ANSBACH_DATA = ANSBACH_DATA;
+}
 
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = ANSBACH_DATA;

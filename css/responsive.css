@@ -176,6 +176,99 @@
   footer {
     padding: 50px 0 30px !important;
   }
+
+  /* 品牌精選 BRANDS 手機版適配 (M3-02 9:16 單張直式輪播) */
+  .brand-showcase-section {
+    padding: 50px 0 36px;
+  }
+
+  .header-divider-line {
+    width: 44px;
+  }
+
+  .heading-zh {
+    font-size: 1.4rem;
+    letter-spacing: 0.12em;
+  }
+
+  .heading-en {
+    font-size: 1.05rem;
+    letter-spacing: 0.2em;
+  }
+
+  /* 手機版隱藏桌面切換箭頭，改由底部 ‹ 01 / 08 › 控制 */
+  .brand-arrow-btn {
+    display: none !important;
+  }
+
+  .brand-showcase-stage {
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* 手機版單張 9:16 精品卡片容器 */
+  .brand-mobile-single-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .brand-mobile-single-wrapper .brand-vertical-card {
+    width: 100%;
+    max-width: 295px; /* 精準維持 9:16 高度約 524px，適配各主流手機螢幕 */
+  }
+
+  .brand-card-title {
+    font-size: 1.25rem;
+  }
+
+  .brand-feature-item {
+    padding: 5px 4px;
+  }
+
+  .feature-text {
+    font-size: 0.78rem;
+  }
+
+  .brand-explore-btn {
+    height: 38px;
+    font-size: 0.85rem;
+  }
+
+  /* 手機版底部頁碼切換：顯示 ‹ 01 / 08 › */
+  .brand-pagination-desktop {
+    display: none !important;
+  }
+
+  .brand-pagination-container {
+    margin-top: 24px;
+  }
+
+  .brand-pagination-mobile {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .mobile-chevron-btn {
+    background: transparent;
+    border: none;
+    padding: 8px 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-chevron-btn:active {
+    transform: scale(0.88);
+  }
 }
 
 @media (max-width: 640px) {
@@ -184,4 +277,26 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 360px) {
+  .header-divider-line {
+    width: 24px;
+  }
+  .heading-zh {
+    font-size: 1.25rem;
+  }
+  .heading-en {
+    font-size: 0.95rem;
+  }
+  .brand-mobile-single-wrapper .brand-vertical-card {
+    max-width: 275px;
+  }
+  .brand-card-title {
+    font-size: 1.15rem;
+  }
+  .feature-text {
+    font-size: 0.74rem;
+  }
+}
+
 
