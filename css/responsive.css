@@ -229,10 +229,9 @@
     gap: 12px;
   }
 
-  /* 專業服務卡片手機/平板單欄排列 */
+  /* 專業服務卡片手機/平板適配 */
   .professional-services-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    width: 100%;
   }
 
   /* 保固入口卡片單欄排列 */

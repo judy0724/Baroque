@@ -592,7 +592,7 @@ const ANSBACH_DATA = {
       author: '智慧家庭整合專家 Steve',
       summary: 'Qobuz, Tidal, Apple Music 無損音樂時代來臨，發燒音響如何完美支援？完整指南教您搞懂家用 NAS 音樂庫建置、有線發燒網路交換器與 Roon Core 伺服器配置。',
       tags: ['無損串流', 'RoonReady', 'Hi-Res'],
-      fullText: '進入數位串流時代，好音質不等於妥協。現代音響系統只要選用原生支援 Roon Ready 與 Tidal Connect 的前級或解碼器（如 Electrocompaniet ECI 6DX MKII），即可直接透過行動裝置播放高達 24-bit/192kHz 的母帶檔。巴洛克亦提供到府串流伺服器與發燒級網路交換器整合規劃，讓家庭成員人人都能一鍵享受極致天籟。'
+      fullText: '進入數位串流時代，好音質不等於妥協。現代音響系統只要選用原生支援 Roon Ready 與 Tidal Connect 的前級或解碼器（如 Electrocompaniet ECI 6DX MKII），即可直接透過行動裝置播放高達 24-bit/192kHz 的母帶檔。巴洛克亦提供串流伺服器與發燒級網路交換器整合規劃，讓家庭成員人人都能一鍵享受極致天籟。'
     }
   ],
 

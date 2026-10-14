@@ -1164,18 +1164,22 @@ section[id], footer[id], [id] {
 }
 
 .professional-services-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .service-card {
   background: var(--bg-card);
   border: 1px solid var(--gold-border);
   border-radius: var(--radius-lg);
-  padding: 40px 32px;
+  padding: 40px 36px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 640px;
+  width: 100%;
   transition: var(--transition-smooth);
   box-shadow: var(--shadow-card);
 }

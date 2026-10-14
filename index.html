@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>巴洛克音響 ANSBACH ACOUSTIC ｜ 歐洲頂級 Hi-End 音響台灣總代理 ‧ 品牌旗艦門戶</title>
-  <meta name="description" content="巴洛克音響（巴洛克國際股份有限公司）創立於1997年，總代理英國 ProAc、義大利 Franco Serblin、羅馬尼亞 Rockna Audio 等世界頂級音響品牌。提供智能選音響顧問、VIP試聽預約、到府聲學規劃與原廠防偽保固。一路走來始終如一，莫忘聽音樂的初衷！">
-  <meta name="keywords" content="巴洛克音響, ProAc, Franco Serblin, Rockna, 音響試聽, 兩聲道音響, 家庭劇院, 串流音響, 聲學規劃, 音響保固">
+  <meta name="description" content="巴洛克音響（巴洛克國際股份有限公司）創立於1997年，總代理英國 ProAc、義大利 Franco Serblin、羅馬尼亞 Rockna Audio 等世界頂級音響品牌。提供智能選音響顧問、VIP試聽預約與原廠防偽保固。一路走來始終如一，莫忘聽音樂的初衷！">
+  <meta name="keywords" content="巴洛克音響, ProAc, Franco Serblin, Rockna, 音響試聽, 兩聲道音響, 家庭劇院, 串流音響, 音響保固">
   
   <!-- Google 字體預先連線 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -678,7 +678,7 @@
           <span class="section-tag">PROFESSIONAL SERVICES</span>
           <h2 class="section-title">專業服務</h2>
           <p class="section-desc">
-            巴洛克深耕台灣音響界近三十年，提供獨立試聽室預約接待與頂級到府空間聲學勘測規劃。
+            巴洛克深耕台灣音響界近三十年，提供獨立試聽室專屬預約接待與歐系旗艦器材鑑賞服務。
           </p>
         </div>
 
@@ -693,20 +693,6 @@
             <div class="service-card-action">
               <button class="btn btn-primary" onclick="MainApp.openBookingModal()">
                 預約試聽 ➔
-              </button>
-            </div>
-          </div>
-
-          <!-- 服務卡 2: 到府規劃 -->
-          <div class="service-card">
-            <div class="service-card-icon">📐</div>
-            <h3 class="service-card-title">到府規劃</h3>
-            <p class="service-card-desc">
-              針對豪宅新成屋、客廳影音與專屬視聽室。巴洛克聲學工程師親臨現場實施 RT60 殘響量測、低頻駐波模擬與管線預埋建議，無縫對接您的室內設計師。
-            </p>
-            <div class="service-card-action">
-              <button class="btn btn-outline" onclick="MainApp.openModal('survey-modal')">
-                到府規劃 ➔
               </button>
             </div>
           </div>
@@ -814,9 +800,6 @@
             <button class="btn btn-outline btn-sm" onclick="MainApp.openBookingModal()" style="text-align:left; justify-content:flex-start;">
               🎙️ 預約台北獨立試聽室
             </button>
-            <button class="btn btn-glass btn-sm" onclick="MainApp.openModal('survey-modal')" style="text-align:left; justify-content:flex-start;">
-              📐 預約豪宅到府聲學勘測
-            </button>
             <a href="#warranty-section" class="btn btn-glass btn-sm" style="text-align:left; justify-content:flex-start;">
               🛡️ 公司貨保固登錄與核驗
             </a>
@@ -909,73 +892,6 @@
     </div>
   </div>
 
-  <!-- 2. 到府聲學勘測規劃模態視窗 -->
-  <div class="modal-backdrop" id="survey-modal">
-    <div class="modal-dialog">
-      <button class="modal-close-btn" onclick="MainApp.closeModal('survey-modal')">&times;</button>
-      
-      <div id="survey-form-container">
-        <span class="section-tag">ON-SITE ACOUSTIC SURVEY</span>
-        <h3 class="font-serif" style="font-size:2rem; color:#fff; margin:12px 0 8px;">預約頂級到府空間聲學勘測規劃</h3>
-        <p style="color:var(--text-secondary); font-size:0.95rem; margin-bottom:24px;">
-          針對豪宅新成屋、客廳影音與獨立視聽室，提供現場 RT60 殘響量測與管線預埋工程建議。
-        </p>
-
-        <form id="home-survey-form">
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:20px;">
-            <div class="form-group">
-              <label class="form-label">聯絡人姓名<span class="required">*</span></label>
-              <input type="text" name="name" class="form-control" placeholder="請填寫姓名" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">聯絡電話<span class="required">*</span></label>
-              <input type="tel" name="phone" class="form-control" placeholder="例：0912-345-678" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">空間坪數 (約幾坪)<span class="required">*</span></label>
-              <input type="number" name="area" class="form-control" placeholder="例：12" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">裝潢現況階段<span class="required">*</span></label>
-              <select name="stage" class="form-control" style="background:var(--bg-tertiary); color:#fff;" required>
-                <option value="新成屋毛胚 (水電進場前最佳時機)">新成屋毛胚 (水電進場前最佳時機)</option>
-                <option value="室內設計規劃施工中">室內設計規劃施工中</option>
-                <option value="已裝潢完工 (現有空間聲學優化)">已裝潢完工 (現有空間聲學優化)</option>
-              </select>
-            </div>
-            <div class="form-group" style="grid-column: 1 / -1;">
-              <label class="form-label">勘測房屋地址<span class="required">*</span></label>
-              <input type="text" name="address" class="form-control" placeholder="請填寫縣市、行政區與路街名稱" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">音響系統預計投資預算</label>
-              <select name="budget" class="form-control" style="background:var(--bg-tertiary); color:#fff;">
-                <option value="30萬 - 60萬">30萬 - 60萬</option>
-                <option value="60萬 - 120萬">60萬 - 120萬</option>
-                <option value="120萬 - 250萬">120萬 - 250萬</option>
-                <option value="250萬以上頂級豪宅全室規劃">250萬以上頂級豪宅全室規劃</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label">期望勘查日期</label>
-              <input type="date" name="surveyDate" id="survey-date" class="form-control">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">空間說明或室內設計師資訊</label>
-            <textarea name="note" rows="2" class="form-control" placeholder="例如：天花板挑高3米3、地坪為大理石、希望能預留管線對接設計師..."></textarea>
-          </div>
-
-          <div style="margin-top:24px; text-align:right;">
-            <button type="submit" class="btn btn-primary btn-lg">
-              📐 提交到府聲學丈量申請 ➔
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
 
   <!-- 3. 產品規格比對模態視窗 -->
   <div class="modal-backdrop" id="compare-modal">
