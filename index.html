@@ -1,12 +1,22 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant-TW">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>巴洛克音響 ANSBACH ACOUSTIC ｜ 歐洲頂級 Hi-End 音響台灣總代理 ‧ 品牌旗艦門戶</title>
-  <meta name="description" content="巴洛克音響（巴洛克國際股份有限公司）創立於1997年，總代理英國 ProAc、義大利 Franco Serblin、羅馬尼亞 Rockna Audio 等世界頂級音響品牌。提供智能選音響顧問、VIP試聽預約與原廠防偽保固。一路走來始終如一，莫忘聽音樂的初衷！">
-  <meta name="keywords" content="巴洛克音響, ProAc, Franco Serblin, Rockna, 音響試聽, 兩聲道音響, 家庭劇院, 串流音響, 音響保固">
+  <title>巴洛克音響 ANSBACH ACOUSTIC｜歐洲 Hi-End 音響品牌</title>
+  <meta name="description" content="巴洛克音響創立於 1997 年，持續將歐洲優質音響品牌引進台灣。代理 Franco Serblin、ProAc 等品牌，歡迎預約台北展示空間親自試聽，感受音樂最初的感動。">
+  <meta name="keywords" content="巴洛克音響, ANSBACH ACOUSTIC, Franco Serblin, ProAc, 音響試聽, Hi-End 音響, 雙聲道音響, 音響保固">
   
+  <!-- 瀏覽器圖示 (Favicon) -->
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+  <!-- Open Graph 基礎標籤 (LINE / Facebook 分享預覽) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="巴洛克音響 ANSBACH ACOUSTIC">
+  <meta property="og:description" content="巴洛克音響創立於 1997 年，持續將歐洲優質音響品牌引進台灣。代理 Franco Serblin、ProAc 等品牌，歡迎預約台北展示空間親自試聽，感受音樂最初的感動。">
+  <meta property="og:site_name" content="巴洛克音響">
+  <meta property="og:locale" content="zh_TW">
+
   <!-- Google 字體預先連線 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,29 +32,22 @@
   <!-- ==================== 頂部導覽列 (Navbar) ==================== -->
   <header class="navbar">
     <div class="container navbar-container">
-      <a href="#top" class="brand-logo">
+      <a href="#top" class="brand-logo" aria-label="巴洛克音響 首頁">
+        <img src="assets/images/logo.png" alt="巴洛克音響 Logo" class="brand-logo-img">
         <span class="brand-logo-text">巴洛克音響</span>
-        <span class="brand-logo-sub">ANSBACH ACOUSTIC</span>
       </a>
 
       <!-- 桌面版導覽連結 -->
       <nav>
         <ul class="nav-links" id="nav-links-menu">
           <li><a href="#brands-section" class="nav-link">品牌殿堂</a></li>
-          <li><a href="#advisor-section" class="nav-link">智能選音響</a></li>
-          <li><a href="#scenarios-section" class="nav-link">情境入口</a></li>
-          <li><a href="#products-section" class="nav-link">產品中心</a></li>
-          <li><a href="#articles-section" class="nav-link">影音知識庫</a></li>
-          <li><a href="#dealers-section" class="nav-link">授權經銷</a></li>
+          <li><a href="#about-section" class="nav-link">關於巴洛克</a></li>
           <li><a href="#warranty-section" class="nav-link">保固服務</a></li>
         </ul>
       </nav>
 
       <!-- 導覽列操作區 -->
       <div class="nav-actions">
-        <button class="btn btn-outline btn-sm" onclick="MainApp.playAcousticDemoTone()" title="試聽巴洛克 432Hz 自然聲學和諧音調">
-          🎵 聲學調音
-        </button>
         <button class="btn btn-primary btn-sm" onclick="MainApp.openBookingModal()">
           預約試聽
         </button>
@@ -58,6 +61,7 @@
   <main>
     <!-- ==================== Hero 品牌首頁旗艦影音橫幅 (M4-02 桌機 16:9 Banner) ==================== -->
     <section class="hero-section" id="hero-section">
+      <h1 class="visually-hidden">巴洛克音響 ANSBACH ACOUSTIC｜歐洲 Hi-End 音響品牌</h1>
       <div class="hero-banner-container">
         <div class="hero-banner-wrapper">
           <!-- 單一 HTML5 video 元件，設定 autoplay muted loop playsinline，由 JS 裝置判斷選擇來源 -->
@@ -113,24 +117,18 @@
             <span class="sound-label" id="hero-sound-label">開啟原聲</span>
           </button>
 
-          <!-- 桌機精簡操作區：保留原「選音響」「預約試聽」功能，懸浮置底不遮擋器材、Logo 與文字 -->
+          <!-- 桌機精簡操作區：保留單一「預約試聽」主按鈕，懸浮置底不遮擋器材、Logo 與文字 -->
           <div class="hero-action-dock" id="hero-action-dock">
-            <button class="btn btn-primary btn-dock" onclick="AudioAdvisor.startFromHero()" title="啟動智能選音響顧問">
-              選音響 ➔
-            </button>
-            <button class="btn btn-outline btn-dock" onclick="MainApp.openBookingModal()" title="預約巴洛克 VIP 旗艦試聽">
-              預約試聽
+            <button class="btn btn-primary btn-dock" onclick="MainApp.openBookingModal()" title="預約巴洛克 VIP 旗艦試聽">
+              預約試聽 ➔
             </button>
           </div>
         </div>
 
         <!-- 手機版專屬操作列：置於 9:16 影片下方，避免遮擋器材、壁爐、Logo 與影片結尾聯絡資訊 -->
         <div class="hero-mobile-cta-strip" id="hero-mobile-cta-strip">
-          <button class="btn btn-primary btn-mobile-cta" onclick="AudioAdvisor.startFromHero()" title="啟動智能選音響顧問">
-            🧭 智能選音響 ➔
-          </button>
-          <button class="btn btn-outline btn-mobile-cta" onclick="MainApp.openBookingModal()" title="預約巴洛克 VIP 旗艦試聽">
-            📅 VIP 預約試聽
+          <button class="btn btn-primary btn-mobile-cta" onclick="MainApp.openBookingModal()" title="預約巴洛克 VIP 旗艦試聽">
+            📅 VIP 預約試聽 (02-25167050)
           </button>
         </div>
       </div>
@@ -142,21 +140,6 @@
             <div class="hero-trust-item">
               <span class="trust-val">1997</span>
               <span class="trust-lbl">創立年份</span>
-            </div>
-            <span class="trust-sep">/</span>
-            <div class="hero-trust-item">
-              <span class="trust-val">100%</span>
-              <span class="trust-lbl">原裝進口</span>
-            </div>
-            <span class="trust-sep">/</span>
-            <div class="hero-trust-item">
-              <span class="trust-val">0.35s</span>
-              <span class="trust-lbl">RT60 旗艦試聽室</span>
-            </div>
-            <span class="trust-sep">/</span>
-            <div class="hero-trust-item">
-              <span class="trust-val">全台</span>
-              <span class="trust-lbl">授權經銷門市</span>
             </div>
           </div>
         </div>
@@ -229,134 +212,87 @@
       </div>
     </section>
 
-    <!-- ==================== Module 9: 售後服務與保固中心 (首頁第四順位) ==================== -->
+    <!-- ==================== 關於巴洛克 (About Ansbach) ==================== -->
+    <section class="section-padding about-section" id="about-section">
+      <div class="container">
+        <div class="about-card">
+          <span class="section-tag">ABOUT ANSBACH ACOUSTIC</span>
+          <h2 class="section-title font-serif about-title">莫忘聽音樂的初衷</h2>
+          <div class="about-body">
+            <p>
+              自 1997 年創立以來，巴洛克音響持續將歐洲優質音響品牌引進台灣，重視的不只是器材的技術表現，更是音樂本身帶來的感動。
+            </p>
+            <p>
+              我們相信，好的聲音值得親自聆聽。在台北的實體展示空間，巴洛克邀請愛樂者透過試聽，尋找與自己產生共鳴的聲音。
+            </p>
+          </div>
+          <div class="about-signoff font-serif">Music is good for health.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== Module 9: 產品保固與售後服務 (首頁第四順位) ==================== -->
     <section class="section-padding" id="warranty-section" style="background:var(--bg-secondary);">
       <div class="container">
         <div class="section-header">
           <span class="section-tag">WARRANTY & CUSTOMER SERVICE</span>
-          <h2 class="section-title">售後服務 ‧ 原廠保固登錄與核驗</h2>
+          <h2 class="section-title">產品保固與售後服務</h2>
           <p class="section-desc">
-            巴洛克堅持守護消費者權益。提供正品序號線上防偽查詢與數位保證卡登錄，讓每位愛樂者皆能安心享受原廠售後尊榮支援。
+            感謝您選擇巴洛克音響代理產品。請填寫產品資訊及購買資料，以利保固資料建檔與後續服務。實際保固權益依產品適用條款及購買憑證認定。
           </p>
         </div>
 
-        <!-- 初始雙入口卡片 -->
-        <div class="warranty-entries-grid">
-          <!-- 入口 1: 正品驗證 -->
-          <div class="warranty-entry-card" id="warranty-entry-query" onclick="WarrantyCenter.openTab('query')">
-            <div class="warranty-entry-icon">🔍</div>
-            <h3 class="warranty-entry-title">正品驗證</h3>
-            <p class="warranty-entry-desc">原廠正品公司貨序號即時線上防偽核驗</p>
-            <button class="btn btn-outline btn-sm">開啟序號核驗 ➔</button>
+        <!-- 單一精品保固服務卡 -->
+        <div class="warranty-service-card">
+          <div class="warranty-card-badge-icon">🛡️</div>
+          <h3 class="font-serif warranty-card-title">巴洛克官方產品保固線上登錄</h3>
+          <p class="warranty-card-desc">
+            請點擊下方按鈕前往巴洛克官方 Google 保固登錄表單，填寫產品型號、機身序號與購買憑證等資訊，以利完成原廠保固建檔。
+          </p>
+
+          <div style="margin: 28px 0;">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdMd_ct8yo-cWtesW6kugND3GpRbkatIc7gKs7m7qstvEbb6Q/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg warranty-form-btn">
+              前往保固登錄 ➔
+            </a>
           </div>
 
-          <!-- 入口 2: 保固登錄 -->
-          <div class="warranty-entry-card" id="warranty-entry-reg" onclick="WarrantyCenter.openTab('register')">
-            <div class="warranty-entry-icon">📝</div>
-            <h3 class="warranty-entry-title">保固登錄</h3>
-            <p class="warranty-entry-desc">新購歐系器材線上登記享 1~2 年原廠保固</p>
-            <button class="btn btn-primary btn-sm">開啟保固登錄 ➔</button>
+          <!-- 產品保固註冊須知 (M15-05B-R2 現行官網原文移植) -->
+          <div class="warranty-notice-box">
+            <h4 class="warranty-notice-title">📋 產品保固註冊須知：</h4>
+            <div style="margin-bottom: 14px; line-height: 1.75; font-weight: 500; color: #ffffff;">
+              感謝您購買巴洛克公司旗下代理商品！
+            </div>
+            <ol class="warranty-notice-list">
+              <li>您可以透過本網站註冊您的商品，將確保您商品售後保固服務，請盡速註冊您的產品，以免導致您權益受損，所有保固將於商品註冊成功後立即生效！謝謝您的支持與合作！(本公司有產品保固之審核權，如您購買的全新產品非中華民國九十五年一月一日後向本公司的經銷商購買者，恕無法給予本公司產品保固卡，舊卡保固期限未到期者仍於保固期內，敬請安心！)</li>
+              <li>當您註冊後，需收到本公司的正式通知，才算完成產品註冊登記。註冊你所購買之巴洛克公司代理產品成功後，將確保您商品享有售後保固1年的服務。</li>
+              <li>各項商品保固將依所附之保證書內所規範之保固年限及範圍提供保固，非本公司所販賣或超過保固期之商品或自行修改或 ……. 等，需著收維修費用。</li>
+              <li>若有任何問題，您可撥打客服諮詢專線：02-25167050</li>
+              <li>您所註冊之資料，僅限於本公司內部使用。並非所有商品皆提供延長保固。</li>
+              <li>尋求進一步協助, 請聯絡客服諮詢專線：02-25167050</li>
+            </ol>
           </div>
-        </div>
 
-        <!-- 折疊展開區塊：預設完全收合 -->
-        <div id="warranty-collapsible-wrapper" class="warranty-collapsible-wrapper" style="display:none; margin-top:36px;">
-          <div class="advisor-card container-narrow">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin-bottom:24px; border-bottom:1px solid var(--border-subtle); padding-bottom:16px;">
-              <!-- 雙分頁按鈕 -->
-              <div style="display:flex; gap:12px; flex-wrap:wrap;">
-                <button class="btn btn-outline btn-sm active" id="tab-btn-warranty-query" onclick="WarrantyCenter.switchTab('query')">
-                  🔍 正品序號防偽即時核驗
-                </button>
-                <button class="btn btn-glass btn-sm" id="tab-btn-warranty-reg" onclick="WarrantyCenter.switchTab('register')">
-                  📝 新購產品保固線上登錄
-                </button>
+          <!-- 客服與門市聯絡資訊列 -->
+          <div class="warranty-contact-box">
+            <div class="warranty-contact-item">
+              <span class="contact-item-icon">📞</span>
+              <div>
+                <div class="contact-item-label">客服電話</div>
+                <a href="tel:0225167050" class="contact-item-value">02-25167050</a>
               </div>
-              <button class="btn btn-glass btn-sm" onclick="WarrantyCenter.closePanel()" style="color:var(--text-muted); font-size:0.82rem;">
-                ✕ 收合保固面板
-              </button>
             </div>
-
-            <!-- Tab 1: 序號防偽查詢 -->
-            <div id="warranty-pane-query">
-              <h3 class="font-serif" style="font-size:1.6rem; color:#fff; margin-bottom:8px;">原廠正品公司貨 ‧ 序號即時核驗系統</h3>
-              <p style="color:var(--text-secondary); font-size:0.95rem; margin-bottom:20px;">
-                輸入您器材機背銘牌上的原廠序號（如 ProAc 或 EC 機身號碼），系統將即時核對台灣總代理巴洛克之官方防偽登錄庫：
-              </p>
-
-              <div style="display:flex; gap:12px; margin-bottom:12px; flex-wrap:wrap;">
-                <input type="text" id="verify-serial-input" class="form-control" placeholder="請輸入產品機身序號（例：ANS-PA-2024-8891 或 ANS-EC-2024-3012）" style="flex:1; min-width:260px;">
-                <button class="btn btn-primary" id="btn-verify-serial">
-                  即刻核驗序號 ➔
-                </button>
+            <div class="warranty-contact-item">
+              <span class="contact-item-icon">✉️</span>
+              <div>
+                <div class="contact-item-label">客服信箱</div>
+                <a href="mailto:service@ansbach.com.tw" class="contact-item-value">service@ansbach.com.tw</a>
               </div>
-              <div style="font-size:0.8rem; color:var(--text-muted);">
-                💡 體驗測試可用範例序號：<code style="color:var(--gold-light); cursor:pointer;" onclick="WarrantyCenter.quickVerify('ANS-PA-2024-8891')">ANS-PA-2024-8891</code>（ProAc D20R） 或 <code style="color:var(--gold-light); cursor:pointer;" onclick="WarrantyCenter.quickVerify('ANS-EC-2024-3012')">ANS-EC-2024-3012</code>（EC 串流綜擴）
-              </div>
-
-              <!-- 查詢結果放置區 -->
-              <div id="warranty-verify-result" style="display:none;"></div>
             </div>
-
-            <!-- Tab 2: 保固線上登錄 -->
-            <div id="warranty-pane-reg" style="display:none;">
-              <h3 class="font-serif" style="font-size:1.6rem; color:#fff; margin-bottom:8px;">新購器材保固卡線上登記</h3>
-              <p style="color:var(--text-secondary); font-size:0.95rem; margin-bottom:24px;">
-                凡自巴洛克官方展示中心或全台授權經銷店購買之歐系音響器材，請於購買後 30 天內完成登記，享有台灣原廠 1~2 年零件與調校保固服務。
-              </p>
-
-              <div id="warranty-form-container">
-                <form id="warranty-registration-form">
-                  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:20px;">
-                    <div class="form-group">
-                      <label class="form-label">產品機身序號 (Serial No.)<span class="required">*</span></label>
-                      <input type="text" name="serial" class="form-control" placeholder="例：ANS-PA-2026-9901" required>
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label">購買型號 (Model Name)<span class="required">*</span></label>
-                      <select name="model" class="form-control" required style="background:var(--bg-tertiary); color:#fff;">
-                        <option value="ProAc Response D20R">ProAc Response D20R 帶狀落地</option>
-                        <option value="ProAc Tablette 10 Signature">ProAc Tablette 10 Signature 書架</option>
-                        <option value="ProAc K6 Signature">ProAc K6 Signature 旗艦落地</option>
-                        <option value="Electrocompaniet ECI 6DX MKII">Electrocompaniet ECI 6DX MKII 串流綜擴</option>
-                        <option value="Electrocompaniet AW 800 M">Electrocompaniet AW 800 M 旗艦後級</option>
-                        <option value="Franco Serblin Accordo">Franco Serblin Accordo 魯特琴書架</option>
-                        <option value="Franco Serblin Ktema">Franco Serblin Ktêma 四音路旗艦</option>
-                        <option value="Rockna Wavedream DAC">Rockna Wavedream Signature DAC</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label">授權經銷門市<span class="required">*</span></label>
-                      <input type="text" name="dealer" class="form-control" placeholder="例：巴洛克官方旗艦店 或 日月音響" required>
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label">購買日期<span class="required">*</span></label>
-                      <input type="date" name="purchaseDate" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label">購買發票號碼</label>
-                      <input type="text" name="invoiceNumber" class="form-control" placeholder="例：TK-12345678">
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label">登錄者姓名<span class="required">*</span></label>
-                      <input type="text" name="ownerName" class="form-control" placeholder="請填寫真實姓名" required>
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label">行動電話<span class="required">*</span></label>
-                      <input type="tel" name="phone" class="form-control" placeholder="例：0912-345-678" required>
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label">電子信箱</label>
-                      <input type="email" name="email" class="form-control" placeholder="例：service@client.tw">
-                    </div>
-                  </div>
-
-                  <div style="margin-top:20px; text-align:right;">
-                    <button type="submit" class="btn btn-primary btn-lg">
-                      🛡️ 提交原廠保固登錄 ➔
-                    </button>
-                  </div>
-                </form>
+            <div class="warranty-contact-item">
+              <span class="contact-item-icon">🕒</span>
+              <div>
+                <div class="contact-item-label">服務時間</div>
+                <span class="contact-item-value" style="text-decoration:none;">週一至週五 10:00–19:00</span>
               </div>
             </div>
           </div>
@@ -364,375 +300,6 @@
       </div>
     </section>
 
-    <!-- ==================== Module 2: 智能選音響顧問 (導覽專用/首頁預設隱藏) ==================== -->
-    <section class="section-padding" id="advisor-section" style="display:none; background:var(--bg-secondary);">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">SMART AUDIO ADVISOR</span>
-          <h2 class="section-title">智能選音響顧問</h2>
-          <p class="section-desc">
-            不知如何挑選？回答空間坪數、預算、喜好音樂與系統型態，巴洛克智能演算法將為您計算出空間聲學契合度最高的黃金組合。
-          </p>
-          <div style="margin-top:28px;">
-            <button class="btn btn-primary" id="advisor-toggle-expand-btn" onclick="AudioAdvisor.toggleAccordion()">
-              開始 4 步驟選音響 ➔
-            </button>
-          </div>
-        </div>
-
-        <!-- 步驟折疊面板：預設收合 -->
-        <div id="advisor-expandable-panel" style="display:none;">
-          <div class="advisor-card container-narrow">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:12px;">
-              <button class="btn btn-glass btn-sm" onclick="AudioAdvisor.toggleAccordion(false)" style="color:var(--text-muted); font-size:0.8rem;">
-                ✕ 收合選音響顧問
-              </button>
-            </div>
-          <!-- 步驟進度指示器 -->
-          <div class="advisor-stepper">
-            <div class="advisor-progress-line">
-              <div class="advisor-progress-fill"></div>
-            </div>
-
-            <div class="advisor-step-item active" onclick="AudioAdvisor.goToStep(1)">
-              <div class="advisor-step-circle">1</div>
-              <span class="advisor-step-name">空間大小</span>
-            </div>
-            <div class="advisor-step-item" onclick="AudioAdvisor.goToStep(2)">
-              <div class="advisor-step-circle">2</div>
-              <span class="advisor-step-name">投資預算</span>
-            </div>
-            <div class="advisor-step-item" onclick="AudioAdvisor.goToStep(3)">
-              <div class="advisor-step-circle">3</div>
-              <span class="advisor-step-name">音樂偏好</span>
-            </div>
-            <div class="advisor-step-item" onclick="AudioAdvisor.goToStep(4)">
-              <div class="advisor-step-circle">4</div>
-              <span class="advisor-step-name">系統型態</span>
-            </div>
-          </div>
-
-          <!-- 步驟內容切換區 -->
-          <div id="advisor-steps-wrapper">
-            <!-- Step 1: 空間大小 -->
-            <div class="advisor-step-panel" id="advisor-step-1">
-              <h3 class="advisor-question-title">Step 1：您的預計聆聽空間坪數為何？</h3>
-              <p class="advisor-question-desc">空間容積與殘響時間將直接決定揚聲器尺寸（書架/落地）與低音反射孔設計。</p>
-              
-              <div class="options-grid">
-                <div class="option-tile selected" data-step="1" data-key="space" data-val="small">
-                  <div class="option-icon">📚</div>
-                  <div class="option-title">小坪數書房 / 臥室 (3 - 5 坪)</div>
-                  <div class="option-desc">近場聆聽、空間精緻，最適合密閉式箱體或經典書架喇叭，無低音駐波困擾。</div>
-                </div>
-                <div class="option-tile" data-step="1" data-key="space" data-val="medium">
-                  <div class="option-icon">🛋️</div>
-                  <div class="option-title">標準客廳 / 開放空間 (5 - 12 坪)</div>
-                  <div class="option-desc">台灣最主流家庭空間，適合中型落地喇叭或大書架，三頻平衡開闊。</div>
-                </div>
-                <div class="option-tile" data-step="1" data-key="space" data-val="large">
-                  <div class="option-icon">🏛️</div>
-                  <div class="option-title">獨立大視聽室 / 豪宅大廳 (12 坪以上)</div>
-                  <div class="option-desc">大容積發燒殿堂，能完全容納旗艦落地四音路與大功率後級的澎湃動態。</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Step 2: 預算級距 -->
-            <div class="advisor-step-panel" id="advisor-step-2" style="display:none;">
-              <h3 class="advisor-question-title">Step 2：您預計的整體音響系統投資預算？</h3>
-              <p class="advisor-question-desc">包含揚聲器、擴大機、解碼訊源與基礎調音線材規劃。</p>
-              
-              <div class="options-grid">
-                <div class="option-tile" data-step="2" data-key="budget" data-val="10-25">
-                  <div class="option-icon">🥉</div>
-                  <div class="option-title">入門輕奢 (10 - 25 萬元)</div>
-                  <div class="option-desc">鎖定純英國手工書架（如 Tablette 10）搭配高品質一體式串流擴大機。</div>
-                </div>
-                <div class="option-tile selected" data-step="2" data-key="budget" data-val="25-60">
-                  <div class="option-icon">🥈</div>
-                  <div class="option-title">進階發燒 (25 - 60 萬元)</div>
-                  <div class="option-desc">巴洛克熱銷甜蜜點！ProAc 帶狀高音落地搭配挪威 EC 全平衡大電流綜擴。</div>
-                </div>
-                <div class="option-tile" data-step="2" data-key="budget" data-val="60-120">
-                  <div class="option-icon">🥇</div>
-                  <div class="option-title">旗艦奢華 (60 - 120 萬元)</div>
-                  <div class="option-desc">高階分體式前後級、頂級帶狀高音旗艦落地與 Rockna 頂尖 R2R 數位解碼。</div>
-                </div>
-                <div class="option-tile" data-step="2" data-key="budget" data-val="120+">
-                  <div class="option-icon">👑</div>
-                  <div class="option-title">頂峰殿堂客製 (120 萬元以上)</div>
-                  <div class="option-desc">Franco Serblin Ktêma 傳世名琴或 ProAc K10，搭配純 A 類 800W 單聲道後級。</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Step 3: 音樂偏好 -->
-            <div class="advisor-step-panel" id="advisor-step-3" style="display:none;">
-              <h3 class="advisor-question-title">Step 3：平日最常聆聽的音樂類型？</h3>
-              <p class="advisor-question-desc">不同品牌的單體材料（絲質、鋁帶、克維拉、紙盆）對人聲與樂器質感各有專精。</p>
-              
-              <div class="options-grid">
-                <div class="option-tile selected" data-step="3" data-key="genre" data-val="vocal">
-                  <div class="option-icon">🎙️</div>
-                  <div class="option-title">人聲爵士 ‧ 流行民謠 ‧ 室內樂</div>
-                  <div class="option-desc">強調歌手換氣呼吸細節、吉他擦弦質感與溫暖醇厚的肉質感。</div>
-                </div>
-                <div class="option-tile" data-step="3" data-key="genre" data-val="classical">
-                  <div class="option-icon">🎻</div>
-                  <div class="option-title">古典交響 ‧ 歌劇 ‧ 大編制管弦</div>
-                  <div class="option-desc">講究龐大音場定位、微動態層次、極高頻空氣感與管風琴深潛低頻。</div>
-                </div>
-                <div class="option-tile" data-step="3" data-key="genre" data-val="rock">
-                  <div class="option-icon">🎸</div>
-                  <div class="option-title">搖滾重金屬 ‧ 電子節奏 ‧ 電影原聲</div>
-                  <div class="option-desc">注重閃電般的低頻瞬態速度、大動態衝擊力與毫不壓縮的爆發力。</div>
-                </div>
-                <div class="option-tile" data-step="3" data-key="genre" data-val="streaming">
-                  <div class="option-icon">🌐</div>
-                  <div class="option-title">無損串流 ‧ 各類雜食愛樂</div>
-                  <div class="option-desc">重視解析度透明度、各類型音樂親和力與全頻段平順度。</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Step 4: 系統架構偏好 -->
-            <div class="advisor-step-panel" id="advisor-step-4" style="display:none;">
-              <h3 class="advisor-question-title">Step 4：您偏好怎樣的系統架構操作型態？</h3>
-              <p class="advisor-question-desc">在傳統發燒極致與現代智慧生活的優雅平衡。</p>
-              
-              <div class="options-grid">
-                <div class="option-tile selected" data-step="4" data-key="system" data-val="streamer">
-                  <div class="option-icon">📱</div>
-                  <div class="option-title">現代一體式智慧高解析串流</div>
-                  <div class="option-desc">手機/平板直覺遙控 Roon / Tidal / Apple AirPlay，無多餘器材雜亂線材。</div>
-                </div>
-                <div class="option-tile" data-step="4" data-key="system" data-val="hifi">
-                  <div class="option-icon">📻</div>
-                  <div class="option-title">純類比發燒兩聲道 (CD / 黑膠)</div>
-                  <div class="option-desc">專注於實體唱片儀式感，追求最純粹的純類比放大美學。</div>
-                </div>
-                <div class="option-tile" data-step="4" data-key="system" data-val="split">
-                  <div class="option-icon">🎛️</div>
-                  <div class="option-title">奢華分體式獨立前後級與DAC</div>
-                  <div class="option-desc">電源、解碼、前後級各自獨立隔離，追求極致抗干擾與電源儲備。</div>
-                </div>
-                <div class="option-tile" data-step="4" data-key="system" data-val="theater">
-                  <div class="option-icon">🎬</div>
-                  <div class="option-title">客廳兩聲道 + 家庭劇院整合</div>
-                  <div class="option-desc">主聲道兼任發燒音樂與電視電影環繞劇院，動靜皆宜。</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 導覽切換按鈕 -->
-            <div class="advisor-nav-buttons">
-              <button class="btn btn-outline" id="advisor-prev-btn" style="visibility:hidden;">⇦ 上一步</button>
-              <button class="btn btn-primary" id="advisor-next-btn">下一步 ➔</button>
-            </div>
-          </div>
-
-          <!-- 結果渲染容器 (預設隱藏) -->
-          <div id="advisor-result-container" style="display:none;"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-    <!-- ==================== Module 3: 情境入口 (導覽專用/首頁預設隱藏) ==================== -->
-    <section class="section-padding" id="scenarios-section" style="display:none;">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">SCENARIOS & LIFESTYLE</span>
-          <h2 class="section-title">全方位生活聲學情境入口</h2>
-          <p class="section-desc">
-            音響是現代居家美學最靈動的靈魂。探索適合客廳、書房、串流與頂級劇院的專屬情境解決方案。
-          </p>
-        </div>
-
-        <!-- 情境展示卡片格點 (4 大情境卡片，桌機一屏閱覽，手機自適應單/雙欄) -->
-        <div class="scenarios-grid" id="scenario-display-container">
-          <!-- 由 js/main.js 動態渲染 4 大主要情境卡片 -->
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== Module 4: 產品中心與黃金搭配建議 (導覽專用/首頁預設隱藏) ==================== -->
-    <section class="section-padding" id="products-section" style="display:none; background:var(--bg-secondary);">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">PRODUCT SHOWCASE & COMPARISON</span>
-          <h2 class="section-title">代理銘器型錄與規格比較</h2>
-          <p class="section-desc">
-            每款器材均支援一鍵「⚖️ 加入比較」，可即時橫向對比頻響、阻抗、靈敏度，並由系統自動提供原廠推薦搭配建議與聲學綜效解說。
-          </p>
-        </div>
-
-        <!-- 產品過濾工具列 -->
-        <div class="products-filter-bar">
-          <div class="filter-pills">
-            <button class="filter-pill product-filter-pill active" data-filter="all">全部系列</button>
-            <button class="filter-pill product-filter-pill" data-filter="speakers">揚聲器系統</button>
-            <button class="filter-pill product-filter-pill" data-filter="amplifiers">擴大機系統</button>
-            <button class="filter-pill product-filter-pill" data-filter="sources">數位訊源與 DAC</button>
-          </div>
-          <div style="font-size:0.85rem; color:var(--text-muted);">
-            點擊「加入比較」即可開啟側向多維度規格對照
-          </div>
-        </div>
-
-        <!-- 產品卡片格點 -->
-        <div class="products-grid" id="products-grid-container">
-          <!-- 由 js/main.js 動態渲染 -->
-        </div>
-
-        <!-- 查看全部產品按鈕列 -->
-        <div class="section-toggle-bar" id="products-toggle-bar">
-          <button class="btn btn-outline" id="btn-toggle-products" onclick="MainApp.toggleAllProducts()">
-            查看全部產品 ▾
-          </button>
-        </div>
-
-        <!-- 巴洛克推薦搭配 (CURATED SYSTEMS，預設折疊) -->
-        <div style="margin-top:60px; background:var(--bg-card); border:1px solid var(--gold-border); border-radius:var(--radius-lg); padding:32px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
-            <div>
-              <span class="section-tag" style="margin-bottom:6px;">CURATED SYSTEMS</span>
-              <h3 class="font-serif" style="font-size:1.8rem; color:#fff;">巴洛克推薦搭配</h3>
-              <p style="color:var(--text-secondary); font-size:0.9rem; margin-top:4px;">
-                巴洛克調音團隊二十餘年經驗累積之三大原廠經典綜效組合
-              </p>
-            </div>
-            <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
-              <button class="btn btn-outline btn-sm" id="btn-toggle-synergy" onclick="MainApp.toggleSynergy()">
-                展開推薦組合 ▾
-              </button>
-              <button class="btn btn-primary btn-sm" onclick="MainApp.openBookingModal({ note: '諮詢巴洛克推薦搭配' })">
-                預約試聽推薦組合 ➔
-              </button>
-            </div>
-          </div>
-
-          <!-- 折疊卡片清單：預設收合 -->
-          <div id="synergy-cards-wrapper" style="display:none; margin-top:28px;">
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:20px;">
-              <div style="background:var(--bg-tertiary); padding:24px; border-radius:var(--radius-md); border:1px solid var(--border-subtle);">
-                <span class="tech-chip" style="color:var(--gold-light); border-color:var(--gold-border);">原廠推薦搭配</span>
-                <h4 class="font-serif" style="font-size:1.25rem; color:#fff; margin:12px 0 6px;">英倫貴族與北歐溫陽</h4>
-                <p style="color:var(--text-gold); font-size:0.9rem; margin-bottom:10px;">ProAc D20R 落地 + EC ECI 6DX MKII 串流綜擴</p>
-                <p style="color:var(--text-secondary); font-size:0.85rem; line-height:1.6;">
-                  ProAc 帶狀高音的飄逸泛音搭配 EC 大電流溫厚中低頻，徹底解決毛刺感，人聲如沐春風。
-                </p>
-              </div>
-
-              <div style="background:var(--bg-tertiary); padding:24px; border-radius:var(--radius-md); border:1px solid var(--border-subtle);">
-                <span class="tech-chip" style="color:var(--gold-light); border-color:var(--gold-border);">原廠推薦搭配</span>
-                <h4 class="font-serif" style="font-size:1.25rem; color:#fff; margin:12px 0 6px;">天籟美聲極致示範</h4>
-                <p style="color:var(--text-gold); font-size:0.9rem; margin-bottom:10px;">Franco Serblin Ktêma + EC AW 800 M 旗艦單聲道</p>
-                <p style="color:var(--text-secondary); font-size:0.85rem; line-height:1.6;">
-                  Ktêma 義式傳世名琴木藝在 800W 純淨驅動力掌控下，爆發深不見底的低頻下潛與深邃音場。
-                </p>
-              </div>
-
-              <div style="background:var(--bg-tertiary); padding:24px; border-radius:var(--radius-md); border:1px solid var(--border-subtle);">
-                <span class="tech-chip" style="color:var(--gold-light); border-color:var(--gold-border);">原廠推薦搭配</span>
-                <h4 class="font-serif" style="font-size:1.25rem; color:#fff; margin:12px 0 6px;">文人書齋近場聖品</h4>
-                <p style="color:var(--text-gold); font-size:0.9rem; margin-bottom:10px;">ProAc Tablette 10 Sig + EC 綜擴系統</p>
-                <p style="color:var(--text-secondary); font-size:0.85rem; line-height:1.6;">
-                  10 歐姆高阻抗密閉箱體，近場聆聽完全無低頻反射波困擾，人聲口型結像立體浮凸。
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== Module 5: 專業文章與影音知識庫 (導覽專用/首頁預設隱藏) ==================== -->
-    <section class="section-padding" id="articles-section" style="display:none;">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">KNOWLEDGE BASE & MAGAZINE</span>
-          <h2 class="section-title">專業聲學文章與影音知識庫</h2>
-          <p class="section-desc">
-            巴洛克調音團隊親撰發燒心法、空間擺位法則與原廠技術解密，引領愛樂者深入 Hi-End 美聲世界。
-          </p>
-        </div>
-
-        <div class="brands-grid" id="articles-grid-container">
-          <!-- 由 js/main.js 動態渲染文章卡片 (預設最多 3 篇) -->
-        </div>
-
-        <div class="section-toggle-bar">
-          <button class="btn btn-outline" id="knowledge-toggle" onclick="MainApp.toggleAllKnowledge()">
-            查看更多 ▾
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== Module 6: 專業服務 (導覽專用/首頁預設隱藏) ==================== -->
-    <section class="section-padding professional-services" id="services-section" style="display:none; background:var(--bg-secondary);">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">PROFESSIONAL SERVICES</span>
-          <h2 class="section-title">專業服務</h2>
-          <p class="section-desc">
-            巴洛克深耕台灣音響界近三十年，提供獨立試聽室專屬預約接待與歐系旗艦器材鑑賞服務。
-          </p>
-        </div>
-
-        <div class="professional-services-grid">
-          <!-- 服務卡 1: 預約試聽 -->
-          <div class="service-card">
-            <div class="service-card-icon">🎙️</div>
-            <h3 class="service-card-title">預約試聽</h3>
-            <p class="service-card-desc">
-              台北市龍江路旗艦展示中心。備有兩間經過德國聲學精密校正的獨立試聽室，提供每場次 90 分鐘專屬一對一開聲接待與歐系旗艦器材鑑賞。
-            </p>
-            <div class="service-card-action">
-              <button class="btn btn-primary" onclick="MainApp.openBookingModal()">
-                預約試聽 ➔
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== Module 8: 全台授權經銷商互動查詢 (導覽專用/首頁預設隱藏) ==================== -->
-    <section class="section-padding" id="dealers-section" style="display:none;">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">AUTHORIZED DEALERS</span>
-          <h2 class="section-title">全台授權經銷網絡</h2>
-          <p class="section-desc">
-            巴洛克音響於全台各主要都會區均設有經銷體驗夥伴，請務必指名授權店購買，以享有總代理原廠保固與精密調校售後保障。
-          </p>
-        </div>
-
-        <!-- 區域篩選與搜尋欄 -->
-        <div class="products-filter-bar">
-          <div class="filter-pills">
-            <button class="filter-pill dealer-region-pill active" data-region="all">全台灣 (All)</button>
-            <button class="filter-pill dealer-region-pill" data-region="taipei">台北 ‧ 新北</button>
-            <button class="filter-pill dealer-region-pill" data-region="north">桃竹苗</button>
-            <button class="filter-pill dealer-region-pill" data-region="central">台中 ‧ 中部</button>
-            <button class="filter-pill dealer-region-pill" data-region="south">嘉義 ‧ 台南 ‧ 高雄</button>
-          </div>
-          <div style="flex:1; max-width:300px;">
-            <input type="text" id="dealer-search-input" class="form-control" placeholder="🔍 搜尋經銷門市、品牌或地址..." style="padding:8px 14px; font-size:0.88rem;">
-          </div>
-        </div>
-
-        <!-- 經銷商卡片格點 -->
-        <div class="dealers-grid" id="dealers-grid-container">
-          <!-- 由 js/dealer-map.js 動態渲染 -->
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== Module 10: VIP 電子報簡潔訂閱列 (首頁預設隱藏) ==================== -->
     <section class="newsletter-strip newsletter" id="newsletter" style="display:none;">
       <div class="container">
         <div class="newsletter-strip-inner">
@@ -801,9 +368,9 @@
               🎙️ 預約台北獨立試聽室
             </button>
             <a href="#warranty-section" class="btn btn-glass btn-sm" style="text-align:left; justify-content:flex-start;">
-              🛡️ 公司貨保固登錄與核驗
+              🛡️ 產品保固與售後服務
             </a>
-            <a href="https://www.facebook.com/pages/Music-good-for-health/1475286452760402" target="_blank" class="btn btn-glass btn-sm" style="text-align:left; justify-content:flex-start;">
+            <a href="https://www.facebook.com/pages/Music-good-for-health/1475286452760402" target="_blank" rel="noopener noreferrer" class="btn btn-glass btn-sm" style="text-align:left; justify-content:flex-start;">
               📘 Facebook 粉絲專區：Music is good for health
             </a>
           </div>
@@ -814,33 +381,13 @@
         <div>
           Copyright © 1997 - 2026 巴洛克國際股份有限公司 ANSBACH ACOUSTIC INT., LTD. All Rights Reserved.
         </div>
-        <div style="display:flex; gap:16px;">
+        <div>
           <span>隱私政策</span>
-          <span>服務條款</span>
-          <span>原廠授權認證聲明</span>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- ==================== 浮動器材比較抽屜 (Comparison Drawer) ==================== -->
-  <div class="comparison-drawer" id="comparison-drawer" style="display:none;">
-    <div class="container">
-      <div class="comparison-items-row">
-        <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
-          <div style="font-weight:700; color:var(--gold-light); font-size:0.95rem;">
-            ⚖️ 器材規格對比 (<span id="compare-count-badge">0</span>/3)
-          </div>
-          <div class="comparison-chips" id="comparison-chips"></div>
-        </div>
-
-        <div style="display:flex; gap:12px;">
-          <button class="btn btn-glass btn-sm" id="compare-clear-all">清空清單</button>
-          <button class="btn btn-primary btn-sm" id="compare-open-modal">展開規格與綜效對比 ➔</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- ==================== 模態視窗集中區 (Modals) ==================== -->
 
@@ -881,7 +428,7 @@
 
         <!-- 主要操作按鈕 -->
         <div style="display:flex; flex-direction:column; gap:12px;">
-          <a href="tel:0225167050" class="btn btn-primary btn-lg" style="width:100%; justify-content:center; font-size:1.05rem;" onclick="AnalyticsCRM.trackEvent('click_vip_call_booking')">
+          <a href="tel:0225167050" class="btn btn-primary btn-lg" style="width:100%; justify-content:center; font-size:1.05rem;">
             📞 撥打電話預約
           </a>
           <button type="button" class="btn btn-glass btn-sm" onclick="MainApp.closeModal('audition-modal')" style="color:var(--text-muted); align-self:center; margin-top:4px;">
@@ -893,15 +440,6 @@
   </div>
 
 
-  <!-- 3. 產品規格比對模態視窗 -->
-  <div class="modal-backdrop" id="compare-modal">
-    <div class="modal-dialog" style="max-width:1100px;">
-      <button class="modal-close-btn" onclick="MainApp.closeModal('compare-modal')">&times;</button>
-      <span class="section-tag">SPECIFICATION & SYNERGY</span>
-      <h3 class="font-serif" style="font-size:2rem; color:#fff; margin:12px 0 20px;">多器材橫向規格對比與黃金搭配點評</h3>
-      <div id="compare-modal-content"></div>
-    </div>
-  </div>
 
   <!-- 4. 品牌深入殿堂模態視窗 -->
   <div class="modal-backdrop" id="brand-detail-modal">
@@ -911,16 +449,6 @@
     </div>
   </div>
 
-  <!-- 5. 知識文章閱讀模態視窗 -->
-  <div class="modal-backdrop" id="article-modal">
-    <div class="modal-dialog">
-      <button class="modal-close-btn" onclick="MainApp.closeModal('article-modal')">&times;</button>
-      <span class="section-tag" id="article-modal-category">發燒知識庫</span>
-      <h3 class="font-serif" id="article-modal-title" style="font-size:2.2rem; color:#fff; margin:12px 0 8px; line-height:1.3;"></h3>
-      <div id="article-modal-meta" style="color:var(--text-muted); font-size:0.85rem; margin-bottom:24px;"></div>
-      <div id="article-modal-body"></div>
-    </div>
-  </div>
 
   <!-- ==================== 手機底部固定導覽列 (Mobile Bottom Nav) ==================== -->
   <nav class="mobile-bottom-nav" id="mobile-bottom-nav">
@@ -932,14 +460,6 @@
       <span class="mobile-nav-icon">✨</span>
       <span>品牌</span>
     </a>
-    <a href="#advisor-section" class="mobile-nav-item" data-target="advisor-section">
-      <span class="mobile-nav-icon">🧭</span>
-      <span>選音響</span>
-    </a>
-    <a href="#dealers-section" class="mobile-nav-item" data-target="dealers-section">
-      <span class="mobile-nav-icon">📍</span>
-      <span>經銷商</span>
-    </a>
     <a href="#warranty-section" class="mobile-nav-item" data-target="warranty-section">
       <span class="mobile-nav-icon">🛡️</span>
       <span>保固</span>
@@ -948,12 +468,7 @@
 
   <!-- ==================== JavaScript 核心模組載入 ==================== -->
   <script src="js/data.js"></script>
-  <script src="js/analytics-crm.js"></script>
-  <script src="js/advisor.js"></script>
-  <script src="js/comparator.js"></script>
   <script src="js/booking.js"></script>
-  <script src="js/warranty.js"></script>
-  <script src="js/dealer-map.js"></script>
   <script src="js/brand-carousel.js"></script>
   <script src="js/main.js"></script>
 </body>

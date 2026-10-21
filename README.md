@@ -1,115 +1,99 @@
-# 巴洛克音響 (ANSBACH ACOUSTIC) 全新旗艦數位官網
+# 巴洛克音響 (ANSBACH ACOUSTIC) 官方旗艦門戶
 
 > **「一路走來始終如一，莫忘聽音樂的初衷！」**  
 > *“Hear the emotion, not just the music. We collect only the best!”*  
-> *“Music is good for health. 音樂是身心最純粹的療癒”*
+> *“Music is good for health. 音樂是心靈最溫潤的滋養”*
 
-巴洛克音響（巴洛克國際股份有限公司，創立於1997年，官方展示中心：台北市中山區龍江路76巷53號）深耕台灣高階歐系 Hi-End 音響市場二十餘年。
-
-本專案徹底打破傳統音響代理商「冷冰冰靜態電子型錄」的單向陳列模式，全盤落實使用者提出之 **11 項旗艦級功能需求**，打造集「奢華品牌殿堂、情境沈浸導覽、智能聲學顧問、線上尊榮預約、防偽保固核驗與數位行銷追蹤（GA4/CRM）」於一體的現代化頂級門戶。
+巴洛克音響（巴洛克國際股份有限公司）創立於 1997 年，官方旗艦中心坐落於台北市中山區龍江路。二十餘年來深耕台灣頂級歐洲 Hi-End 音響市場，持續將具備深厚人文藝術底蘊與最高工藝指標的發燒器材引進台灣，與全體愛樂朋友共享純粹感動。
 
 ---
 
-## 🌟 11 大核心功能模組詳解
+## 🌟 核心功能與設計特色 (M15 規格)
 
-### 1. 品牌殿堂與代理品牌專區 (Brand Heritage & Masterpieces)
-- **英國 ProAc**：純英國手工實木、克維拉振膜與純鋁帶狀高音（K10, K6 Signature, Response D20R, Tablette 10 Signature）。
-- **挪威 Electrocompaniet (EC)**：Michael Jackson 錄音室御用，全平衡大電流與浮動變壓器技術（AW 800 M 旗艦單聲道、ECI 6DX MKII 串流綜擴、ECM 1 MKII 串流播放機）。
-- **義大利 Franco Serblin**：文藝復興魯特琴小提琴木藝絕響（Ktêma 旗艦落地、Accordo 傳世書架）。
-- **羅馬尼亞 Rockna Audio / Audiobyte**：全球離散式 R2R 梯形階梯解碼與 FPGA 演算法巔峰之作（Wavedream Signature DAC）。
-- **義大利 Capriccio Continuo (CC)**：專利奈米發泡蜂巢障板與極限微動態鑑聽（Admonitor Preference Plus）。
-- **法國 Triangle Hi-Fi**：法系號角鈦金屬高音與鮮活瞬態（Magellan 40週年旗艦、AIO 智慧串流）。
+### 1. 首頁自適應影音橫幅 (Hero Video Banner)
+- **跨裝置自適應素材**：桌機載入 16:9 比例影片（`assets/videos/巴洛克banner_桌機版.mp4`，約 2.95 MB），手機（≤768px）自動適配載入 9:16 比例影片（`assets/videos/巴洛克banner_手機版.mp4`，約 2.37 MB）。
+- **單一 Video 節點優化**：透過 JavaScript 動態判定載入，避免行動裝置重複下載雙份影音頻寬。
+- **瀏覽器 Autoplay 政策防護**：預設靜音自動循環播放，並具備使用者互動喚醒機制。
+- **原聲音訊開關 (Audio Toggle)**：右下方提供原聲開關，點擊切換音訊並同步按鈕視覺狀態（「開啟原聲」↔「原聲播放中」）。
+- **品牌信任標籤**：保留「1997 創立年份」單一純淨品牌信譽宣告。
 
-### 2. 依預算、空間、音樂偏好選音響 (Interactive Audio Advisor)
-- **Step 1 空間大小**：小坪數書房 (3-5坪)、居家客廳 (5-12坪)、獨立大視聽室 (12坪以上)。
-- **Step 2 投資預算**：入門輕奢 (10-25萬)、進階發燒 (25-60萬)、旗艦奢華 (60-120萬)、頂峰殿堂客製 (120萬以上)。
-- **Step 3 音樂偏好**：人聲爵士室內樂、古典大編制交響、流行搖滾動態、現代數位串流。
-- **Step 4 系統架構**：現代一體智慧串流、純類比兩聲道、分體前後級、劇院整合。
-- **即時運算輸出**：精確匹配評分（如 98%）、原廠聲學調音師專屬評語、揚聲器/擴大機/訊源配置清單，並支援**一鍵自動帶入預約試聽該推薦案**！
+### 2. 歐洲八大代理品牌精選輪播 (Brand Showcase 9:16 Carousel)
+- **單一集中資料庫**：全站品牌資料集中由 `js/data.js` 之 `ANSBACH_DATA.brands` 定義，絕無重複宣告。
+- **9:16 直式精品卡片**：
+  - **桌機版**：一次並排四張 9:16 直式卡片，八品牌分兩組（01-04 與 05-08），支援 8 秒自動輪播與滑鼠懸停暫停（Hover Pause）。
+  - **手機版**：一次顯示單張 9:16 卡片，支援 `‹ 01 / 08 ›` 快速切換。
+- **器材照片完整保護**：原廠照片容器固定為 1:1 正方形比例，採 `object-fit: contain`，確保器材外觀不被裁切或變形。
+- **品牌外連安全規範**：
+  - Franco Serblin、ProAc、EAM Lab、Esprit、ASI、Rockna、AudioByte 均提供「探索品牌 →」外部原廠連結，並強制設定 `target="_blank" rel="noopener noreferrer"`。
+  - **ATD 依原廠規格無外部網站，嚴格隱藏探索按鈕**，以對齊留白維持版型平整。
 
-### 3. 生活情境入口 (Scenario-based Portals)
-- **兩聲道純發燒 (Pure Stereo Hi-Fi)**：深度音場、歌手口型形體如浮雕浮現。
-- **現代無損數位串流 (Modern Hi-Res Streaming)**：支援 Roon Ready、Tidal Connect、Apple AirPlay 2，隨點即播 24-bit/192kHz 母帶。
-- **奢華居家劇院與多聲道 (Luxury Home Cinema)**：大編制電影震撼爆發力與人聲柔美兼顧。
-- **私密書房個人發燒 (Private Audiophile Sanctum)**：密閉式箱體近牆擺位不轟鳴，夜間小音量依然細節豐富。
+### 3. 關於巴洛克 (About Ansbach Acoustic)
+- 闡述巴洛克 1997 年創立以來之選物精神，引導愛樂者親臨台北旗艦展示空間預約試聽。
 
-### 4. 產品比較與黃金搭配建議 (Comparator & Synergy Matrix)
-- 產品型錄支援一鍵加入「⚖️ 加入比較」（最多 3 款）。
-- 橫向對比表格包含：頻率響應、阻抗、靈敏度、建議驅動功率、尺寸重量、聲音走向、原廠推薦搭配。
-- **原廠調音工程師黃金綜效 (Synergy Matrix)**：當比對中同時包含揚聲器與擴大機時，自動計算契合指數（如 98%）並給出推力與頻段互補心法點評。
+### 4. 產品保固與售後服務 (Warranty & Service)
+- **逐字條款移植**：完整移植現行官方網站「產品保固註冊須知」全部六項條款與前言，一字不漏保留審核權基準日、1年保固與內部使用宣告。
+- **官方表單串接**：提供醒目的保固登錄按鈕，安全外連至巴洛克官方 Google 保固登錄表單。
+- **專屬客服列**：清楚標示電話直撥（`02-25167050`）、客服信箱與服務時間。
 
-### 5. 專業文章與影音知識庫 (Knowledge Base & Magazine)
-- 【發燒調音心法】不必花大錢！掌握「三一七擺位法則」讓您的喇叭音場立體重現。
-- 【品牌傳奇故事】為什麼 Michael Jackson 錄音室指定挪威 Electrocompaniet 擴大機？
-- 【數位音訊解密】FPGA 與 R2R 階梯解碼究竟強在哪裡？Rockna Audio 技術深度剖析。
-- 【現代智慧家庭】從 CD 到 Roon Ready：如何無痛建構家庭 24bit/192kHz 母帶級無損串流系統？
+### 5. 官方旗艦中心門市與 VIP 電話預約 (VIP Audition Modal)
+- 全站預約功能統一整合為「VIP 電話預約資訊卡」（`#audition-modal`），支援行動裝置一鍵撥號直通門市（`tel:0225167050`）。
 
-### 6. VIP 台北旗艦門市試聽預約日曆 (VIP Audition Booking)
-- 台北市龍江路76巷53號1樓（南京復興站步行5分鐘）。
-- 防呆即時日曆與四大尊榮時段（上午晨光席、午後私享席、黃金鑑賞席、夜間夜曲席）。
-- 支援器材願望清單、訊源偏好（黑膠 LP / CD / Tidal 高解析），並能**一鍵加入 Google 行事曆**！
+### 6. 手機底部固定導覽列 (Mobile Bottom Nav)
+- 於行動端（≤768px）提供置底三鍵快捷導覽（`🏠 首頁`、`✨ 品牌`、`🛡️ 保固`）。
+- 具備即時 ScrollSpy 滾動感應高亮，並為 `body` 提供安全間距補償，徹底避免內容遮蔽。
 
-### 7. 預約到府空間聲學勘測規劃 (In-Home Acoustic Consultation)
-- 專門對接新成屋毛胚屋、裝潢設計師與豪宅獨立影音室。
-- 收集空間坪數、裝潢現況、地板材質，安排資深聲學工程師攜帶儀器現場實施 RT60 殘響檢測與水電專線預埋規劃。
-
-### 8. 尋找授權經銷商互動導覽 (Authorized Dealers Map & Directory)
-- 完整收錄台北、新北、新竹、台中、嘉義、高雄等地之官方授權夥伴。
-- 支援區域篩選（全台、台北、北部、中部、南部）與即時文字搜尋。
-- 提供電話直撥（`tel:`）、營業時間、常駐試聽品牌標籤與 **Google Maps 一鍵精確導航**。
-
-### 9. 售後服務與數位保固登錄 (Digital Warranty & Verification)
-- **正品序號線上防偽核驗**：輸入產品機身序號（如 `ANS-PA-2024-8891`），即時顯示原廠公司貨綠色認證盾牌、授權經銷商名稱與保固到期日。
-- **新購器材線上登記**：登錄購買型號、序號、經銷商與發票，即刻享有原廠 1~2 年零件與調校保固。
-
-### 10. 會員與潛在顧客資料蒐集 (VIP Membership & Lead Gen)
-- 訂閱《巴洛克聲學私享誌》電子報，優先享有台灣國際音響大展 VIP 門票與新品試聽權。
-- 多點智慧 Lead Capture，並提供 432Hz 自然聲學調音諧波即時試聽體驗。
-
-### 11. GA4、廣告轉換及 CRM 追蹤儀表板 (Live Analytics & CRM Inspector)
-- 畫面右下角內建**「📊 GA4 & CRM 觀測器」**（帶有即時綠色閃爍脈衝燈）。
-- **Tab 1 GA4 事件串流**：即時查看每一次點擊、選音響顧問測驗、產品比對、預約送出所觸發的 `dataLayer` 結構化事件。
-- **Tab 2 CRM 顧客名單**：即時瀏覽所有捕捉到的預約單、到府丈量單、保固單，並支援**一鍵匯出 Excel 相容繁體中文 CSV 報表**！
-- **Tab 3 追蹤代碼設定**：可自由輸入正式 GA4 Measurement ID (`G-XXXXXXXXXX`) 與 Meta Pixel ID。
+### 7. SEO、社群預覽與 Favicon 基礎設定
+- 語意化唯一 H1 標籤（`.visually-hidden` 兼顧無障礙與畫面純淨）。
+- 完整配置 `title`、`meta description` 與 Open Graph 基礎標籤（`og:type`, `og:title`, `og:description`, `og:site_name`, `og:locale`）。
+- 採用官方金色「B」Logo 作為瀏覽器 Favicon。
 
 ---
 
-## 🚀 啟動方式
+## 📂 專案檔案目錄結構
 
-### 方法 1：Windows 雙擊秒啟動 (推薦)
-直接雙擊專案目錄下的：
-```
-start_portal.cmd
-```
-系統會自動啟動 Python 伺服器並彈出預設瀏覽器開啟 `http://127.0.0.1:8899`。
-
-### 方法 2：終端機啟動
-在命令提示字元 (cmd) 或 PowerShell 中執行：
-```bash
-python server.py
-```
-
----
-
-## 📂 目錄結構說明
-```
+```text
 ansbach-audio-portal/
-├── index.html                  # 核心現代化旗艦門戶首頁
+├── index.html                  # 核心現代化旗艦門戶首頁 (HTML5, UTF-8)
+├── README.md                   # 系統規格與部署說明文件
+├── .gitignore                  # Git 忽略清單 (阻絕本地測試名單與腳本)
 ├── css/
-│   ├── luxury-theme.css        # 曜石黑與香檳金奢華調色盤
-│   ├── components.css          # 按鈕、卡片、顧問步驟、對比抽屜、模態視窗樣式
-│   └── responsive.css          # 手機、平板、大螢幕 RWD 響應式優化
+│   ├── luxury-theme.css        # 曜石黑與香檳金奢華調色盤、全域排版重設
+│   ├── components.css          # 導覽列、按鈕、輪播舞台、保固卡與模態窗樣式
+│   └── responsive.css          # 跨裝置 RWD (1024px, 768px, 480px, 360px 極限屏防溢出)
 ├── js/
-│   ├── data.js                 # 品牌陣容、器材規格、情境、文章、經銷商資料庫
-│   ├── advisor.js              # 智能選音響顧問 4 步驟演算法與結果運算
-│   ├── comparator.js           # 產品多維規格比對與原廠綜效調音評估
-│   ├── booking.js              # 旗艦門市試聽預約與到府規劃引擎
-│   ├── warranty.js             # 數位保固登錄與防偽正品序號線上核驗
-│   ├── dealer-map.js           # 全台經銷商篩選、搜尋與地圖導航
-│   ├── analytics-crm.js        # GA4 DataLayer 追蹤、CRM 名單收集與 CSV 匯出
-│   └── main.js                 # 主頁面控制器、模態窗管理與 432Hz 聲學試聽
-├── server.py                   # 輕量 Python 本地伺服器與 REST API
-├── start_portal.cmd            # Windows 快速啟動腳本
-├── leads.json                  # CRM 顧客名單本機持久化資料檔
-└── README.md                   # 系統規格與操作指南
+│   ├── data.js                 # 核心資料庫 (八大代理品牌規格與門市資訊)
+│   ├── brand-carousel.js       # 9:16 直式品牌輪播與切換元件
+│   ├── booking.js              # VIP 試聽電話預約核心存根
+│   └── main.js                 # 主控制器 (Hero 影片動態載入、原聲控制、錨點導航)
+└── assets/
+    ├── images/
+    │   ├── logo.png            # 巴洛克正式金色「B」企業識別 (相容 Favicon)
+    │   ├── hero-poster-desktop.svg # 桌機影片預載海報
+    │   ├── hero-poster-mobile.svg  # 手機影片預載海報
+    │   └── brands/             # 八大代理品牌原廠器材正身照 (1:1 容器)
+    │       ├── franco-serblin.jpg
+    │       ├── proac.jpg
+    │       ├── eam-lab.jpg
+    │       ├── esprit.jpg
+    │       ├── asi.jpg
+    │       ├── rockna.jpg
+    │       ├── audiobyte.jpg
+    │       └── atd.jpg
+    └── videos/
+        ├── 巴洛克banner_桌機版.mp4 # 16:9 桌機 Banner 影片 (~2.95 MB)
+        └── 巴洛克banner_手機版.mp4 # 9:16 手機 Banner 影片 (~2.37 MB)
 ```
+
+---
+
+## 🚀 部署與技術特性說明
+
+1. **純靜態架構 (Zero Backend)**：
+   - 全站無 PHP、Node.js、Python 或資料庫相依，直接相容 **GitHub Pages**、**Cloudflare Pages** 或任何標準靜態託管主機。
+2. **靜態快取與容量合規**：
+   - 影片檔案均經過 H.264 最佳化壓縮（桌機 < 3 MB、手機 < 2.5 MB），遠低於 Cloudflare Pages 單檔 25 MB 限制。
+3. **路徑相容性 (Relative Paths)**：
+   - 所有 CSS、JS、圖片與影片均使用相對路徑，完全相容 GitHub Pages 子目錄路徑（`https://judy0724.github.io/Baroque/`）與本機預覽（`http://localhost:8080/`）。
+4. **資訊安全與隱私合規**：
+   - 移除了未經授權之 CRM 追蹤代碼與偽造追蹤像素，表單資料全數交由官方 Google Forms 處理，零客戶個資外洩風險。
+   - 所有外部連結均配置 `rel="noopener noreferrer"` 防範反向分頁劫持。

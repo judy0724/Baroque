@@ -7,16 +7,31 @@
   .hero-title {
     font-size: 2.8rem;
   }
-  
-  /* 平板 <=1024px：情境卡片 2 欄 */
-  .scenarios-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  }
-  
   .hero-stats-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+  }
+
+  /* 1024px 視口導航間距適度調整，維持視覺置中且防重疊 */
+  .nav-links {
+    gap: 24px;
+  }
+
+  .nav-actions {
+    gap: 12px;
+  }
+
+  /* 1024px 視口企業識別適配（防擠壓中央導航與預約按鈕） */
+  .navbar .brand-logo {
+    gap: 6px;
+  }
+
+  .navbar .brand-logo-img {
+    height: 52px;
+  }
+
+  .navbar .brand-logo-text {
+    font-size: 26px;
   }
 }
 
@@ -37,8 +52,26 @@
     height: 72px;
   }
 
-  .navbar .nav-actions .btn-outline {
-    display: none; /* 手機版隱藏頂部次要按鈕，確保 360px 不擠壓破版 */
+  /* 頂部 Header 企業識別手機最佳化 (<=768px) */
+  .navbar .brand-logo {
+    flex: initial;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .navbar .nav-actions {
+    flex: initial;
+  }
+
+  .navbar .brand-logo-img {
+    height: 40px;
+  }
+
+  .navbar .brand-logo-text {
+    font-size: 1.25rem;
+    letter-spacing: 0.03em;
   }
 
   #nav-toggle-btn {
@@ -192,17 +225,25 @@
   .section-title {
     font-size: 2rem;
   }
-  
-  .advisor-card {
-    padding: 24px 16px;
+
+  .warranty-service-card {
+    padding: 32px 18px;
   }
-  
-  .advisor-stepper {
-    margin-bottom: 24px;
+
+  .warranty-notice-box {
+    padding: 20px 16px;
+    margin: 24px 0 20px;
+    font-size: 0.88rem;
   }
-  
-  .advisor-step-name {
-    display: none;
+
+  .warranty-notice-list {
+    padding-left: 18px;
+    gap: 8px;
+  }
+
+  .warranty-contact-box {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
   
   .modal-dialog {
@@ -216,28 +257,35 @@
   }
 
   /* 手機版格點自適應（防止 360px~430px 溢出） */
-  .brands-grid,
-  .products-grid,
-  .dealers-grid {
+  .brands-grid {
     grid-template-columns: 1fr;
   }
 
-  /* 浮動比較抽屜手機版直列排版 */
-  .comparison-items-row {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
+
+  /* 關於巴洛克手機/平板適配 */
+  .about-card {
+    padding: 40px 22px;
   }
 
-  /* 專業服務卡片手機/平板適配 */
-  .professional-services-grid {
-    width: 100%;
+  .about-title {
+    font-size: 1.85rem;
+    margin: 14px 0 22px;
   }
 
-  /* 保固入口卡片單欄排列 */
-  .warranty-entries-grid {
-    grid-template-columns: 1fr;
+  .about-body {
     gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .about-body p {
+    font-size: 0.96rem;
+    line-height: 1.85;
+    text-align: left;
+  }
+
+  .about-signoff {
+    font-size: 1.15rem;
+    padding-top: 20px;
   }
 
   /* VIP 電子報簡約訂閱列垂直排列 (保持緊湊) */
@@ -260,12 +308,6 @@
   }
 
   .newsletter-strip-form .btn {
-    width: 100%;
-  }
-
-  /* 保固序號查詢欄位自適應 */
-  #verify-serial-input {
-    min-width: 0 !important;
     width: 100%;
   }
 
@@ -426,14 +468,18 @@
   }
 }
 
-@media (max-width: 640px) {
-  /* 手機 <=640px：情境卡片 1 欄 */
-  .scenarios-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media (max-width: 360px) {
+  /* 360px 極限緊湊屏 Header 尺寸防溢出（B Logo 適配高度 35px，+25% 等比放大） */
+  .navbar .brand-logo {
+    gap: 7px;
+  }
+  .navbar .brand-logo-img {
+    height: 35px;
+  }
+  .navbar .brand-logo-text {
+    font-size: 1.12rem;
+    letter-spacing: 0.02em;
+  }
   .header-divider-line {
     width: 24px;
   }

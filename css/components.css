@@ -34,6 +34,42 @@ section[id], footer[id], [id] {
   gap: 2px;
 }
 
+/* 頂部導航列專屬企業識別 (Logo + 粗黑體中文橫向對齊) */
+.navbar .brand-logo {
+  flex: 1;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.navbar .brand-logo:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.brand-logo-img {
+  height: 60px;
+  width: auto;
+  aspect-ratio: 240 / 260;
+  object-fit: contain;
+  display: block;
+}
+
+.navbar .brand-logo-text {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", "Heiti TC", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  line-height: 1;
+  white-space: nowrap;
+}
+
 .brand-logo-text {
   font-family: var(--font-serif);
   font-size: 1.5rem;
@@ -51,19 +87,32 @@ section[id], footer[id], [id] {
   font-weight: 500;
 }
 
+/* 桌機導航容器置中平衡 */
+.navbar-container > nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 36px;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-link {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--text-secondary);
+  font-size: 16px;
+  font-weight: 600;
+  color: #E8E4DE;
+  letter-spacing: 0.04em;
   position: relative;
   padding: 8px 0;
+  text-decoration: none;
+  transition: color 0.25s ease;
+  white-space: nowrap;
 }
 
 .nav-link:hover, .nav-link.active {
@@ -86,8 +135,10 @@ section[id], footer[id], [id] {
 }
 
 .nav-actions {
+  flex: 1;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 16px;
 }
 
@@ -557,492 +608,6 @@ section[id], footer[id], [id] {
   border-top: 1px solid var(--border-subtle);
 }
 
-/* 智能選音響顧問 (Module 2) */
-.advisor-card {
-  background: var(--bg-card);
-  border: 1px solid var(--gold-border);
-  border-radius: var(--radius-lg);
-  padding: 48px;
-  box-shadow: var(--shadow-gold);
-  position: relative;
-}
-
-.advisor-stepper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 40px;
-  position: relative;
-}
-
-.advisor-step-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  position: relative;
-  z-index: 2;
-  cursor: pointer;
-}
-
-.advisor-step-circle {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--bg-tertiary);
-  border: 2px solid var(--border-subtle);
-  color: var(--text-muted);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 1.1rem;
-  transition: var(--transition-smooth);
-}
-
-.advisor-step-item.active .advisor-step-circle {
-  background: var(--gold-gradient);
-  border-color: var(--gold-light);
-  color: #0b0d12;
-  box-shadow: 0 0 20px var(--gold-glow);
-}
-
-.advisor-step-item.completed .advisor-step-circle {
-  background: var(--gold-dark);
-  border-color: var(--gold-primary);
-  color: #fff;
-}
-
-.advisor-step-name {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-.advisor-step-item.active .advisor-step-name {
-  color: var(--gold-light);
-}
-
-.advisor-progress-line {
-  position: absolute;
-  top: 22px;
-  left: 10%;
-  width: 80%;
-  height: 2px;
-  background: var(--border-subtle);
-  z-index: 1;
-}
-
-.advisor-progress-fill {
-  height: 100%;
-  background: var(--gold-gradient);
-  transition: width 0.4s ease;
-  width: 25%;
-}
-
-.advisor-step-content {
-  min-height: 280px;
-}
-
-.advisor-question-title {
-  font-family: var(--font-serif);
-  font-size: 1.8rem;
-  margin-bottom: 8px;
-  color: #fff;
-}
-
-.advisor-question-desc {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  margin-bottom: 30px;
-}
-
-.options-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-}
-
-.option-tile {
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 24px;
-  cursor: pointer;
-  transition: var(--transition-smooth);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.option-tile:hover {
-  border-color: var(--gold-border);
-  background: rgba(197, 168, 128, 0.05);
-  transform: translateY(-2px);
-}
-
-.option-tile.selected {
-  border-color: var(--gold-primary);
-  background: rgba(197, 168, 128, 0.12);
-  box-shadow: 0 0 16px var(--gold-glow);
-}
-
-.option-icon {
-  font-size: 1.8rem;
-  color: var(--gold-light);
-}
-
-.option-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #fff;
-}
-
-.option-desc {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
-
-.advisor-nav-buttons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 40px;
-  padding-top: 24px;
-  border-top: 1px solid var(--border-subtle);
-}
-
-/* 顧問計算結果報告 */
-.advisor-result-box {
-  background: linear-gradient(135deg, rgba(30, 36, 48, 0.95) 0%, rgba(18, 22, 30, 0.95) 100%);
-  border: 1px solid var(--gold-primary);
-  border-radius: var(--radius-lg);
-  padding: 36px;
-  box-shadow: var(--shadow-gold);
-}
-
-.result-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--gold-border);
-  padding-bottom: 24px;
-  margin-bottom: 28px;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.result-score-gauge {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  background: rgba(197, 168, 128, 0.1);
-  padding: 12px 24px;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--gold-border);
-}
-
-.score-number {
-  font-family: var(--font-serif);
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--gold-light);
-  line-height: 1;
-}
-
-.score-label {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-}
-
-/* 情境入口卡片式設計 (Module 3) - 桌機 >1024px 為 4 欄同列 */
-.scenarios-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-.scenario-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: var(--transition-smooth);
-}
-
-.scenario-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--gold-border);
-  box-shadow: var(--shadow-card);
-}
-
-.scenario-card-thumb {
-  position: relative;
-  height: 160px;
-  overflow: hidden;
-  background: #000;
-}
-
-.scenario-card-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.scenario-card:hover .scenario-card-thumb img {
-  transform: scale(1.05);
-}
-
-.scenario-card-tag {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 3px 10px;
-  font-size: 0.72rem;
-  background: rgba(10, 12, 16, 0.85);
-  backdrop-filter: blur(6px);
-  border: 1px solid var(--gold-border);
-  border-radius: var(--radius-pill);
-  color: var(--gold-light);
-}
-
-.scenario-card-body {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.scenario-card-title {
-  font-family: var(--font-serif);
-  font-size: 1.15rem;
-  color: #fff;
-  margin-bottom: 6px;
-}
-
-.scenario-card-sub {
-  font-size: 0.82rem;
-  color: var(--gold-light);
-  margin-bottom: 12px;
-  line-height: 1.4;
-}
-
-.scenario-card-desc {
-  font-size: 0.82rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-  margin-bottom: 14px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.scenario-card-system {
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  padding: 10px 12px;
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  margin-bottom: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.scenario-card-system strong {
-  color: var(--text-primary);
-}
-
-.scenario-card-actions {
-  margin-top: auto;
-}
-
-/* 產品清單與規格比對 (Module 4) */
-.products-filter-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
-  gap: 16px;
-  background: var(--bg-tertiary);
-  padding: 16px 24px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-subtle);
-}
-
-.filter-pills {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.filter-pill {
-  padding: 6px 16px;
-  border-radius: var(--radius-pill);
-  font-size: 0.85rem;
-  background: transparent;
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: var(--transition-smooth);
-}
-
-.filter-pill.active, .filter-pill:hover {
-  border-color: var(--gold-primary);
-  background: rgba(197, 168, 128, 0.12);
-  color: var(--gold-light);
-}
-
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 28px;
-}
-
-.product-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: var(--transition-smooth);
-}
-
-.product-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--gold-border);
-  box-shadow: var(--shadow-card);
-}
-
-.product-thumb {
-  height: 220px;
-  position: relative;
-  overflow: hidden;
-  background: #000;
-}
-
-.product-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.product-card:hover .product-thumb img {
-  transform: scale(1.05);
-}
-
-.product-body {
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.product-brand {
-  font-size: 0.8rem;
-  color: var(--gold-primary);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
-.product-name {
-  font-family: var(--font-serif);
-  font-size: 1.3rem;
-  margin: 6px 0 12px;
-  color: #fff;
-}
-
-.product-price-badge {
-  display: inline-block;
-  font-size: 0.85rem;
-  color: var(--gold-light);
-  font-weight: 600;
-  margin-bottom: 14px;
-}
-
-.product-sound-char {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 20px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.product-actions {
-  margin-top: auto;
-  display: flex;
-  gap: 10px;
-}
-
-/* 浮動規格比對列：預設完全隱藏，只有在使用者加入至少 1 個產品 (active) 後才顯示 */
-.comparison-drawer {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(14, 18, 25, 0.95);
-  backdrop-filter: blur(20px);
-  border-top: 2px solid var(--gold-primary);
-  z-index: 990;
-  padding: 18px 0;
-  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.7);
-  transform: translateY(110%);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.comparison-drawer.active {
-  display: block;
-  transform: translateY(0);
-}
-
-.comparison-items-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.comparison-chips {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.compare-item-chip {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--bg-tertiary);
-  padding: 6px 14px;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--gold-border);
-  font-size: 0.85rem;
-}
-
-.chip-remove {
-  cursor: pointer;
-  color: var(--text-muted);
-  font-weight: bold;
-}
-
-.chip-remove:hover {
-  color: var(--accent-rose);
-}
 
 /* 模態視窗通用樣式 */
 .modal-backdrop {
@@ -1158,164 +723,200 @@ section[id], footer[id], [id] {
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* 專業服務區塊 (Module 6: Professional Services) */
-.professional-services {
+
+/* ==================== 關於巴洛克 (About Ansbach Section) ==================== */
+.about-section {
+  position: relative;
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.about-card {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 64px 48px;
+  background: var(--bg-card);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-gold);
   position: relative;
 }
 
-.professional-services-grid {
-  display: flex;
-  justify-content: center;
-  width: 100%;
+.about-title {
+  font-size: 2.4rem;
+  color: #ffffff;
+  margin: 18px 0 28px;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
 }
 
-.service-card {
+.about-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 36px;
+}
+
+.about-body p {
+  font-size: 1.08rem;
+  color: var(--text-secondary);
+  line-height: 1.95;
+  letter-spacing: 0.02em;
+  margin: 0;
+  text-align: center;
+}
+
+.about-signoff {
+  font-size: 1.35rem;
+  color: var(--gold-light);
+  letter-spacing: 0.08em;
+  padding-top: 26px;
+  border-top: 1px solid var(--border-subtle);
+  font-style: italic;
+}
+
+/* 產品保固與售後服務 (Module 9) */
+.warranty-service-card {
+  max-width: 680px;
+  margin: 0 auto;
   background: var(--bg-card);
   border: 1px solid var(--gold-border);
   border-radius: var(--radius-lg);
-  padding: 40px 36px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 48px 36px;
   text-align: center;
-  max-width: 640px;
-  width: 100%;
-  transition: var(--transition-smooth);
-  box-shadow: var(--shadow-card);
-}
-
-.service-card:hover {
-  transform: translateY(-5px);
   box-shadow: var(--shadow-gold);
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+.warranty-service-card:hover {
   border-color: var(--gold-primary);
+  box-shadow: 0 12px 40px rgba(197, 168, 128, 0.22);
 }
 
-.service-card-icon {
-  font-size: 2.4rem;
-  margin-bottom: 20px;
-  color: var(--gold-light);
+.warranty-card-badge-icon {
+  font-size: 2.8rem;
+  margin-bottom: 16px;
+  display: inline-block;
+  line-height: 1;
 }
 
-.service-card-title {
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
+.warranty-card-title {
+  font-size: 1.65rem;
   color: #fff;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
+  line-height: 1.35;
 }
 
-.service-card-desc {
+.warranty-card-desc {
   font-size: 0.95rem;
   color: var(--text-secondary);
-  line-height: 1.8;
-  margin-bottom: 28px;
-  flex: 1;
-}
-
-.service-card-action {
-  margin-top: auto;
-}
-
-/* 經銷商卡片 (Module 8) */
-.dealers-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 24px;
-}
-
-.dealer-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 28px;
-  transition: var(--transition-smooth);
-  display: flex;
-  flex-direction: column;
-}
-
-.dealer-card:hover {
-  border-color: var(--gold-border);
-  transform: translateY(-3px);
-}
-
-.dealer-flagship-badge {
-  background: var(--gold-gradient);
-  color: #0b0d12;
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 3px 10px;
-  border-radius: 4px;
-  display: inline-block;
-  margin-bottom: 12px;
-}
-
-/* 保固驗證結果卡片 (Module 9) */
-.warranty-status-card {
-  background: var(--bg-tertiary);
-  border: 1px solid var(--gold-primary);
-  border-radius: var(--radius-md);
-  padding: 28px;
-  margin-top: 24px;
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-}
-
-.warranty-status-icon {
-  font-size: 2.5rem;
-  color: var(--accent-emerald);
-}
-
-/* 保固服務雙入口卡片 (Module 9) */
-.warranty-entries-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  max-width: 760px;
+  line-height: 1.7;
+  max-width: 520px;
   margin: 0 auto;
 }
 
-.warranty-entry-card {
-  background: var(--bg-card);
-  border: 1px solid var(--gold-border);
-  border-radius: var(--radius-lg);
-  padding: 36px 28px;
-  text-align: center;
-  cursor: pointer;
-  transition: var(--transition-smooth);
+.warranty-form-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 240px;
+  padding: 14px 36px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  border-radius: var(--radius-pill);
+}
+
+/* 產品保固註冊須知 (M15-05B 現行官網原文移植) */
+.warranty-notice-box {
+  text-align: left;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 24px 28px;
+  margin: 32px 0 28px;
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.warranty-notice-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  letter-spacing: 0.04em;
+  margin: 0 0 14px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.warranty-notice-list {
+  margin: 0;
+  padding-left: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
-.warranty-entry-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-gold);
-  border-color: var(--gold-primary);
-  background: rgba(197, 168, 128, 0.05);
-}
-
-.warranty-entry-icon {
-  font-size: 2.2rem;
-  color: var(--gold-light);
-}
-
-.warranty-entry-title {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  color: #fff;
-}
-
-.warranty-entry-desc {
-  font-size: 0.9rem;
+.warranty-notice-list li {
+  line-height: 1.75;
   color: var(--text-secondary);
-  line-height: 1.5;
-  margin-bottom: 8px;
 }
 
-.warranty-collapsible-wrapper {
-  display: none;
-  transition: var(--transition-smooth);
+.warranty-notice-privacy {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border-subtle);
+  font-size: 0.86rem;
+  color: var(--gold-primary);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.warranty-contact-box {
+  border-top: 1px solid var(--border-subtle);
+  margin-top: 36px;
+  padding-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  text-align: left;
+}
+
+.warranty-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.contact-item-icon {
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.contact-item-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+}
+
+.contact-item-value {
+  font-size: 0.92rem;
+  color: var(--gold-light);
+  font-weight: 500;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.contact-item-value:hover {
+  color: var(--gold-hover);
+  text-decoration: underline;
 }
 
 /* VIP 電子報簡潔訂閱列 (Module 10) */
