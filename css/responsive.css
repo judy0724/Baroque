@@ -23,11 +23,12 @@
 
   /* 1024px 視口企業識別適配（防擠壓中央導航與預約按鈕） */
   .navbar .brand-logo {
-    gap: 6px;
+    gap: 0;
   }
 
   .navbar .brand-logo-img {
     height: 52px;
+    margin-right: -5px;
   }
 
   .navbar .brand-logo-text {
@@ -58,7 +59,7 @@
     display: inline-flex;
     flex-direction: row;
     align-items: center;
-    gap: 8px;
+    gap: 0;
   }
 
   .navbar .nav-actions {
@@ -67,21 +68,24 @@
 
   .navbar .brand-logo-img {
     height: 40px;
+    margin-right: -4px;
   }
 
   .navbar .brand-logo-text {
     font-size: 1.25rem;
     letter-spacing: 0.03em;
+    display: inline-flex;
+    align-items: center;
   }
 
   #nav-toggle-btn {
     display: inline-flex !important;
   }
-  
+
   .nav-links {
     display: none; /* 由漢堡選單展開 */
   }
-  
+
   .nav-links.mobile-open {
     display: flex;
     flex-direction: column;
@@ -95,27 +99,56 @@
     border-bottom: 1px solid var(--gold-border);
     gap: 20px;
   }
-  
-  /* ==================== Hero 品牌首頁影音橫幅 (M4-03 手機 9:16 Banner) ==================== */
+
+  /* ==================== Hero 品牌首頁影音橫幅 (M4-03 手機 9:16 首屏滿版最佳化) ==================== */
   .hero-section {
+    position: relative;
+    width: 100%;
+    /* 使用 100dvh 確保按鈕在首屏完整可見，不被底部導覽列遮擋，無須下滑 */
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    box-sizing: border-box;
+    /* 頂部固定避開 Navbar (72px)，底部避開固定 Bottom Nav (58px + safe-area) */
     padding-top: 72px;
+    padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px));
+    padding-left: 0;
+    padding-right: 0;
     background: #0a0c10;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .hero-banner-container {
     width: 100%;
-    max-width: 100%;
+    height: 100%;
+    flex: 1;
+    min-height: 0; /* 關鍵：防 flex 子項目被預設 min-height: auto 撐開造成溢出 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     padding: 0;
+    margin: 0;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
   }
 
   .hero-banner-wrapper {
     position: relative;
-    width: 100%;
-    max-width: 480px; /* 手機原生直式 9:16 最適閱讀寬度 */
-    margin: 0 auto;
+    flex: 1;
+    min-height: 0; /* 高度自動填滿上方剩餘空間 */
+    height: 100%;
+    max-height: 100%;
     aspect-ratio: 9 / 16; /* 嚴格維持原生 9:16 直式比例 */
-    max-height: calc(100svh - 140px);
-    max-height: calc(100vh - 140px);
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
     overflow: hidden;
     background: #0a0c10;
     display: flex;
@@ -128,6 +161,7 @@
     height: 100%;
     object-fit: contain; /* 9:16 零裁切、不變形、完整呈現器材、壁爐與 Franco Serblin Logo */
     display: block;
+    background: #0a0c10;
   }
 
   /* 手機版隱藏桌面浮動 dock，防止遮擋畫面與字幕 */
@@ -144,6 +178,7 @@
     font-size: 0.76rem;
     min-height: 34px;
     background: rgba(10, 12, 16, 0.82);
+    z-index: 25;
   }
 
   .hero-sound-toggle .sound-icon-box {
@@ -160,34 +195,38 @@
     font-size: 0.76rem;
   }
 
-  /* 手機版專屬雙按鈕操作列：置於 9:16 影片正下方，不遮擋器材且不與底部固定導覽列碰撞 */
+  /* 手機版專屬主要行動入口：置於畫面下方、底部導覽列上方，首屏 100% 完整可見 */
   .hero-mobile-cta-strip {
     display: flex !important;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    padding: 12px 16px;
-    background: #0d0f14;
-    border-top: 1px solid rgba(197, 168, 128, 0.2);
+    flex-shrink: 0; /* 絕不被擠壓 */
     width: 100%;
+    padding: 8px 16px 10px;
+    background: #0a0c10;
+    border-top: 1px solid rgba(197, 168, 128, 0.18);
     box-sizing: border-box;
+    z-index: 20;
   }
 
   .btn-mobile-cta {
-    flex: 1;
-    min-height: 46px;
+    width: 100%;
+    max-width: 360px;
+    min-height: 44px;
+    height: 44px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.92rem;
-    font-weight: 600;
-    letter-spacing: 0.03em;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
     border-radius: var(--radius-pill);
-    padding: 10px 14px;
+    padding: 0 16px;
     white-space: nowrap;
     text-decoration: none;
     cursor: pointer;
     touch-action: manipulation;
+    box-shadow: 0 4px 16px rgba(197, 168, 128, 0.35);
   }
 
   .hero-trust-strip {
@@ -217,11 +256,11 @@
     border-radius: var(--radius-pill);
     border: 1px solid var(--border-subtle);
   }
-  
+
   .section-padding {
     padding: 60px 0;
   }
-  
+
   .section-title {
     font-size: 2rem;
   }
@@ -231,26 +270,85 @@
   }
 
   .warranty-notice-box {
-    padding: 20px 16px;
+    padding: 24px 20px;
     margin: 24px 0 20px;
-    font-size: 0.88rem;
+  }
+
+  .warranty-notice-title {
+    font-size: 1.18rem;
   }
 
   .warranty-notice-list {
-    padding-left: 18px;
-    gap: 8px;
+    padding-left: 20px;
+    gap: 12px;
+  }
+
+  .warranty-notice-list li {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: #e2e8f0;
+  }
+
+  #warranty-section .section-desc {
+    font-size: 1.18rem;
+    line-height: 1.85;
+    color: #ffffff;
+    font-weight: 500;
+  }
+
+  .modal-brand-title {
+    font-size: 1.45rem;
+    font-weight: 800;
+  }
+
+  /* 頁尾手機單欄無溢出適配 (M16 補正) */
+  .footer-grid-three {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  /* 最新消息手機字級約 16px，自然換行零溢出 (M16 補正) */
+  .news-desc {
+    font-size: 1rem !important; /* 16px */
+    line-height: 1.7 !important;
+    padding: 0 8px;
+    max-width: 100%;
+  }
+
+  .desktop-only-br {
+    display: none !important;
+  }
+
+  .footer-col-title {
+    font-size: 1.25rem;
+  }
+
+  .footer-slogan {
+    font-size: 1.05rem;
+  }
+
+  .footer-desc,
+  .footer-info-list {
+    font-size: 0.98rem;
+  }
+
+  .footer-phone-link {
+    font-size: 1.1rem;
+  }
+
+  .warranty-section-desc-old {
+    font-size: 1.12rem;
+    line-height: 1.8;
   }
 
   .warranty-contact-box {
     grid-template-columns: 1fr;
     gap: 16px;
   }
-  
+
   .modal-dialog {
     padding: 24px 18px;
   }
-  
-
 
   .container {
     padding: 0 16px;
@@ -261,8 +359,7 @@
     grid-template-columns: 1fr;
   }
 
-
-  /* 關於巴洛克手機/平板適配 */
+  /* 關於巴洛克手機/平板適配 (M16 手機版同步適度放大) */
   .about-card {
     padding: 40px 22px;
   }
@@ -278,7 +375,8 @@
   }
 
   .about-body p {
-    font-size: 0.96rem;
+    font-size: 1.12rem;
+    color: #e2e8f0;
     line-height: 1.85;
     text-align: left;
   }
@@ -318,13 +416,12 @@
 
   /* 品牌精選 BRANDS 手機版適配 (M3-02 9:16 單張直式輪播) */
   .brand-showcase-section {
-    /* 底部安全留白：為固定式底部導覽列 (min-height 58px + safe area ~70-104px) 保留充足安全距離 */
     padding: 36px 0 calc(96px + env(safe-area-inset-bottom, 0px));
     scroll-margin-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
   }
 
   .brand-section-header {
-    margin-bottom: 22px; /* 緊湊標題間距，提升卡片垂直視野 */
+    margin-bottom: 22px;
   }
 
   .header-divider-line {
@@ -363,7 +460,7 @@
 
   .brand-mobile-single-wrapper .brand-vertical-card {
     width: 100%;
-    max-width: 280px; /* 精準維持 9:16 比例 (高度約 498px)，在 390px~400px 手機上完整容納無溢出 */
+    max-width: 280px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
   }
 
@@ -389,7 +486,6 @@
 
   .brand-feature-item {
     padding: 4px 2px;
-    gap: 6px;
   }
 
   .feature-icon-box {
@@ -469,12 +565,14 @@
 }
 
 @media (max-width: 360px) {
-  /* 360px 極限緊湊屏 Header 尺寸防溢出（B Logo 適配高度 35px，+25% 等比放大） */
+  /* 360px 極限緊湊屏 Header 尺寸防溢出 */
   .navbar .brand-logo {
-    gap: 7px;
+    gap: 0;
   }
+
   .navbar .brand-logo-img {
     height: 35px;
+    margin-right: -3px;
   }
   .navbar .brand-logo-text {
     font-size: 1.12rem;
@@ -502,5 +600,3 @@
     font-size: 0.74rem;
   }
 }
-
-

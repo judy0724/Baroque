@@ -41,7 +41,7 @@ section[id], footer[id], [id] {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  gap: 6px;
+  gap: 0; /* 消除 flex gap，由 margin-right 精準校準圖檔透明留白 */
   text-decoration: none;
   white-space: nowrap;
   transition: opacity 0.2s ease, transform 0.2s ease;
@@ -56,6 +56,7 @@ section[id], footer[id], [id] {
   height: 60px;
   width: auto;
   aspect-ratio: 240 / 260;
+  margin-right: -7px; /* M16 精準抵銷 logo.png 右側透明邊界，使可見粉紅圖形至巴洛克音響中文字邊距約 4.5~5px */
   object-fit: contain;
   display: block;
 }
@@ -63,6 +64,8 @@ section[id], footer[id], [id] {
 .navbar .brand-logo-text {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", "Heiti TC", sans-serif;
   font-size: 28px;
+  display: inline-flex;
+  align-items: center;
   font-weight: 700;
   letter-spacing: 0.04em;
   color: #ffffff;
@@ -80,6 +83,7 @@ section[id], footer[id], [id] {
 }
 
 .brand-logo-sub {
+  font-family: Arial, sans-serif;
   font-size: 0.65rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -464,7 +468,7 @@ section[id], footer[id], [id] {
 .hero-trust-item {
   display: inline-flex;
   align-items: baseline;
-  gap: 6px;
+  gap: 0; /* 消除 flex gap，由 margin-right 精準校準圖檔透明留白 */
 }
 
 .hero-trust-item .trust-val {
@@ -759,9 +763,9 @@ section[id], footer[id], [id] {
 }
 
 .about-body p {
-  font-size: 1.08rem;
+  font-size: 1.25rem; /* M16 Excel 第 159 列指示字大一點，舒適閱讀比例 */
   color: var(--text-secondary);
-  line-height: 1.95;
+  line-height: 2.05;
   letter-spacing: 0.02em;
   margin: 0;
   text-align: center;
@@ -771,9 +775,11 @@ section[id], footer[id], [id] {
   font-size: 1.35rem;
   color: var(--gold-light);
   letter-spacing: 0.08em;
+  font-family: Arial, sans-serif;
+  font-weight: 600;
   padding-top: 26px;
   border-top: 1px solid var(--border-subtle);
-  font-style: italic;
+  font-style: normal;
 }
 
 /* 產品保固與售後服務 (Module 9) */
@@ -836,7 +842,7 @@ section[id], footer[id], [id] {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 24px 28px;
+  padding: 32px 36px;
   margin: 32px 0 28px;
   font-size: 0.92rem;
   line-height: 1.8;
@@ -848,13 +854,17 @@ section[id], footer[id], [id] {
   font-weight: 600;
   color: var(--gold-light);
   letter-spacing: 0.04em;
-  margin: 0 0 14px 0;
+  font-size: 1.25rem !important;
+  font-weight: 700;
+  margin: 0 0 16px 0;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
 .warranty-notice-list {
+  padding-left: 24px !important;
+  gap: 14px !important;
   margin: 0;
   padding-left: 20px;
   display: flex;
@@ -863,6 +873,10 @@ section[id], footer[id], [id] {
 }
 
 .warranty-notice-list li {
+  font-size: 1.05rem !important;
+  line-height: 1.9 !important;
+  color: #e2e8f0 !important;
+  font-weight: 400;
   line-height: 1.75;
   color: var(--text-secondary);
 }
@@ -1065,9 +1079,9 @@ section[id], footer[id], [id] {
 }
 
 .heading-en {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: Arial, sans-serif;
   font-size: 1.25rem;
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: 0.28em;
   color: #1a1a1a;
 }
@@ -1181,11 +1195,12 @@ section[id], footer[id], [id] {
 }
 
 .brand-card-title {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: Arial, sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   color: #1a1a1a;
+  font-weight: 700;
   margin: 0 0 8px 0;
   line-height: 1.25;
 }
@@ -1326,9 +1341,10 @@ section[id], footer[id], [id] {
 }
 
 .pagination-number {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: Arial, sans-serif;
   font-size: 0.88rem;
   font-weight: 500;
+  font-weight: 700;
   letter-spacing: 0.15em;
   color: #635f56;
 }
@@ -1400,5 +1416,137 @@ section[id], footer[id], [id] {
 
 .mobile-nav-item.active .mobile-nav-icon {
   transform: scale(1.1);
+}
+
+/* ==================== M16 局部字級與排版微調 ==================== */
+/* 第 171 列：保固區塊說明文字放大 */
+#warranty-section .section-desc {
+  font-size: 1.35rem;
+  line-height: 1.95;
+  color: #ffffff;
+  font-weight: 500;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+/* 預約彈窗「巴洛克音響」品牌抬頭適度放大 (M16 補正) */
+.modal-brand-title {
+  font-size: 1.65rem !important;
+  font-weight: 800 !important;
+  color: var(--gold-light) !important;
+  letter-spacing: 0.06em;
+  display: inline-block;
+}
+
+/* ==================== 頁尾三欄長者友善全新設計 (M16 補正) ==================== */
+.footer-grid-three {
+  display: grid;
+  grid-template-columns: 1.15fr 1.35fr 1fr;
+  gap: 48px;
+  margin-bottom: 56px;
+  align-items: start;
+}
+
+.footer-col-title {
+  color: var(--gold-light);
+  font-size: 1.35rem; /* 21.6px (20-24px 標準) */
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 20px;
+}
+
+.footer-slogan {
+  color: var(--gold-light);
+  font-size: 1.12rem; /* 18px (16-18px 標準) */
+  font-weight: 600;
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+
+.footer-desc {
+  color: #e2e8f0; /* 高對比明亮白灰，拒絕灰字過暗 */
+  font-size: 1.05rem; /* 16.8px (16-18px 標準) */
+  line-height: 1.8;
+}
+
+.footer-info-list {
+  color: #e2e8f0;
+  font-size: 1.02rem; /* 16.3px (16-18px 標準) */
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* 移除傳真號碼後微調間距至 16px，與左、右欄高度完美平衡 */
+  line-height: 1.7;
+}
+
+.footer-nowrap {
+  white-space: nowrap;
+}
+
+.footer-phone-link {
+  font-family: Arial, sans-serif;
+  color: var(--gold-light);
+  font-weight: 700;
+  font-size: 1.15rem; /* ~18.4px */
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.footer-phone-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.footer-mail-link {
+  font-family: Arial, sans-serif;
+  color: #e2e8f0;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.footer-mail-link:hover {
+  color: var(--gold-light);
+  text-decoration: underline;
+}
+
+.footer-quick-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  padding: 14px 20px;
+  font-size: 1.02rem; /* 16.3px */
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+
+/* 第 21 列：電話號碼統一採用 Arial 排版 */
+.phone-number-display,
+.contact-item-value[href^="tel:"] {
+  font-family: Arial, sans-serif !important;
+}
+
+/* ==================== 最新消息長者友善文字 (M16 最後補正) ==================== */
+.news-desc {
+  font-size: 1.125rem; /* 桌機約 18px */
+  color: #e2e8f0; /* 明亮白灰，高對比易讀 */
+  font-weight: 500;
+  line-height: 1.75;
+  margin: 0 auto;
+  max-width: 760px;
+  text-align: center;
+}
+
+.desktop-only-br {
+  display: inline;
+}
+
+
+
+.phone-number-display,
+.contact-item-value[href^="tel:"] {
+  font-family: Arial, sans-serif !important;
 }
 

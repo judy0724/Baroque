@@ -31,3 +31,14 @@ desktop.ini
 
 # 開發設計示意圖，不公開部署
 /assets/images/brands/mockups/
+
+# 5. M16 審查附件與解壓參考目錄 (嚴禁納入版本控制與公開發布)
+excel_extracted/
+extract_xlsx.py
+extract_xlsx.ps1
+backup-and-replace-images.ps1
+*.ps1
+*.bat
+generate_png.*
+assets/images/export_baroque_png.html
+baroque-brand-text*

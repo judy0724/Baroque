@@ -11,12 +11,11 @@ const ANSBACH_DATA = {
     slogan: '一路走來始終如一，莫忘聽音樂的初衷',
     subSlogan: 'Hear the emotion, not just the music. We collect only the best!',
     healthSlogan: 'Music is good for health. 音樂是心靈最溫潤的滋養',
-    phone: '02-2516-7050',
-    fax: '02-2516-7051',
+    phone: '02- 2516 7050',
     email: 'service@ansbach.com.tw',
     address: '台北市中山區龍江路76巷53號1樓',
-    hours: '週一至週五 10:00 - 19:00 (VIP 尊榮試聽室採預約制，週末可特約排程)',
-    transport: '捷運南京復興站 2 號出口步行約 5 分鐘',
+    hours: '週一至週五 10:00 - 18:00 (VIP 尊榮試聽室採預約制，週末可特約排程)',
+    transport: '捷運松江南京站 2 號出口步行約 5 分鐘',
     facebookUrl: 'https://www.facebook.com/pages/Music-good-for-health/1475286452760402',
     lineOfficial: '@ansbach_audio',
     showroomFeatures: [
@@ -43,9 +42,9 @@ const ANSBACH_DATA = {
       officialUrl: 'https://www.francoserblin.it/en',
       buttonText: '探索品牌 →',
       highlights: [
-        { text: '義大利聲學工藝', icon: 'temple' },
-        { text: '魯特琴靈感箱體', icon: 'lyre' },
-        { text: '音色細膩，富有情感', icon: 'soundwave' }
+        { text: '首創將義大利製琴工藝注入音箱', icon: 'temple' },
+        { text: '以原木美學與樂器共鳴', icon: 'lyre' },
+        { text: '凝練極致的聲音品味', icon: 'soundwave' }
       ]
     },
     {
@@ -63,9 +62,9 @@ const ANSBACH_DATA = {
       officialUrl: 'https://www.proac-loudspeakers.com',
       buttonText: '探索品牌 →',
       highlights: [
-        { text: '英國經典揚聲器品牌', icon: 'temple' },
-        { text: '自然中頻，音場定位出色', icon: 'lyre' },
-        { text: '木質箱體工藝，音樂性細膩', icon: 'soundwave' }
+        { text: '英國,Mr. Stewart Tyler 於1979年創立', icon: 'temple' },
+        { text: '著名的箱體抑振技術', icon: 'lyre' },
+        { text: '精準定位，溫潤，開闊。', icon: 'soundwave' }
       ]
     },
     {
@@ -83,9 +82,9 @@ const ANSBACH_DATA = {
       officialUrl: 'https://www.eamlab.com',
       buttonText: '探索品牌 →',
       highlights: [
-        { text: '義大利高階擴大機工藝', icon: 'temple' },
-        { text: '純淨驅動，控制力充足', icon: 'lyre' },
-        { text: '金屬機身精緻，音樂性鮮明', icon: 'soundwave' }
+        { text: '義大利, Mr.Emanuele Pizzi 創立', icon: 'temple' },
+        { text: '強大電流與低阻抗驅動能力', icon: 'lyre' },
+        { text: '動態磅礴，質感高雅。', icon: 'soundwave' }
       ]
     },
     {
@@ -103,9 +102,9 @@ const ANSBACH_DATA = {
       officialUrl: 'https://www.esprit-audio.fr',
       buttonText: '探索品牌 →',
       highlights: [
-        { text: '法國高階線材工藝', icon: 'temple' },
-        { text: '屏蔽結構講究，訊號傳導穩定', icon: 'lyre' },
-        { text: '透明感與音樂性兼備', icon: 'soundwave' }
+        { text: '法國, 創辦人Mr. Richard Cesari', icon: 'temple' },
+        { text: '漸進式屏蔽及極化技術', icon: 'lyre' },
+        { text: '系統全面提升：自然.純粹', icon: 'soundwave' }
       ]
     },
     {
@@ -123,9 +122,9 @@ const ANSBACH_DATA = {
       officialUrl: 'https://asi-avantages.com/about/',
       buttonText: '探索品牌 →',
       highlights: [
-        { text: '法國聲學調音配件品牌', icon: 'temple' },
-        { text: '微振動控制與共振優化', icon: 'lyre' },
-        { text: '提升細節、層次與空間感', icon: 'soundwave' }
+        { text: '法國, Mr. Franck Tchang創立', icon: 'temple' },
+        { text: '以「樂器」調校空間,不扭曲', icon: 'lyre' },
+        { text: '獨家微頻共振技術', icon: 'soundwave' }
       ]
     },
     {
@@ -143,9 +142,9 @@ const ANSBACH_DATA = {
       officialUrl: 'https://www.rockna-audio.com',
       buttonText: '探索品牌 →',
       highlights: [
-        { text: '羅馬尼亞高階數位音訊品牌', icon: 'temple' },
-        { text: '自研數位處理架構，細節豐富', icon: 'lyre' },
-        { text: '動態寬廣，聲音層次分明', icon: 'soundwave' }
+        { text: '羅馬尼亞, Mr.  Nicolae Jitariu 創立', icon: 'temple' },
+        { text: '精密 R2R 架構 ×  FPGA 數位處理技術', icon: 'lyre' },
+        { text: '細膩通透、自然飽滿、層次分明', icon: 'soundwave' }
       ]
     },
     {
@@ -163,9 +162,9 @@ const ANSBACH_DATA = {
       officialUrl: 'https://audiobyte.net',
       buttonText: '探索品牌 →',
       highlights: [
-        { text: '現代數位音訊設計品牌', icon: 'temple' },
-        { text: '模組化處理與清晰操作介面', icon: 'lyre' },
-        { text: '高性能與高性價比兼具', icon: 'soundwave' }
+        { text: '羅馬尼亞, Mr.  Nicolae Jitariu 創立', icon: 'temple' },
+        { text: '硬體精巧化 × 高階數位處理', icon: 'lyre' },
+        { text: '透明高解析，生動富彈性。', icon: 'soundwave' }
       ]
     },
     {
@@ -183,9 +182,9 @@ const ANSBACH_DATA = {
       officialUrl: null,
       buttonText: null,
       highlights: [
-        { text: '義大利揚聲器工藝品牌', icon: 'temple' },
-        { text: '高頻通透，空氣感出色', icon: 'lyre' },
-        { text: '精準活潑，音樂性鮮明', icon: 'soundwave' }
+        { text: '義大利, Mr. Joseph Szall 創立.', icon: 'temple' },
+        { text: '可升級「專屬低音柱」', icon: 'lyre' },
+        { text: '純淨透明，空氣感自然。', icon: 'soundwave' }
       ]
     }
   ]
