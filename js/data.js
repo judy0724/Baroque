@@ -14,7 +14,7 @@ const ANSBACH_DATA = {
     phone: '02- 2516 7050',
     email: 'service@ansbach.com.tw',
     address: '台北市中山區龍江路76巷53號1樓',
-    hours: '週一至週五 10:00 - 18:00 (VIP 尊榮試聽室採預約制，週末可特約排程)',
+    hours: '週一至週五 10:00 - 18:00',
     transport: '捷運松江南京站 2 號出口步行約 5 分鐘',
     facebookUrl: 'https://www.facebook.com/pages/Music-good-for-health/1475286452760402',
     lineOfficial: '@ansbach_audio',
