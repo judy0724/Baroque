@@ -81,11 +81,11 @@
   #nav-toggle-btn {
     display: inline-flex !important;
   }
-
+  
   .nav-links {
     display: none; /* 由漢堡選單展開 */
   }
-
+  
   .nav-links.mobile-open {
     display: flex;
     flex-direction: column;
@@ -99,7 +99,7 @@
     border-bottom: 1px solid var(--gold-border);
     gap: 20px;
   }
-
+  
   /* ==================== Hero 品牌首頁影音橫幅 (M4-03 手機 9:16 首屏滿版最佳化) ==================== */
   .hero-section {
     position: relative;
@@ -256,11 +256,11 @@
     border-radius: var(--radius-pill);
     border: 1px solid var(--border-subtle);
   }
-
+  
   .section-padding {
     padding: 60px 0;
   }
-
+  
   .section-title {
     font-size: 2rem;
   }
@@ -332,6 +332,12 @@
     font-size: 0.98rem;
   }
 
+  .footer-sub-list {
+    padding-left: 24px;
+    font-size: 0.94rem;
+    gap: 5px;
+  }
+
   .footer-phone-link {
     font-size: 1.1rem;
   }
@@ -345,7 +351,7 @@
     grid-template-columns: 1fr;
     gap: 16px;
   }
-
+  
   .modal-dialog {
     padding: 24px 18px;
   }

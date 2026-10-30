@@ -15,7 +15,9 @@ const ANSBACH_DATA = {
     email: 'service@ansbach.com.tw',
     address: '台北市中山區龍江路76巷53號1樓',
     hours: '週一至週五 10:00 - 18:00',
-    transport: '捷運松江南京站 2 號出口步行約 5 分鐘',
+    transport: '捷運松江南京站 2 號出口，步行約 5 分鐘；捷運南京復興站 5 號出口，步行約 5 分鐘',
+    bus: '公車站點：南京建國站',
+    parking: '停車場：南京建國橋下，步行約 2～3 分鐘',
     facebookUrl: 'https://www.facebook.com/pages/Music-good-for-health/1475286452760402',
     lineOfficial: '@ansbach_audio',
     showroomFeatures: [

@@ -1474,8 +1474,18 @@ section[id], footer[id], [id] {
   font-size: 1.02rem; /* 16.3px (16-18px 標準) */
   display: flex;
   flex-direction: column;
-  gap: 16px; /* 移除傳真號碼後微調間距至 16px，與左、右欄高度完美平衡 */
-  line-height: 1.7;
+  gap: 14px; /* M17 納入公車與開車資訊後微調至 14px，結構緊湊精緻 */
+  line-height: 1.65;
+}
+
+.footer-sub-list {
+  padding-left: 28px;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.98rem;
+  color: #cbd5e1;
 }
 
 .footer-nowrap {
@@ -1512,14 +1522,51 @@ section[id], footer[id], [id] {
 
 .footer-quick-btn {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   text-align: left;
   padding: 14px 20px;
-  font-size: 1.02rem; /* 16.3px */
-  font-weight: 500;
   border-radius: 8px;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  text-decoration: none;
   transition: all 0.25s ease;
+}
+
+.footer-btn-icon {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  height: 24px;
+  width: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.footer-btn-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.footer-btn-title {
+  font-size: 1.02rem;
+  font-weight: 500;
+  color: var(--text-primary, #ffffff);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.footer-btn-sub {
+  font-size: 0.92rem;
+  font-family: Arial, 'Inter', sans-serif;
+  color: var(--gold-light, #f3dfc1);
+  line-height: 1.35;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
 }
 
 /* 第 21 列：電話號碼統一採用 Arial 排版 */
